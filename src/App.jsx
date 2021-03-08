@@ -6,7 +6,7 @@ import Supplier_form from "./supplier-form"
 function App(){
 
     return (<div>
-        <h1>Hello World! sagar</h1>
+        <h1>Hello World! sagar shau</h1>
         <Inv_form />
         <Supplier_form />
     </div>);
