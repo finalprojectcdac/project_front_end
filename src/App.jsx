@@ -6,7 +6,7 @@ import Supplier_form from "./supplier-form"
 function App(){
 
     return (<div>
-        
+        <h1>hello sandipan</h1>
         <Inv_form />
         <Supplier_form />
     </div>);
