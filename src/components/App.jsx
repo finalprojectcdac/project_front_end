@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Inv_form from "../inv-from"
-import Supplier_form from "../supplier-form"
+import Inv_form from "./inv-from"
+import Supplier_form from "./supplier-form"
+import HorizontalNavbar from "./HorizontalNavbar";
+import VerticalNavbar from './VerticalNavbar';
+import RtdBar from './RtdBar';
+import TestForm from './TestForm';
+import Table from './Table';
+import '../styles.css';
 
-function App(){
 
+function App() {
     return (<div>
-        <h1>Hello World!</h1>
+        {/* <TestForm /> */}
+        <HorizontalNavbar />
+        <VerticalNavbar />
+        <RtdBar />
         <Inv_form />
         <Supplier_form />
     </div>);
