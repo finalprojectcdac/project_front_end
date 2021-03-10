@@ -18,18 +18,18 @@ import '../styles.css';
 
 
 
-    return (<div>
-        <Form />
-        <Table />
+    // return (<div>
+    //     <Form />
+    //     <Table />
 
      function App() {
-    return (<div>
-        {/* <TestForm /> */}
-        <HorizontalNavbar />
-        <VerticalNavbar />
-        <RtdBar />
-        <Inv_form />
-        <Supplier_form />
+        return (<div>
+            {/* <TestForm /> */}
+            <HorizontalNavbar />
+            <VerticalNavbar />
+            <RtdBar />
+            <Inv_form />
+             <Supplier_form />
 
     </div>);
 }
