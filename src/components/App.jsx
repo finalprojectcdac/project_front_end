@@ -1,22 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Inv_form from "../inv-from"
-import Supplier_form from "../supplier-form"
-
-function App(){
-
-    return (<div>
-
-        <h1>Hello World! sagar 123 shau</h1>
 
 
-        <h1>vaibhav hello sandipan</h1>
+// import Form  from "../components/Form"
+// import Table  from "../components/Table"
 
-        <h1>Hello World!</h1>
+
+import Inv_form from "./inv-from"
+import Supplier_form from "./supplier-form"
+import HorizontalNavbar from "./HorizontalNavbar";
+import VerticalNavbar from './VerticalNavbar';
+import RtdBar from './RtdBar';
+import TestForm from './TestForm';
+import Table from './Table';
+import '../styles.css';
 
 
-        <Inv_form />
-        <Supplier_form />
+
+
+
+
+
+
+    // return (<div>
+    //     <Form />
+    //     <Table />
+
+     function App() {
+        return (<div>
+            <TestForm />
+            {/* <HorizontalNavbar />
+            <VerticalNavbar />
+            <RtdBar />
+            <Inv_form />
+             <Supplier_form /> */}
+
+
     </div>);
 }
 
