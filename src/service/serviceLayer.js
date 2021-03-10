@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { a } from './components/TestForm';
+import { a } from '../components/poc-components/TestForm';
 
 const USERS_REST_API_URL = 'http://localhost:7777/abc';
 

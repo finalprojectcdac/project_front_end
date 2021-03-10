@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import Table from './Table';
-import user from '../serviceLayer';
+import user from '../../service/serviceLayer';
 
 let a = [];
 // {name:"vaibhav", mobile:"5733", city:"delhi"},{name:"askdghd;a", mobile:"353094", city:"up"},{name:"akfda;s", mobile:"873", city:"wb"}
