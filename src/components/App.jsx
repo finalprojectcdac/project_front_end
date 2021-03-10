@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-import Form  from "../components/Form"
-import Table  from "../components/Table"
+// import Form  from "../components/Form"
+// import Table  from "../components/Table"
 
 import Inv_form from "./inv-from"
 import Supplier_form from "./supplier-form"
