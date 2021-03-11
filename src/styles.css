@@ -23,6 +23,10 @@
     position: absolute;
     right:20px;
     top:16px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #c6303e, #eb394a);
+    box-shadow:  5px 5px 5px #8d222c,
+             -5px -5px 5px #2a9d8f;
   }
   
   header p {
@@ -65,45 +69,90 @@
   .verticalNavbar {
     padding: auto 100px;
     margin: auto -16px;
-    height: 89vh;
+    height: 1500px;
     width: 200px;
     font-weight: 700;
-    background-color: #e76f51;
+    background-color: #FFFFFF;
   }
 
   .inv-form {
     position:absolute;
-    top: 142px;
-    padding:0px 0px;
+    top: 230px;
+    padding:20px 20px;
     margin:auto 200px;
-    height:89vh;
-    width: 50%;
+    height:125vh;
+    width: 41%;
     font-weight:700;
   }
 
   .supplier-form {
     position:absolute;
-    top:142px;
-    left:500px;
-    padding:0px 0px;
+    top:230px;
+    left:600px;
+    padding:20px 20px;
     margin:auto 200px;
     height:89vh;
-    width:100%;
+    width:40.7%;
     font-weight:700;
   }
 
   .rtdBar {
-    background-color: #e9c46a;
+    /* background-color: #e9c46a; */
     position:absolute;
     height:50px;
     top:72px;
     left:200px;
     right:0px;
+
+    margin-top: 20px;
+    margin-left: 3px;
   }
+
 
   .rtdBar h6 {
     position:relative;
     top:25%;
     left:92%;
     font-weight: 700;
+  }
+
+  .crd {
+    border-radius: 25px;
+    background: #e0e0e0;
+    box-shadow:  6px 6px 12px #868686,
+             -6px -6px 12px #ffffff;
+  }
+
+  .btn-inv {
+    background: #2a9d8f;
+    margin-left: 20px;
+    border-color: #2a9d8f ;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #268d81, #2da899);
+    box-shadow:  5px 5px 5px #1b645c,
+                 -5px -5px 5px #c8eee9;
+  }
+
+  .btn-sup {
+    background: #2a9d8f;
+    border-color: #2a9d8f ;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #268d81, #2da899);
+    box-shadow:  5px 5px 5px #1b645c,
+                 -5px -5px 5px #c8eee9;
+  }
+
+  .btn-remove {
+    margin-left: 20px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #c6303e, #eb394a);
+    box-shadow:  5px 5px 5px #8d222c,
+             -5px -5px 5px #f5cdd2;
+  }
+
+  .text-color {
+    color: #2a9d8f ;
+    font-size: 20px;
+    font-weight:700;
+    padding:5px 5px;
   }
