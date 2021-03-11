@@ -3,12 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function supplier_from(){
 
-  return (<div className="supplier-form">
+  return (<div className="supplier-form crd">
+      {/* <div class="card crd container-fluid"> */}
     <form class="form-horizontal">
       <fieldset>
-        <legend>Supplier</legend>
+        <legend className="text-color">Supplier</legend>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="Invoicenumber">
             Invoice number
               </label>
@@ -20,11 +21,11 @@ function supplier_from(){
               placeholder="placeholder"
               class="form-control input-md"
             />
-            <span class="help-block">help</span>
+            
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="Suppliercode">
             Supplier code
               </label>
@@ -36,11 +37,11 @@ function supplier_from(){
               placeholder="placeholder"
               class="form-control input-md"
             />
-            <span class="help-block">help</span>
+            
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="totalValue">
             total Value
               </label>
@@ -52,11 +53,11 @@ function supplier_from(){
               placeholder="placeholder"
               class="form-control input-md"
             />
-            <span class="help-block">help</span>
+            
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="Supplier">
             Supplier
               </label>
@@ -68,23 +69,24 @@ function supplier_from(){
               placeholder="placeholder"
               class="form-control input-md"
             />
-            <span class="help-block">help</span>
+           
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="button1id"></label>
           <div class="col-md-8">
-            <button id="button1id" name="button1id" class="btn btn-success">
+            <button id="button1id" name="button1id" class="btn btn-success btn-sup">
               add
                 </button>
-            <button id="button2id" name="button2id" class="btn btn-danger">
+            <button id="button2id" name="button2id" class="btn btn-danger btn-remove">
               delete
                 </button>
           </div>
         </div>
       </fieldset>
     </form>
+    
   </div>);
 }
 

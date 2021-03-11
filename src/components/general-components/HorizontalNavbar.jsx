@@ -6,8 +6,13 @@ function HorizontalNavbar(props) {
     }
     return (
         <header>
+<<<<<<< HEAD
             <p>Hello {props.userName}</p>
             <button onClick={handleClick} className="btn btn-danger">Logout</button>
+=======
+            <p>INVENTORY MANAGMENT SYSTEM</p>
+            <button className="btn btn-danger">Logout</button>
+>>>>>>> sandipan
         </header>
     );
 }
