@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { a } from '../components/poc-components/TestForm';
+import axios from 'axios';
 
 const USERS_REST_API_URL = 'http://localhost:7777/abc';
 
@@ -12,6 +11,9 @@ class UserService {
         console.log(a);
         return axios.put(USERS_REST_API_URL,a);
         
+    }
+    getRealTimeData() {
+        return axios.get("http://localhost:7777/getRealTimeData");
     }
 }
 
