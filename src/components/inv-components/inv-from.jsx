@@ -2,7 +2,12 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function inv_form(){
-  return (<div className="inv-form crd">
+ 
+ 
+ 
+ 
+ 
+ return (<div className="inv-form crd">
     {/* <div class="card  container-fluid"> */}
     <form class="form-horizontal align-items-center ">
       <fieldset>
