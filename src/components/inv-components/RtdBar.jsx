@@ -1,20 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cardRbar from "../general-components/cardRTbar";
+
 
 
 function RtdBar() {
     var today = new Date();
-    var c="124";
+    var c=2;
+    var v=4;
+
+    /*time and date*/
+    const [time, setTime] = useState(now);
+    const [no_item, setNoitem]=useState({
+        no_of_item: c,
+        value_of_item: v
+    });
 
 
+    setInterval(updateTime, 3000);
+    setInterval(udateItem, 5000);
 
-
-    window.onload= function (){
-        
-        c="102541";
-         
+    var now = new Date().toLocaleTimeString();
+   
+    function updateTime() {
+    var newTime = new Date().toLocaleTimeString();
+     setTime(newTime);
     }
 
+    /*this is for updating total number of item*/
+    function udateItem(){
+      setNoitem({
+        no_of_item: Math.floor(Math.random() * Math.floor(100)),
+        value_of_item: Math.floor(Math.random() * Math.floor(100000))
+      })
+    }
+ 
 
     return (
         <div className="row rtdBar">
@@ -29,7 +48,7 @@ function RtdBar() {
     <div class="card crd">
       <div class="card-body ">
         <h5 class="card-title text-center text-color fw-bold">Total number of item</h5>
-        <h4 class="card-text text-center">{c}</h4>
+        <h4 class="card-text text-center">{no_item.no_of_item}</h4>
     
       </div>
     </div>
@@ -38,7 +57,7 @@ function RtdBar() {
     <div class="card crd">
       <div class="card-body ">
         <h5 class="card-title text-center text-color text-bold">Total value of item</h5>
-        <h4 class="card-text text-center">24</h4>
+        <h4 class="card-text text-center">{no_item.value_of_item}</h4>
         
       </div>
     </div>
@@ -56,7 +75,7 @@ function RtdBar() {
     <div class="card crd">
       <div class="card-body">
         <h5 class="card-title text-center text-color fw-bold">TIME</h5>
-        <h4 class="card-text text-center">{today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()}</h4>
+        <h4 class="card-text text-center">{time}</h4>
         
       </div>
     </div>
