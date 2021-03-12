@@ -2,13 +2,14 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function inv_form(){
-  return (<div className="inv-form">
-    <form class="form-horizontal">
+  return (<div className="inv-form crd">
+    {/* <div class="card  container-fluid"> */}
+    <form class="form-horizontal align-items-center ">
       <fieldset>
-        <legend>Inventory Entry</legend>
+        <legend className="text-color">Inventory Entry</legend>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="item_code">
+        <div class="form-group row">
+          <label class="col-sm-4 control-label" for="item_code">
             Item code
               </label>
           <div class="col-md-4">
@@ -23,7 +24,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="brand">
             Brand
               </label>
@@ -39,7 +40,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="item_name">
             Item Name
               </label>
@@ -54,7 +55,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="unit_price">
             Unit price
               </label>
@@ -69,7 +70,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="quantity">
             Quantity
               </label>
@@ -84,7 +85,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="unit_measurement">
             Unit Measurement
               </label>
@@ -99,7 +100,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="stock_entry_date">
             Stock Entry Date
               </label>
@@ -114,7 +115,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="item_category">
             Item Category
               </label>
@@ -129,7 +130,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="total_value">
             Total Value
               </label>
@@ -144,7 +145,7 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group row">
           <label class="col-md-4 control-label" for="supplier_invoice_no">
             Supplier Invoice no.
               </label>
@@ -159,26 +160,26 @@ function inv_form(){
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="addinv"></label>
-          <div class="col-md-8">
-            <button id="addinv" name="addinv" class="btn btn-success">
+        <div class="form-group row">
+          {/* <label class="col-md-4 control-label" for="addinv"></label> */}
+          <div class="col-auto">
+            <button id="addinv" name="addinv" class="btn btn-success btn-inv">
               ADD
                 </button>
-            <button id="addinv" name="addinv" class="btn btn-success">
+            <button id="addinv" name="addinv" class="btn btn-success btn-inv">
               view
                 </button>
-            <button id="addinv" name="addinv" class="btn btn-success">
+            <button id="addinv" name="addinv" class="btn btn-success btn-inv">
               UPDATE
                 </button>
-            <button id="updateinv" name="updateinv" class="btn btn-danger">
+            <button id="updateinv" name="updateinv" class="btn btn-danger btn-remove">
               Remove
                 </button>
           </div>
         </div>
       </fieldset>
     </form>
-
+    {/* </div> */}
   </div>);
 }
 

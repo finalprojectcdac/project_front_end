@@ -38,12 +38,12 @@ import '../styles.css';
 
      function App() {
         return (<div>
-            <TestForm />
-            {/* <HorizontalNavbar />
+            {/* <TestForm /> */}
+            <HorizontalNavbar />
             <VerticalNavbar />
             <RtdBar />
             <Inv_form />
-             <Supplier_form /> */}
+             <Supplier_form />
 
 
     </div>);
