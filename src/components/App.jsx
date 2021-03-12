@@ -1,37 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
-
-// import Form  from "../components/Form"
-// import Table  from "../components/Table"
-
-import Inv_form from "./inv-components/inv-from"
-import Supplier_form from "./inv-components/supplier-form"
-import HorizontalNavbar from "./general-components/HorizontalNavbar";
-import VerticalNavbar from './general-components/VerticalNavbar';
-import RtdBar from './inv-components/RtdBar';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import PageNotFound from '../pages/404Page';
 import TestForm from './poc-components/TestForm';
-import Table from './poc-components/Table';
 import '../styles.css';
-
-
-
-
-
-    // return (<div>
-    //     <Form />
-    //     <Table />
+import LoginPage from '../pages/LoginPage';
+import InventoryPage from '../pages/InventoryPage';
+import BillingPage from '../pages/BillingPage';
+import LogoutPage from '../pages/LogoutPage';
 
      function App() {
-        return (<div>
-            {/* <TestForm /> */}
-            <HorizontalNavbar />
-            <VerticalNavbar />
-            <RtdBar />
-            <Inv_form />
-             <Supplier_form />
-
-    </div>);
+         return (
+             <Router>
+                 <Switch>
+                     <Route exact path="/" component={LoginPage} />
+                     <Route exact path="/inventory" component={InventoryPage} />
+                     <Route exact path="/billing" component={BillingPage} />
+                     <Route exact path="/logout" exact component={LogoutPage} />
+                     <Route exact path="/test" component={TestForm} />
+                     <Route exact path="/404" component={PageNotFound} />
+                     <Redirect to="/404" />
+                 </Switch>
+             </Router>
+        );
 }
 
 export default App;

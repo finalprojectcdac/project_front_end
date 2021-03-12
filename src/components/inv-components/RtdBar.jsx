@@ -1,42 +1,28 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import cardRbar from "../general-components/cardRTbar";
 
 
+function RtdBar(props) {
 
-function RtdBar() {
-    var today = new Date();
-    var c=2;
-    var v=4;
+    const totalNoOfItems = props.totalNoOfItems;
+    const totalItemValue = props.totalItemValue;
+    const today = new Date().toLocaleDateString();
+    const now = new Date().toLocaleTimeString();
 
-    /*time and date*/
+    const [date, setDate] = useState(today);
     const [time, setTime] = useState(now);
-    const [no_item, setNoitem]=useState({
-        no_of_item: c,
-        value_of_item: v
-    });
 
-
-    setInterval(updateTime, 3000);
-    setInterval(udateItem, 5000);
-
-    var now = new Date().toLocaleTimeString();
-   
-    function updateTime() {
-    var newTime = new Date().toLocaleTimeString();
-     setTime(newTime);
+    function updateRtdBar() {
+      const newDate = new Date().toLocaleDateString();
+      const newTime = new Date().toLocaleTimeString();
+      setDate(newDate);
+      setTime(newTime);
     }
 
-    /*this is for updating total number of item*/
-    function udateItem(){
-      setNoitem({
-        no_of_item: Math.floor(Math.random() * Math.floor(100)),
-        value_of_item: Math.floor(Math.random() * Math.floor(100000))
-      })
-    }
- 
+    setInterval(updateRtdBar,1000);
 
     return (
-        <div className="row rtdBar">
+        <div onClick = {props.clickFunction} className="row rtdBar">
             {/* <h6>
                 {today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()}
             </h6> */}
@@ -44,11 +30,11 @@ function RtdBar() {
             <div className="col-auto"><cardRtbar /></div>
             <div className="col-auto"><cardRtbar /></div> */}
            
-  <div class="col-sm ">
+  <div class="col-sm">
     <div class="card crd">
       <div class="card-body ">
-        <h5 class="card-title text-center text-color fw-bold">Total number of item</h5>
-        <h4 class="card-text text-center">{no_item.no_of_item}</h4>
+        <h5 class="card-title text-center text-color fw-bold">Total number of items</h5>
+        <h4 class="card-text text-center">{totalNoOfItems}</h4>
     
       </div>
     </div>
@@ -56,8 +42,8 @@ function RtdBar() {
   <div class="col-sm ">
     <div class="card crd">
       <div class="card-body ">
-        <h5 class="card-title text-center text-color text-bold">Total value of item</h5>
-        <h4 class="card-text text-center">{no_item.value_of_item}</h4>
+        <h5 class="card-title text-center text-color text-bold">Total value of items</h5>
+        <h4 class="card-text text-center">{totalItemValue}</h4>
         
       </div>
     </div>
@@ -66,7 +52,7 @@ function RtdBar() {
     <div class="card crd">
       <div class="card-body">
         <h5 class="card-title text-center text-color fw-bold">DATE</h5>
-        <h4 class="card-text text-center">{today.getDay()+"/"+today.getMonth()+"/"+today.getFullYear()}</h4>
+        <h4 class="card-text text-center">{date}</h4>
         
       </div>
     </div>
