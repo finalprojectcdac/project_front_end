@@ -132,8 +132,8 @@
   }
 
   .crd {
-    border-radius: 25px;
-    background: #e0e0e0;
+    border-radius: 25px !important;
+    background: #e0e0e0 !important;
     box-shadow:  6px 6px 12px #868686,
              -6px -6px 12px #ffffff;
   }
