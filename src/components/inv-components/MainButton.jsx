@@ -21,7 +21,7 @@ function MainButton(props)
  { console.log("cancel button clicked");}
 
     return(
-        <div className="crd-button ">
+        <div >
             <button class="btn btn-success btn-inv"
              type="submit" onClick={handleSave} >SAVE</button>
             <button class="btn btn-success btn-inv" 
