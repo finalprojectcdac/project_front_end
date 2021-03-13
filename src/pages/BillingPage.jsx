@@ -11,7 +11,7 @@ function BillingPage() {
             <HorizontalNavbar userName="User" />
             <VerticalNavbar />
             <BillForm />
-            <span><CustomerForm /></span>
+            <CustomerForm />
             <BillTable />
         </div>
     );
