@@ -24,7 +24,7 @@ function Inv_Table() {
 }
 
     return (
-        <div className=".inv-table">
+        <div className="inv-table">
             <ReactBootStrap.Table striped bordered >
         <thead>
           <tr>

@@ -68,7 +68,7 @@
 
   .verticalNavbar {
     margin: auto -16px;
-    height: 1500px;
+    height: 350px;
     width: 180px;
     font-weight: 700;
     background-color: #FFFFFF;
@@ -98,7 +98,7 @@
   .bill-form {
     position:absolute;
     margin: auto 200px;
-    top:15%;
+    top:13%;
     padding:20px 20px;
     width:30%;
     font-weight:700;
@@ -106,7 +106,7 @@
 
   .customer-form {
     position: absolute;
-    top:15%;
+    top:13%;
     left:50%;
     padding: 20px 20px 20px 20px;
   }
@@ -219,4 +219,32 @@
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
+  }
+
+  .sno {
+    width:5%;
+    text-align:center;
+  }
+
+  .item-name {
+    width:max-content;
+  }
+
+  .qty {
+    width:10%;
+    text-align:center;
+  }
+
+  .price {
+    width:15%;
+    text-align:center;
+  }
+
+  .inv-table {
+    position:absolute;
+    top:1000px;
+  }
+
+  .main-buttons {
+    position:relative;
   }
