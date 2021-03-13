@@ -137,7 +137,14 @@
     box-shadow:  6px 6px 12px #868686,
              -6px -6px 12px #ffffff;
   }
-
+  .crd-button {
+    position:relative;
+    border-radius: 25px;
+    background: #e0e0e0;
+    box-shadow:  3px 3px 6px #868686,
+             -6px -6px 12px #ffffff;
+  }
+  
   .btn-inv {
     background: #2a9d8f;
     margin-left: 20px;

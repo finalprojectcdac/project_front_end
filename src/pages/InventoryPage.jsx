@@ -4,7 +4,8 @@ import VerticalNavbar from '../components/general-components/VerticalNavbar';
 import RtdBar from '../components/inv-components/RtdBar';
 import Supplier_from from '../components/inv-components/supplier-form';
 import user from '../service/serviceLayer';
-import InvForm from "../components/inv-components/inv-form2"
+import InvForm from "../components/inv-components/inv-form2";
+import MainButtons from "../components/inv-components/MainButtons";
 function InventoryPage() {
 
     const [rtd, setRtd] = useState({
@@ -29,6 +30,8 @@ function InventoryPage() {
              <RtdBar clickFunction={getRealTimeData} totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue}/>
              <InvForm />
              <Supplier_from />
+             <MainButtons/>
+             
              
         </div>
     )
