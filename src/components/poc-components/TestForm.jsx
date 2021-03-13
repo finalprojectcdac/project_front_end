@@ -50,12 +50,12 @@ function TestForm() {
     }
 
     function handleSave(){
-        //user.putuser(a);
-        user.getUsers().then(resp => {
+        user.putuser(a);
+        //user.getUsers().then(resp => {
 
-            console.log(resp.data);
-            console.log(resp.data[0]);
-        });
+          //  console.log(resp.data);
+            //console.log(resp.data[0]);
+        //});
     }
    
 

@@ -22,7 +22,8 @@ class UserService {
         return axios.put("http://localhost:7777//saveinventorypage", inventoryDetails);
     }
     insertSupplierDetails(supplierobj) {
-        return axios.put("http://localhost:7777//saveSupplierRecordFromInventorypage", supplierobj);
+        console.log(supplierobj);
+        return axios.put("http://localhost:7777//saveSupplierRecordFromInventorypage", (supplierobj));
     }
 }
 
