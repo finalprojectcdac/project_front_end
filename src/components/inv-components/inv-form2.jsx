@@ -2,7 +2,10 @@ import React ,{useState} from 'react';
 import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Table from "./Inv-Table";
+import user from '../../service/serviceLayer';
+
 let inventoryDetails = [];
+let item_code=null;
 function Inv_form2(){
   const [details, setDetails] = useState({
       item_code:"",
@@ -159,6 +162,19 @@ function Inv_form2(){
       });
   }
 
+  function handleBlur(event) {
+      console.log(inventoryDetails);
+    const x = user.getItemDetails(inventoryDetails);
+    console.log(x);
+    // .then(resp => {
+
+    //      console.log(resp.data);
+    //       console.log(resp.data[0]);
+    //       event.preventDefault();
+    //   });
+      
+  }
+
   function handleclick(event) { 
     inventoryDetails.push(details);
       console.log(inventoryDetails);
@@ -184,7 +200,7 @@ function Inv_form2(){
  
 
  return (<div className="inv-form crd">
-     <form>  <fieldset>
+     {/* <form>  <fieldset> */}
         <legend className="text-color">Inventory Entry</legend>   
         <div class="form-group row">
           <label class="col-sm-4 control-label" for="item_code">
@@ -192,6 +208,7 @@ function Inv_form2(){
           </label>
           <div class="col-md-4">
           <input type="text" placeholder=" ItemCode" name="item_code" onChange={handleChange} value={details.item_code} ></input>
+          <button onClick={handleBlur}>Fetch</button>
           </div>
           </div>
           <div class="form-group row">
@@ -266,11 +283,12 @@ function Inv_form2(){
           <button class="btn btn-success btn-inv" type="submit">UPDATE</button>
           <button class="btn btn-success btn-inv" type="submit">REMOVE</button>
           <button class="btn btn-success btn-inv" type="submit">VIEW</button>
-  </fieldset>
-  </form>
+  {/* </fieldset>
+  </form> */}
  
  </div>);
 }
 
 export default Inv_form2;
 export {inventoryDetails};
+export {item_code};
