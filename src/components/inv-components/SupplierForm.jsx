@@ -68,12 +68,12 @@ function SupplierForm() {
    }
 
     return (
-        <div>
+        <div className="supplier-form crd">
             <form className="form-horizontal">
+            <legend className="text-color">Supplier</legend>
 
 
-
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Supplier Name
               </label>
@@ -84,7 +84,7 @@ function SupplierForm() {
                 </div>
 
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Supplier Code
               </label>
@@ -94,7 +94,7 @@ function SupplierForm() {
                     </div>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Invoice Number
               </label>
@@ -105,7 +105,7 @@ function SupplierForm() {
                 </div>
 
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Invoice Value
               </label>
@@ -117,7 +117,7 @@ function SupplierForm() {
 
 
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" ></label>
                     <div className="col-md-8">
                         <button id="button1id" type="submit" name="button1id" className="btn btn-success"

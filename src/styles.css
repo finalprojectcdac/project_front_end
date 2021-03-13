@@ -232,3 +232,12 @@
     width:15%;
     text-align:center;
   }
+
+  .inv-table {
+    position:absolute;
+    top:1000px;
+  }
+
+  .main-buttons {
+    position:relative;
+  }
