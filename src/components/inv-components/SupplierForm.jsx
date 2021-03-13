@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 let supplierobj = [];
+let x={};
 function SupplierForm() {
     const [details, setDetails] = useState({
 
@@ -51,8 +52,8 @@ function SupplierForm() {
     }
 
     function handleAdd(event) {
-        console.log("his");
-        supplierobj.push(details);
+        console.log(details);
+        x= details;
         console.log(supplierobj);
         event.preventDefault();
 

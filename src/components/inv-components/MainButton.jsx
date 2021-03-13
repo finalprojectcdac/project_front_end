@@ -4,7 +4,7 @@ import user from '../../service/serviceLayer';
    
 function MainButton(props)
 {
-    function handleSave(props)
+    function handleSave()
 
  {
     const x = user.insertInventoryData(props.inventoryDetails);
