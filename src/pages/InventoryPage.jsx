@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import HorizontalNavbar from '../components/general-components/HorizontalNavbar';
 import VerticalNavbar from '../components/general-components/VerticalNavbar';
 import Inv_form from '../components/inv-components/inv-from';
@@ -12,6 +12,8 @@ function InventoryPage() {
         totalNoOfItems:"",
         totalItemValue: ""
     });
+
+    useEffect(getRealTimeData,[])
 
     function getRealTimeData() {
         user.getRealTimeData().then(resp => {
