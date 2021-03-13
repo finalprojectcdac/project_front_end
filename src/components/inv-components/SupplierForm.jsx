@@ -7,8 +7,8 @@ function SupplierForm() {
 
         supplier_name: "",
         supplier_code: "",
-        invoice_no: "",
-        invoice_value: ""
+        supplier_invoice_no: "",
+        supplier_invoice_value: ""
     });
 
     function handleChange(event) {
@@ -20,31 +20,31 @@ function SupplierForm() {
                 return {
                     supplier_name: value,
                     supplier_code: prevValue.supplier_code,
-                    invoice_no: prevValue.invoice_no,
-                    invoice_value: prevValue.invoice_value
+                    supplier_invoice_no: prevValue.supplier_invoice_no,
+                    supplier_invoice_value: prevValue.supplier_invoice_value
                 };
             }
             else if (name === "supplier_code") {
                 return {
                     supplier_name: prevValue.supplier_name,
                     supplier_code: value,
-                    invoice_no: prevValue.invoice_no,
-                    invoice_value: prevValue.invoice_value
+                    supplier_invoice_no: prevValue.supplier_invoice_no,
+                    supplier_invoice_value: prevValue.supplier_invoice_value
                 };
 
-            } else if (name === "invoice_no") {
+            } else if (name === "supplier_invoice_no") {
                 return {
                     supplier_name: prevValue.supplier_name,
                     supplier_code: prevValue.supplier_code,
-                    invoice_no: value,
-                    invoice_value: prevValue.invoice_value
+                    supplier_invoice_no: value,
+                    supplier_invoice_value: prevValue.supplier_invoice_value
                 };
-            } else if (name === "invoice_value") {
+            } else if (name === "supplier_invoice_value") {
                 return {
                     supplier_name: prevValue.supplier_name,
                     supplier_code: prevValue.supplier_code,
-                    invoice_no: prevValue.invoice_no,
-                    invoice_value: value
+                    supplier_invoice_no: prevValue.supplier_invoice_no,
+                    supplier_invoice_value: value
                 };
             }
         });
@@ -68,12 +68,12 @@ function SupplierForm() {
    }
 
     return (
-        <div>
+        <div className="supplier-form crd">
             <form className="form-horizontal">
+            <legend className="text-color">Supplier</legend>
 
 
-
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Supplier Name
               </label>
@@ -84,7 +84,7 @@ function SupplierForm() {
                 </div>
 
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Supplier Code
               </label>
@@ -94,30 +94,30 @@ function SupplierForm() {
                     </div>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Invoice Number
               </label>
                     <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Number" name="invoice_no"
-                            onChange={handleChange} value={details.invoice_no} ></input>
+                        <input type="text" placeholder=" Invoice Number" name="supplier_invoice_no"
+                            onChange={handleChange} value={details.supplier_invoice_no} ></input>
                     </div>
                 </div>
 
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" >
                         Invoice Value
               </label>
                     <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Value" name="invoice_value"
-                            onChange={handleChange} value={details.invoice_value} ></input>
+                        <input type="text" placeholder=" Invoice Value" name="supplier_invoice_value"
+                            onChange={handleChange} value={details.supplier_invoice_value} ></input>
                     </div>
                 </div>
 
 
 
-                <div className="form-group">
+                <div className="form-group row">
                     <label className="col-md-4 control-label" ></label>
                     <div className="col-md-8">
                         <button id="button1id" type="submit" name="button1id" className="btn btn-success"

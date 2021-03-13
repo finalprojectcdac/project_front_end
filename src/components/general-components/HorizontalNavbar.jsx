@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function HorizontalNavbar() {
+function HorizontalNavbar(props) {
     return (
         <header>
-            <p>Hello User!</p>
-            <button className="btn btn-danger">Logout</button>
+            <p>Hello {props.userName}</p>
+            <Link to="/logout"><button className="btn btn-danger">Logout</button></Link>
         </header>
     );
 }
