@@ -14,6 +14,8 @@ import TestForm from './poc-components/TestForm';
 import Table from './poc-components/Table';
 import '../styles.css';
 
+import SupplierForm from  './poc-components/SupplierForm';
+
 
 
 
@@ -24,12 +26,15 @@ import '../styles.css';
 
      function App() {
         return (<div>
-            <TestForm />
+            {/* <TestForm /> */}
             {/* <HorizontalNavbar />
             <VerticalNavbar />
             <RtdBar />
             <Inv_form />
-             <Supplier_form /> */}
+             <Supplier_form /> */
+             <SupplierForm />
+             
+             }
 
     </div>);
 }
