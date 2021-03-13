@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-let supplierobj = [];
+let supplierobj = {};
+
 function SupplierForm() {
+
     const [details, setDetails] = useState({
 
         supplier_name: "",
         supplier_code: "",
-        supplier_invoice_no: "",
+        supplier_invoice_number: "",
         supplier_invoice_value: ""
     });
 
@@ -20,7 +22,7 @@ function SupplierForm() {
                 return {
                     supplier_name: value,
                     supplier_code: prevValue.supplier_code,
-                    supplier_invoice_no: prevValue.supplier_invoice_no,
+                    supplier_invoice_number: prevValue.supplier_invoice_number,
                     supplier_invoice_value: prevValue.supplier_invoice_value
                 };
             }
@@ -28,22 +30,22 @@ function SupplierForm() {
                 return {
                     supplier_name: prevValue.supplier_name,
                     supplier_code: value,
-                    supplier_invoice_no: prevValue.supplier_invoice_no,
+                    supplier_invoice_number: prevValue.supplier_invoice_number,
                     supplier_invoice_value: prevValue.supplier_invoice_value
                 };
 
-            } else if (name === "supplier_invoice_no") {
+            } else if (name === "supplier_invoice_number") {
                 return {
                     supplier_name: prevValue.supplier_name,
                     supplier_code: prevValue.supplier_code,
-                    supplier_invoice_no: value,
+                    supplier_invoice_number: value,
                     supplier_invoice_value: prevValue.supplier_invoice_value
                 };
             } else if (name === "supplier_invoice_value") {
                 return {
                     supplier_name: prevValue.supplier_name,
                     supplier_code: prevValue.supplier_code,
-                    supplier_invoice_no: prevValue.supplier_invoice_no,
+                    supplier_invoice_number: prevValue.supplier_invoice_number,
                     supplier_invoice_value: value
                 };
             }
@@ -51,8 +53,7 @@ function SupplierForm() {
     }
 
     function handleAdd(event) {
-        console.log("his");
-        supplierobj.push(details);
+        supplierobj=details;
         console.log(supplierobj);
         event.preventDefault();
 
@@ -99,8 +100,9 @@ function SupplierForm() {
                         Invoice Number
               </label>
                     <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Number" name="supplier_invoice_no"
-                            onChange={handleChange} value={details.supplier_invoice_no} ></input>
+                        <input type="text" placeholder=" Invoice Number" 
+                        name="supplier_invoice_number"
+                            onChange={handleChange} value={details.supplier_invoice_number} ></input>
                     </div>
                 </div>
 
