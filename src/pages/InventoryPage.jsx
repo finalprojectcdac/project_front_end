@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import HorizontalNavbar from '../components/general-components/HorizontalNavbar';
 import VerticalNavbar from '../components/general-components/VerticalNavbar';
-import Inv_form from '../components/inv-components/inv-from';
 import RtdBar from '../components/inv-components/RtdBar';
 import Supplier_from from '../components/inv-components/supplier-form';
 import user from '../service/serviceLayer';
-
+import InvForm from "../components/inv-components/inv-form2"
 function InventoryPage() {
 
     const [rtd, setRtd] = useState({
@@ -28,8 +27,9 @@ function InventoryPage() {
             <HorizontalNavbar userName="User" />
              <VerticalNavbar />
              <RtdBar clickFunction={getRealTimeData} totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue}/>
-             <Inv_form />
+             <InvForm />
              <Supplier_from />
+             
         </div>
     )
 }

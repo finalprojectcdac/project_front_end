@@ -180,116 +180,8 @@ function Inv_form2(){
         ReactDOM.render(<Table />, document.getElementById('table'))
     );
     
-  }{/*
-return (<div className="inv-form crd">
-  <form class="form-horizontal align-items-center ">
-  <fieldset>
-        <legend className="text-color">Inventory Entry</legend>
-        <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-            Item Code
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" ItemCode" 
-          name="item_code" onChange={handleChange} 
-          value={details.item_code} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-           Brand Name
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Brand Name" 
-                 name="brand" onChange={handleChange} 
-                 value={details.brand} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-           Item Name
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Item Name" 
-                  name="item_name" onChange={handleChange} 
-                  value={details.item_name} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-           Unit Measurement
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Unit Measure" 
-                  name="unit_measurement" onChange={handleChange} 
-                    value={details.unit_measurement} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-          Entry Date
-          </label>
-          <div class="col-md-4">
-          <input type="date" placeholder=" Date" 
-                 name="stock_entry_date" onChange={handleChange} 
-                 value={details.stock_entry_date} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-          Item Category
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Item Category" 
-                 name="item_category" onChange={handleChange} 
-                 value={details.item_category} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-          supplier_invoice_no
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Supplier Invoice NO." 
-                 name="supplier_invoice_no" onChange={handleChange} 
-                 value={details.supplier_invoice_no} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-          unit_price
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Unit_price" 
-                 name="unit_price" onChange={handleChange} 
-                 value={details.unit_price} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-           Total Value
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Total Value" 
-                  name="total_value"  
-                  value={details.total_value=details.unit_price*details.quantity} />
-          </div>
-          </div>
-          <div class="form-group row">
-          <label class="col-sm-4 control-label" for="item_code">
-          Quantity
-          </label>
-          <div class="col-md-4">
-          <input type="text" placeholder=" Quantity" 
-                name="quantity" onChange={handleChange} 
-                value={details.quantity} />
-          </div>
-          </div>
+  }
  
-          <button type="submit" onClick={handleclick}>ADD</button>
-  </fieldset>
-  </form>
-  </div>);*/}
 
  return (<div className="inv-form crd">
      <form>  <fieldset>
@@ -379,8 +271,6 @@ return (<div className="inv-form crd">
  
  </div>);
 }
-
-
 
 export default Inv_form2;
 export {inventoryDetails};
