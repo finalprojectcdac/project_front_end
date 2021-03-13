@@ -5,29 +5,12 @@ import TestForm from './poc-components/TestForm';
 import '../styles.css';
 
 
-import SupplierForm from  './poc-components/SupplierForm';
 
 
 
 
 
-    // return (<div>
-    //     <Form />
-    //     <Table />
-
-     function App() {
-        return (<div>
-            {/* <TestForm /> */}
-            {/* <HorizontalNavbar />
-            <VerticalNavbar />
-            <RtdBar />
-            <Inv_form />
-             <Supplier_form /> */
-             <SupplierForm />
-             
-             }
-
-    </div>);
+    
 
 import LoginPage from '../pages/LoginPage';
 import InventoryPage from '../pages/InventoryPage';
