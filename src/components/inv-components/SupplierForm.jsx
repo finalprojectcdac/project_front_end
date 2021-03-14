@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from '../../service/serviceLayer';
 
-let supplierobj = {};
+let supplierObj = {};
 
 function SupplierForm() {
 
@@ -54,8 +54,8 @@ function SupplierForm() {
     }
 
     function handleAdd(event) {
-        supplierobj=details;
-        console.log(supplierobj);
+        supplierObj=details;
+        console.log(supplierObj);
         event.preventDefault();
 
     }
@@ -78,7 +78,7 @@ function SupplierForm() {
             supplier_code,
             supplier_invoice_number,
             supplier_invoice_value
-            }=resp.data.contentsupplier;
+            }=resp.data.supplierdtls;
       console.log(resp.data);
     const status = resp.data.status;
     if(status === 1) {
@@ -128,4 +128,4 @@ function SupplierForm() {
 }
 
 export default SupplierForm;
-export { supplierobj };
+export { supplierObj };

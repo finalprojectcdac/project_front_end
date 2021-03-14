@@ -6,9 +6,11 @@ import SupplierForm from '../components/inv-components/SupplierForm';
 import user from '../service/serviceLayer';
 import InvForm from "../components/inv-components/inv-form2"
 import MainButton from '../components/inv-components/MainButton';
-import Inv_Table from '../components/inv-components/Inv-Table';
+import InvTable from '../components/inv-components/Inv-Table';
 
 function InventoryPage() {
+
+    const [tableRows, setTableRows] = useState([]);
 
     const [rtd, setRtd] = useState({
         totalNoOfItems:"",
@@ -27,14 +29,20 @@ function InventoryPage() {
         })
     }
 
+    function addRow(details) {
+        setTableRows(prevRows => {
+           return [...prevRows, details];
+        })
+    }
+    
     return (
         <div>
             <HorizontalNavbar userName="User" />
             <VerticalNavbar />
-            <RtdBar clickFunction={getRealTimeData} totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
+            <RtdBar totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
             <SupplierForm />
-            <InvForm />
-            {/* <Inv_Table /> */}
+            <InvForm onAdd={addRow} />
+            <InvTable tableRows={tableRows} />
             <MainButton />
         </div>
     )

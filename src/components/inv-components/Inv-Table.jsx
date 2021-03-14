@@ -1,27 +1,22 @@
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
-import {inventoryDetails} from './inv-form2';
 
-function Inv_Table() {
-    const renderTableColoumn = (inventoryDetails,index) => {
+function Inv_Table(props) {
+    const tableRows = props.tableRows;
+    const renderTableColoumn = (tableRows,index) => {
     return (
       <tr key={index}>
-        <th scope="row">{inventoryDetails.item_code}</th>
-        <td>{inventoryDetails.brand}</td>
-        <td>{inventoryDetails.item_name}</td>
-        <td>{inventoryDetails.item_category}</td>
-        <td>{inventoryDetails.unit_measurement}</td>
-        <td>{inventoryDetails.quantity}</td>
-        <td>{inventoryDetails.unit_price}</td>
-        <td>{inventoryDetails.quantity * inventoryDetails.unit_price}</td>
+        <th scope="row">{tableRows.item_code}</th>
+        <td>{tableRows.brand}</td>
+        <td>{tableRows.item_name}</td>
+        <td>{tableRows.item_category}</td>
+        <td>{tableRows.unit_measurement}</td>
+        <td>{tableRows.quantity}</td>
+        <td>{tableRows.unit_price}</td>
+        <td>{tableRows.quantity * tableRows.unit_price}</td>
       </tr>
     );
 }
-
-    function refreshTable() { 
-      return inventoryDetails.map(renderTableColoumn)
-    }
 
     return (
       <div className="inv-table">
@@ -39,11 +34,9 @@ function Inv_Table() {
             </tr>
           </thead>
           <tbody>
-            {/* {refreshTable} */}
-            {inventoryDetails.map(renderTableColoumn)}
+            {tableRows.map(renderTableColoumn)}
           </tbody>
         </ReactBootStrap.Table>
-        {/* <button onClick={refreshTable}>test</button> */}
       </div>
     );
 }

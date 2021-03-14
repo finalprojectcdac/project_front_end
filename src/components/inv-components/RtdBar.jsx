@@ -22,7 +22,7 @@ function RtdBar(props) {
     setInterval(updateRtdBar,1000);
 
     return (
-        <div onClick = {props.clickFunction} className="row rtdBar">
+        <div className="row rtdBar">
             {/* <h6>
                 {today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()}
             </h6> */}

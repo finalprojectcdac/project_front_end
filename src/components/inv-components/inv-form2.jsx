@@ -1,14 +1,9 @@
 import React ,{useState} from 'react';
-import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from '../../service/serviceLayer';
-import Table from './Inv-Table';
-import schema from '../poc-components/schema.json';
-import Tabletest from '../poc-components/tabletest';
 
-let inventoryDetails = [];
-function Inv_form2(){
-const [data, setData] = useState(null);
+const inventoryDetails = [];
+function Inv_form2(props) {
 
   const [details, setDetails] = useState({
       item_code:"",
@@ -63,8 +58,8 @@ const [data, setData] = useState(null);
   }
 
     function handleclick(event) {
+        props.onAdd(details);
         inventoryDetails.push(details);
-        console.log(inventoryDetails);
         setDetails({
             item_code: "",
             brand: "",
@@ -77,15 +72,8 @@ const [data, setData] = useState(null);
             total_value: "",
             quantity: ""
         });
-        setData(inventoryDetails);
 
       event.preventDefault();
-     
-    //   return (
-    //     // ReactDOM.render(<Table />, document.getElementById('root'))
-    // );
-    ;
-    
   }
  
 
@@ -136,15 +124,6 @@ const [data, setData] = useState(null);
                 <button class="btn btn-inv btn-danger" type="submit">REMOVE</button>
                 <button class="btn btn-success btn-inv" type="submit">VIEW</button>
             </div>
-
-            <div className="container p-2">
-                <div className="row">
-                <div className="col">
-                 <Table headers={Object.keys(schema)} rows={data} />
-                </div>
-                </div>
-                 
-             </div>
         </div>
     );
 }
