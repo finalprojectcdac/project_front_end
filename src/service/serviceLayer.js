@@ -27,6 +27,9 @@ class UserService {
         console.log(item_code);
         return axios.get("http://localhost:7777//getitemdetailsfrominventorytable/?item_code=" + item_code)
     }
+    getSupplierDetails(supplier_name){
+        return axios.get("http://localhost:7777/getsupplierdetailsfromSupplierRecord?supplier_name=" + supplier_name)
+    }
     
 }
 
