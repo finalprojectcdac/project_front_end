@@ -76,22 +76,21 @@
 
   .inv-form {
     position:absolute;
-    top: 230px;
+    top: 450px;
     padding:20px 20px;
     margin:auto 200px;
-    height:110%;
-    width: 40%;
+    height:48%;
+    width: 83%;
     font-weight:700;
   }
 
   .supplier-form {
     position:absolute;
     top:230px;
-    left:600px;
+    left:16%;
     padding:20px 20px;
-    margin:auto 200px;
     height:55%;
-    width:40%;
+    width:83%;
     font-weight:700;
   }
 
@@ -136,6 +135,8 @@
     background: #e0e0e0;
     box-shadow:  6px 6px 12px #868686,
              -6px -6px 12px #ffffff;
+    height: min-content;
+    padding: 0px;
   }
   .crd-button {
     position:relative;
@@ -143,6 +144,7 @@
     background: #e0e0e0;
     box-shadow:  3px 3px 6px #868686,
              -6px -6px 12px #ffffff;
+    
   }
   
   .btn-inv {
@@ -242,7 +244,9 @@
 
   .inv-table {
     position:absolute;
-    top:1000px;
+    left:16%;
+    top: 750px;
+    width:83%;
   }
 
   .main-buttons {

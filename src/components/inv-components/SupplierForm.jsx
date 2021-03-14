@@ -70,66 +70,31 @@ function SupplierForm() {
 
     return (
         <div className="supplier-form crd">
-            <form className="form-horizontal">
-            <legend className="text-color">Supplier</legend>
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Supplier Name
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Supplier Name" name="supplier_name"
-                            onChange={handleChange} value={details.supplier_name} ></input>
+        <p className="text-color" style={{textAlign:"center"}}>Supplier Details</p>
+            <form style={{width:"50%"}}>
+                <div className="form-row" style={{width:"200%", paddingLeft:"30px"}}>
+                    <div className="form-group col-md-3">
+                        <label for="supplier_name">Supplier Name</label>
+                        <input type="text" class="form-control" id="supplier_name" placeholder="Supplier Name" name="supplier_name" onChange={handleChange} value={details.supplier_name} />
                     </div>
-                </div>
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Supplier Code
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Supplier Code" name="supplier_code"
-                            onChange={handleChange} value={details.supplier_code} ></input>
+                    <div class="form-group col-md-3">
+                        <label for="supplier_code">Supplier Code</label>
+                        <input type="text" class="form-control" id="supplier_code" placeholder="Supplier Code" name="supplier_code" onChange={handleChange} value={details.supplier_code} />
                     </div>
-                </div>
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Invoice Number
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Number" 
-                        name="supplier_invoice_number"
-                            onChange={handleChange} value={details.supplier_invoice_number} ></input>
+                    <div className="form-group col-md-3">
+                        <label for="invoice_number">Invoice Number</label>
+                        <input type="text" class="form-control" id="invoice_number" placeholder="Invoice Number" name="supplier_invoice_number" onChange={handleChange} value={details.supplier_invoice_number} />
                     </div>
-                </div>
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Invoice Value
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Value" name="supplier_invoice_value"
-                            onChange={handleChange} value={details.supplier_invoice_value} ></input>
-                    </div>
-                </div>
-
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" ></label>
-                    <div className="col-md-8">
-                        <button id="button1id" type="submit" name="button1id" className="btn btn-success"
-                            onClick={handleAdd}>ADD</button>
-
-                        <button id="button2id" name="button2id" className="btn btn-success" type="submit"
-                            onClick={handleRemove} style={{ marginLeft: "10px" }} >CLEAR</button>
+                    <div className="form-group col-md-3">
+                        <label for="invoice_value">Invoice Value</label>
+                        <input type="text" class="form-control" id="invoice_value" placeholder="Invoice Value" name="supplier_invoice_value" onChange={handleChange} value={details.supplier_invoice_value}/>
                     </div>
                 </div>
             </form>
+            <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
+                <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
+                <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
+            </div>
         </div>
     );
 }
