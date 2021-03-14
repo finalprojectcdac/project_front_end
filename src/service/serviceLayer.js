@@ -17,7 +17,7 @@ class UserService {
         return axios.get("http://localhost:7777/getRealTimeData");
     }
     insertInventoryData(inventoryDetails) {
-        return axios.put("http://localhost:7777//saveinventorypage", (inventoryDetails));
+        return axios.put("http://localhost:7777//saveinventorypage", inventoryDetails);
     }
     insertSupplierDetails(supplierobj) {
         console.log(supplierobj);
@@ -26,6 +26,9 @@ class UserService {
     getItemDetails(item_code) {
         console.log(item_code);
         return axios.get("http://localhost:7777//getitemdetailsfrominventorytable/?item_code=" + item_code)
+    }
+    getSupplierDetails(supplier_name){
+        return axios.get("http://localhost:7777/getsupplierdetailsfromSupplierRecord?supplier_name=" + supplier_name)
     }
     
 }

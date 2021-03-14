@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import user from '../../service/serviceLayer';
 
 let supplierobj = {};
 
@@ -68,6 +69,32 @@ function SupplierForm() {
         });
    }
 
+   function handleBlur(event){
+    const supplier_name = details.supplier_name;
+    console.log(supplier_name);
+    user.getSupplierDetails(supplier_name).then(resp => {
+        const{
+            supplier_name,
+            supplier_code,
+            supplier_invoice_number,
+            supplier_invoice_value
+            }=resp.data.contentsupplier;
+      console.log(resp.data);
+    const status = resp.data.status;
+    if(status === 1) {
+        setDetails({
+         supplier_name: supplier_name,
+        supplier_code: supplier_code,
+        supplier_invoice_number: supplier_invoice_number,
+        supplier_invoice_value: supplier_invoice_value
+         })
+        }
+
+     })  
+        
+        event.preventDefault();
+    }
+
     return (
         <div className="supplier-form crd">
         <p className="text-color" style={{textAlign:"center"}}>Supplier Details</p>
@@ -75,7 +102,8 @@ function SupplierForm() {
                 <div className="form-row" style={{width:"200%", paddingLeft:"30px"}}>
                     <div className="form-group col-md-3">
                         <label for="supplier_name">Supplier Name</label>
-                        <input type="text" class="form-control" id="supplier_name" placeholder="Supplier Name" name="supplier_name" onChange={handleChange} value={details.supplier_name} />
+                        <input type="text" class="form-control" id="supplier_name" placeholder="Supplier Name" name="supplier_name" onBlur={handleBlur} onChange={handleChange} value={details.supplier_name} />
+                       
                     </div>
                     <div class="form-group col-md-3">
                         <label for="supplier_code">Supplier Code</label>
@@ -92,8 +120,8 @@ function SupplierForm() {
                 </div>
             </form>
             <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
-                <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
-                <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
+                <button class="btn btn-success btn-sup" type="submit" onClick={handleAdd}>ADD</button>
+                <button class="btn btn-success btn-sup" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
             </div>
         </div>
     );
