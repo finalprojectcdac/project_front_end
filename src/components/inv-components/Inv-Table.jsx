@@ -1,12 +1,9 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as ReactBootStrap from 'react-bootstrap';
 import {inventoryDetails} from './inv-form2';
 
 function Inv_Table() {
-
-  // useEffect(refreshTable, []);
-
     const renderTableColoumn = (inventoryDetails,index) => {
     return (
       <tr key={index}>
@@ -22,8 +19,8 @@ function Inv_Table() {
     );
 }
 
-    function refreshTable() {
-      inventoryDetails.map(renderTableColoumn)
+    function refreshTable() { 
+      return inventoryDetails.map(renderTableColoumn)
     }
 
     return (
@@ -46,6 +43,7 @@ function Inv_Table() {
             {/* {inventoryDetails.map(renderTableColoumn)} */}
           </tbody>
         </ReactBootStrap.Table>
+        <button onClick={refreshTable}>test</button>
       </div>
     );
 }
