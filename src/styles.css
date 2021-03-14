@@ -243,8 +243,11 @@
   .inv-table {
     position:absolute;
     top:1000px;
+    margin-left: 200px;
   }
 
   .main-buttons {
-    position:relative;
+    position:absolute;
+    top:1140px;
+    margin-left: 180px;
   }

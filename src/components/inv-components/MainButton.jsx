@@ -21,12 +21,12 @@ function MainButton(props)
  { console.log("cancel button clicked");}
 
     return(
-        <div >
+        <div className="main-buttons">
             <button class="btn btn-success btn-inv"
              type="submit" onClick={handleSave} >SAVE</button>
             <button class="btn btn-success btn-inv" 
             type="submit" onClick={handleCancel}>CANCEL</button>
-            <span><h3>Hello</h3></span>
+            <span>Hello</span>
         </div>
     );
 
