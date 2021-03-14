@@ -6,6 +6,7 @@ import SupplierForm from '../components/inv-components/SupplierForm';
 import user from '../service/serviceLayer';
 import InvForm from "../components/inv-components/inv-form2"
 import MainButton from '../components/inv-components/MainButton';
+import Inv_Table from '../components/inv-components/Inv-Table';
 
 function InventoryPage() {
 
@@ -31,8 +32,9 @@ function InventoryPage() {
             <HorizontalNavbar userName="User" />
             <VerticalNavbar />
             <RtdBar clickFunction={getRealTimeData} totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
-            <InvForm />
             <SupplierForm />
+            <InvForm />
+            <Inv_Table />
             <MainButton />
         </div>
     )

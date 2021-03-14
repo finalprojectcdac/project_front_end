@@ -1,7 +1,4 @@
 import axios from 'axios';
-import {supplierobj} from '../components/inv-components/SupplierForm';
-import {inventoryDetails} from '../components/inv-components/inv-form2';
-import {item_code} from '../components/inv-components/inv-form2';
 
 
 const USERS_REST_API_URL = 'http://localhost:7777/abc';
@@ -26,10 +23,11 @@ class UserService {
         console.log(supplierobj);
         return axios.put("http://localhost:7777//saveSupplierRecordFromInventorypage", (supplierobj));
     }
-    getItemDetails(inventoryDetails) {
-        console.log(inventoryDetails);
-        return axios.get("http://localhost:7777//getitemdetailsfrominventorytable", inventoryDetails);
+    getItemDetails(item_code) {
+        console.log(item_code);
+        return axios.get("http://localhost:7777//getitemdetailsfrominventorytable/?item_code=" + item_code)
     }
+    
 }
 
 export default new UserService();
