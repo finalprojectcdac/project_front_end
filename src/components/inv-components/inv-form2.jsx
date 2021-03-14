@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from '../../service/serviceLayer';
 import Table from './Inv-Table';
+import {supplierobj} from"./SupplierForm";
 
 let inventoryDetails = [];
 function Inv_form2(){
@@ -25,7 +26,7 @@ function Inv_form2(){
       const { name, value } = event.target;
 
       setDetails(prevValue => {
-          return {...prevValue, [name]:value};
+          return {...prevValue, [name]:value, stock_entry_date:new Date().toLocaleDateString(),supplier_invoice_no:supplierobj.supplier_invoice_number};
       });
   }
 
@@ -40,7 +41,10 @@ function Inv_form2(){
                 item_name,
                 unit_measurement,
                 item_category,
-                unit_price
+                unit_price,
+                supplier_invoice_no,
+                stock_entry_date
+
             } = resp.data.content;
         const status = resp.data.status;
         console.log(status);
@@ -51,7 +55,12 @@ function Inv_form2(){
                 item_name:item_name,
                 unit_measurement:unit_measurement,
                 item_category:item_category,
-                unit_price:unit_price
+                unit_price:unit_price,
+                total_value:"",
+                quantity: "",
+                supplier_invoice_no:"",
+                stock_entry_date:""
+
             })
         }
         console.log(item_name);
@@ -59,8 +68,9 @@ function Inv_form2(){
     }      
   }
 
-    function handleclick(event) {
+    function handleAdd(event) {
         inventoryDetails.push(details);
+        console.log(supplierobj.supplier_invoice_number)
         console.log(inventoryDetails);
         setDetails({
             item_code: "",
@@ -90,11 +100,15 @@ function Inv_form2(){
                 <div className="form-row" style={{width:"200%", paddingLeft:"30px"}}>
                     <div className="form-group col-md-3">
                         <label for="item_code">Item Code</label>
-                        <input type="text" class="form-control" id="item_code" placeholder="Item Code" name="item_code" onBlur={handleBlur} onChange={handleChange} value={details.item_code} />
+                        <input type="text" class="form-control" id="item_code" 
+                        placeholder="Item Code" name="item_code" 
+                        onBlur={handleBlur} onChange={handleChange} value={details.item_code} />
                     </div>
                     <div class="form-group col-md-3">
                         <label for="brand">Brand</label>
-                        <input type="text" class="form-control" id="brand" placeholder="Brand" name="brand" onChange={handleChange} value={details.brand} />
+                        <input type="text" class="form-control" 
+                        id="brand" placeholder="Brand" name="brand" 
+                        onChange={handleChange} value={details.brand} />
                     </div>
                     <div className="form-group col-md-3">
                         <label for="item_name">Item Name</label>
@@ -120,12 +134,13 @@ function Inv_form2(){
                     </div>
                     <div class="form-group col-md-3">
                         <label for="total_value">Total Value</label>
-                        <input type="text" class="form-control" id="total_value" placeholder="Total Value" name="total_value"  value={details.unit_price*details.quantity} />
+                        <input type="text" class="form-control" id="total_value" placeholder="Total Value" name="total_value"  value={details.total_value=details.unit_price*details.quantity} />
                     </div>
                 </div>
             </form>
             <div style={{paddingLeft:"359px", paddingBottom:"20px"}}>
-                <button class="btn btn-success btn-inv" type="submit" onClick={handleclick}>ADD</button>
+                <button class="btn btn-success btn-inv" type="submit" 
+                onClick={handleAdd}>ADD</button>
                 <button class="btn btn-success btn-inv" type="submit">UPDATE</button>
                 <button class="btn btn-inv btn-danger" type="submit">REMOVE</button>
                 <button class="btn btn-success btn-inv" type="submit">VIEW</button>

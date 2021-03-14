@@ -55,6 +55,12 @@ function SupplierForm() {
     function handleAdd(event) {
         supplierobj=details;
         console.log(supplierobj);
+        setDetails({
+            supplier_name: "",
+        supplier_code: "",
+        supplier_invoice_number: "",
+        supplier_invoice_value: "" 
+        });
         event.preventDefault();
 
     }
