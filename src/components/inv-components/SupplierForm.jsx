@@ -120,8 +120,8 @@ function SupplierForm() {
                 </div>
             </form>
             <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
-                <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
-                <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
+                <button class="btn btn-success btn-sup" type="submit" onClick={handleAdd}>ADD</button>
+                <button class="btn btn-success btn-sup" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
             </div>
         </div>
     );
