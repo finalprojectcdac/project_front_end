@@ -164,7 +164,14 @@ function Inv_form2(){
 
   function handleBlur(event) {
       console.log(inventoryDetails);
-    const x = user.getItemDetails(inventoryDetails);
+    const x = user.getItemDetails({
+        params: {
+          item_code:inventoryDetails.item_code
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      });
     console.log(x);
     // .then(resp => {
 

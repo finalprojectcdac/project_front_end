@@ -26,9 +26,9 @@ class UserService {
         console.log(supplierobj);
         return axios.put("http://localhost:7777//saveSupplierRecordFromInventorypage", (supplierobj));
     }
-    getItemDetails(inventoryDetails) {
+    getItemDetails() {
         console.log(inventoryDetails);
-        return axios.get("http://localhost:7777//getitemdetailsfrominventorytable", inventoryDetails);
+        return axios.get("http://localhost:7777//getitemdetailsfrominventorytable", );
     }
 }
 
