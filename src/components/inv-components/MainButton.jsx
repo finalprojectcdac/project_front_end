@@ -2,14 +2,15 @@ import React, {useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from '../../service/serviceLayer';
 import {supplierobj} from './SupplierForm';
+import {inventoryDetails} from './inv-form2';
    
-function MainButton(props)
+function MainButton()
 {
     function handleSave()
 
  {
      console.log(supplierobj);
-    const x = user.insertInventoryData(props.inventoryDetails);
+    const x = user.insertInventoryData(inventoryDetails);
     const y = user.insertSupplierDetails(supplierobj);
     
      console.log(x);
