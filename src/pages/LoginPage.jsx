@@ -6,5 +6,5 @@ function LoginPage() {
         <Login />
     </div>
 }
-
+   
 export default LoginPage;
