@@ -34,7 +34,7 @@ function InventoryPage() {
             <RtdBar clickFunction={getRealTimeData} totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
             <SupplierForm />
             <InvForm />
-            <Inv_Table />
+            {/* <Inv_Table /> */}
             <MainButton />
         </div>
     )

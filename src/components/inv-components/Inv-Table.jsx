@@ -42,10 +42,11 @@ function Inv_Table() {
             </tr>
           </thead>
           <tbody>
-            {refreshTable}
-            {/* {inventoryDetails.map(renderTableColoumn)} */}
+            {/* {refreshTable} */}
+            {inventoryDetails.map(renderTableColoumn)}
           </tbody>
         </ReactBootStrap.Table>
+        
       </div>
     );
 }
