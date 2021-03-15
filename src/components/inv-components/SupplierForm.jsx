@@ -56,6 +56,12 @@ function SupplierForm() {
     function handleAdd(event) {
         supplierObj=details;
         console.log(supplierObj);
+        setDetails({
+            supplier_name: "",
+        supplier_code: "",
+        supplier_invoice_number: "",
+        supplier_invoice_value: "" 
+        });
         event.preventDefault();
 
     }
@@ -78,7 +84,7 @@ function SupplierForm() {
             supplier_code,
             supplier_invoice_number,
             supplier_invoice_value
-            }=resp.data.supplierdtls;
+            }=resp.data.contentsupplier;
       console.log(resp.data);
     const status = resp.data.status;
     if(status === 1) {

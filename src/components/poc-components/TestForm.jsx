@@ -64,11 +64,7 @@ function TestForm() {
         <input type="text" placeholder=" your  mobile no" name="mobile" onChange={handleChange} value={details.mobile} ></input>
         <input type="text" placeholder=" your city" name="city" onChange={handleChange} value={details.city} ></input>
         <button type="submit" onClick={handleclick}>submit</button>
-
-
         <button type="submit" onClick={handleSave}>save</button>
-
-
     </div>)
 
 

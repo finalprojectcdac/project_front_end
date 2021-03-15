@@ -1,6 +1,7 @@
 import React from 'react';
 
 function BillForm() {
+
     return (
         <div className="bill-form crd">
     {/* <div class="card  container-fluid"> */}
@@ -58,7 +59,8 @@ function BillForm() {
         <div class="form-group row">
           {/* <label class="col-md-4 control-label" for="addinv"></label> */}
           <div class="col-auto">
-            <button id="addinv" name="addinv" class="btn btn-success btn-inv">
+            <button id="addinv" name="addinv" class="btn btn-success btn-inv" 
+           >
               ADD
                 </button>
             <button id="updateinv" name="updateinv" class="btn btn-danger btn-remove">
