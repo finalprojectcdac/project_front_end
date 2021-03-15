@@ -4,10 +4,17 @@ import user from '../../service/serviceLayer';
 import {supplierObj} from './SupplierForm';
 import {inventoryDetails} from './InvForm';
 import {Alert} from 'react-st-modal';
+
+
+
+// async () => {
+//     await Alert('Successfully saved to database.', 'Review');
+// }
    
 function MainButton()
 {
     function handleSave() {
+        console.log("clicked");
     const x = user.insertInventoryData(inventoryDetails);
     const y = user.insertSupplierDetails(supplierObj);
 
@@ -22,9 +29,7 @@ function MainButton()
     return(
         <div className="main-buttons">
             <button class="btn btn-success btn-inv"
-             type="submit" onClick={handleSave, async () => {
-            await Alert('Successfully saved to database.', 'Review');
-        }} >SAVE</button>
+             type="submit" onClick={handleSave} >SAVE</button>
             <button class="btn btn-success btn-inv" 
             type="submit" onClick={handleCancel}>CANCEL</button>
         </div>
