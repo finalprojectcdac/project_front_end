@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function HorizontalNavbar(props) {
     return (
         <header>
-            <p>Inventory Management System {props.userName}</p>
+            <p style={{fontFamily:"georgia", fontSize:"21px"}}>INVENTORY MANAGEMENT SYSTEM</p>
             <Link to="/logout"><button className="btn btn-danger">Logout</button></Link>
         </header>
     );

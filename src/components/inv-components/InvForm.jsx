@@ -4,7 +4,7 @@ import user from '../../service/serviceLayer';
 import {supplierObj} from"./SupplierForm";
 
 const inventoryDetails = [];
-function Inv_form2(props) {
+function InvForm(props) {
 
   const [details, setDetails] = useState({
       item_code:"",
@@ -169,5 +169,5 @@ function Inv_form2(props) {
     );
 }
 
-export default Inv_form2;
+export default InvForm;
 export {inventoryDetails};

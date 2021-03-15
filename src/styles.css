@@ -14,7 +14,7 @@
   header {
     background-color: #2a9d8f;
     margin: auto -16px;
-    padding: 16px 32px;
+    padding: 16px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
   }
 
@@ -68,10 +68,14 @@
 
   .verticalNavbar {
     margin: auto -16px;
-    height: 1550px;
+    height: 1100px;
     width: 180px;
     font-weight: 700;
     background-color: #FFFFFF;
+  }
+  .sticky-verticalNavbar {
+    position:sticky;
+    top:0px;
   }
 
   .inv-form {
@@ -115,9 +119,10 @@
     position:absolute;
     height:50px;
     top:72px;
-    left:200px;
-    right:10px;
-
+    left:225px;
+    right:15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     margin-top: 20px;
     margin-left: 5px;
   }
@@ -244,17 +249,40 @@
 
   .inv-table {
     position:absolute;
+    display:block;
+    height: 340px;
     left:16%;
+    overflow-y: scroll;
     top: 750px;
     width:83%;
   }
 
+  .inv-table tr {
+    text-align: center;
+  }
+
+  .sticky-heading {
+    position:sticky;
+    top:0;
+  }
+
   .main-buttons {
     position:absolute;
-    /* top:900px; */
-    margin-left: 180px;
-    position:relative;
+    top:1140px;
+    margin-left: 630px;
+    padding-bottom: 1%;
   }
   .sidebyside{
     display: inline-block;
+  }
+  .total-table {
+    position:absolute;
+    height: 40px;
+    left:16%;
+    top: 750px;
+    width:83%;
+  }
+  .links {
+      display: block;
+      padding: 8px 16px;
   }

@@ -15,7 +15,7 @@ import LogoutPage from '../pages/LogoutPage';
                      <Route exact path="/" component={LoginPage} />
                      <Route exact path="/inventory" component={InventoryPage} />
                      <Route exact path="/billing" component={BillingPage} />
-                     <Route exact path="/logout" exact component={LogoutPage} />
+                     <Route exact path="/logout" component={LogoutPage} />
                      <Route exact path="/test" component={TestForm} />
                      <Route exact path="/404" component={PageNotFound} />
                      <Redirect to="/404" />

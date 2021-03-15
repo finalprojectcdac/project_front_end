@@ -113,9 +113,7 @@ function SupplierForm() {
     if(status === 1) {
         setDetails({
          supplier_name: supplier_name,
-        supplier_code: supplier_code,
-        supplier_invoice_number: supplier_invoice_number,
-        supplier_invoice_value: supplier_invoice_value
+        supplier_code: supplier_code
          })
         }
 
