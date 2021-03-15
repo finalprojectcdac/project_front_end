@@ -157,7 +157,7 @@ function Inv_form2(props) {
                     </div>
                 </div>
             </form>
-            <div style={{paddingLeft:"359px", paddingBottom:"20px"}}>
+            <div style={{paddingLeft:"680px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" 
                 onClick={handleAdd}>ADD</button>
         

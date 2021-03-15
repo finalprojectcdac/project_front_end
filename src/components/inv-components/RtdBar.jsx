@@ -22,13 +22,13 @@ function RtdBar(props) {
     setInterval(updateRtdBar,1000);
 
     return (
-        <div className="row rtdBar" style={{marginLeft:"-2%"}}>
+        <div className="row rtdBar" >
             {/* <h6>
                 {today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()}
             </h6> */}
             {/* <div className="col-auto"><cardRtbar /></div>
             <div className="col-auto"><cardRtbar /></div>
-            <div className="col-auto"><cardRtbar /></div> */}
+            <div className="col-auto"><cardRtbar /></div> style={{marginLeft:"-2%"}}*/}
            
   <div class="col-sm">
     <div class="card crd">

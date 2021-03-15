@@ -68,7 +68,7 @@
 
   .verticalNavbar {
     margin: auto -16px;
-    height: 350px;
+    height: 1550px;
     width: 180px;
     font-weight: 700;
     background-color: #FFFFFF;
@@ -116,10 +116,10 @@
     height:50px;
     top:72px;
     left:200px;
-    right:0px;
+    right:10px;
 
     margin-top: 20px;
-    margin-left: 3px;
+    margin-left: 5px;
   }
 
 
@@ -251,7 +251,7 @@
 
   .main-buttons {
     position:absolute;
-    top:1140px;
+    /* top:900px; */
     margin-left: 180px;
     position:relative;
   }
