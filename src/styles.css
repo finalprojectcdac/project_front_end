@@ -250,14 +250,11 @@
   }
 
   .main-buttons {
-<<<<<<< HEAD
     position:absolute;
     top:1140px;
     margin-left: 180px;
-=======
     position:relative;
   }
   .sidebyside{
     display: inline-block;
->>>>>>> sagar
   }

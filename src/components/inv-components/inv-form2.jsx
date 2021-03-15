@@ -66,9 +66,7 @@ function Inv_form2(props) {
     }      
   }
 
-    
-    function handleAdd(event) {
-        props.onAdd(details);
+        
   function handleAlert(isAllNotFilled)
   {
    if(isAllNotFilled)
@@ -87,6 +85,7 @@ function Inv_form2(props) {
   }
   
   function handleAdd(event) {
+    props.onAdd(details);
         inventoryDetails.push(details);
         console.log(supplierObj.supplier_invoice_number)
         console.log(inventoryDetails);
