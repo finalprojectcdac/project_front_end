@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import HorizontalNavbar from '../components/general-components/HorizontalNavbar';
 import VerticalNavbar from '../components/general-components/VerticalNavbar';
 import RtdBar from '../components/inv-components/RtdBar';
-import SupplierForm, {supplierobj} from '../components/inv-components/SupplierForm';
+import SupplierForm from '../components/inv-components/SupplierForm';
 import user from '../service/serviceLayer';
-import InvForm, {inventoryDetails} from "../components/inv-components/inv-form2"
+import InvForm from "../components/inv-components/inv-form2"
 import MainButton from '../components/inv-components/MainButton';
+import InvTable from '../components/inv-components/Inv-Table';
 
 function InventoryPage() {
+
+    const [tableRows, setTableRows] = useState([]);
 
     const [rtd, setRtd] = useState({
         totalNoOfItems:"",
@@ -26,14 +29,21 @@ function InventoryPage() {
         })
     }
 
+    function addRow(details) {
+        setTableRows(prevRows => {
+           return [...prevRows, details];
+        })
+    }
+    
     return (
         <div>
             <HorizontalNavbar userName="User" />
             <VerticalNavbar />
-            <RtdBar clickFunction={getRealTimeData} totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
-            <InvForm />
+            <RtdBar totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
             <SupplierForm />
-            <MainButton inventoryDetails={inventoryDetails} supplierobj={supplierobj}/>
+            <InvForm onAdd={addRow} />
+            <InvTable tableRows={tableRows} />
+            <MainButton />
         </div>
     )
 }

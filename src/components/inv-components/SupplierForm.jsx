@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
+import user from '../../service/serviceLayer';
 
-let supplierobj = {};
+let supplierObj = {};
 
 function SupplierForm() {
-
     const [details, setDetails] = useState({
-
         supplier_name: "",
         supplier_code: "",
         supplier_invoice_number: "",
@@ -52,11 +51,42 @@ function SupplierForm() {
         });
     }
 
-    function handleAdd(event) {
-        supplierobj=details;
-        console.log(supplierobj);
-        event.preventDefault();
+    const {
+        supplier_code, supplier_name, supplier_invoice_number, supplier_invoice_value
+    } = supplierObj;
 
+    //this returns true if any field is empty
+   function checkObjectisFilled(obj){
+    console.log(obj);
+    let arr = [];
+    for (let key in obj) {
+      arr.push(obj[key] !== undefined && obj[key] !== null && obj[key] !== "");}
+    return arr.includes(false);
+     }
+    function handleAlert(isAllNotFilled)
+  {
+   if(isAllNotFilled)
+  alert("Please fill all fileds of supplier before adding ");
+  else
+  alert(" supplier added successfully!!!!")
+   }
+    function handleAdd(event) {
+        supplierObj=details;
+        console.log(supplierObj);
+        const isAnyEmpty=checkObjectisFilled(details);
+        console.log("some filed of supplier is empty :-"+isAnyEmpty);
+        handleAlert(isAnyEmpty)
+        if(!isAnyEmpty)
+        {
+        setDetails({
+        supplier_name: "",
+        supplier_code: "",
+        supplier_invoice_number: "",
+        supplier_invoice_value: "" 
+        });
+    }
+        
+        event.preventDefault();
     }
 
     function handleRemove() {
@@ -68,71 +98,65 @@ function SupplierForm() {
         });
    }
 
+   function handleBlur(event){
+    const supplier_name = details.supplier_name;
+    console.log(supplier_name);
+    user.getSupplierDetails(supplier_name).then(resp => {
+        const{
+            supplier_name,
+            supplier_code,
+            supplier_invoice_number,
+            supplier_invoice_value
+            }=resp.data.contentsupplier;
+      console.log(resp.data);
+    const status = resp.data.status;
+    if(status === 1) {
+        setDetails({
+         supplier_name: supplier_name,
+        supplier_code: supplier_code,
+        supplier_invoice_number: supplier_invoice_number,
+        supplier_invoice_value: supplier_invoice_value
+         })
+        }
+
+     })  
+        
+        event.preventDefault();
+    }
+
     return (
         <div className="supplier-form crd">
-            <form className="form-horizontal">
-            <legend className="text-color">Supplier</legend>
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Supplier Name
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Supplier Name" name="supplier_name"
-                            onChange={handleChange} value={details.supplier_name} ></input>
+        <p className="text-color" style={{textAlign:"center"}}>Supplier Details</p>
+            <form style={{width:"50%"}}>
+                <div className="form-row" style={{width:"200%", paddingLeft:"30px"}}>
+                    <div className="form-group col-md-3">
+                        <label for="supplier_name">Supplier Name</label>
+                        <input type="text" class="form-control" id="supplier_name" placeholder="Supplier Name" name="supplier_name" onBlur={handleBlur} onChange={handleChange} value={details.supplier_name} />
+                       
                     </div>
-                </div>
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Supplier Code
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Supplier Code" name="supplier_code"
-                            onChange={handleChange} value={details.supplier_code} ></input>
+                    <div class="form-group col-md-3">
+                        <label for="supplier_code">Supplier Code</label>
+                        <input type="text" class="form-control" id="supplier_code" placeholder="Supplier Code" name="supplier_code" onChange={handleChange} value={details.supplier_code} />
                     </div>
-                </div>
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Invoice Number
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Number" 
-                        name="supplier_invoice_number"
-                            onChange={handleChange} value={details.supplier_invoice_number} ></input>
+                    <div className="form-group col-md-3">
+                        <label for="invoice_number">Invoice Number</label>
+                        <input type="text" class="form-control" id="invoice_number" placeholder="Invoice Number" name="supplier_invoice_number" onChange={handleChange} value={details.supplier_invoice_number} />
                     </div>
-                </div>
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" >
-                        Invoice Value
-              </label>
-                    <div className="col-md-4">
-                        <input type="text" placeholder=" Invoice Value" name="supplier_invoice_value"
-                            onChange={handleChange} value={details.supplier_invoice_value} ></input>
-                    </div>
-                </div>
-
-
-
-                <div className="form-group row">
-                    <label className="col-md-4 control-label" ></label>
-                    <div className="col-md-8">
-                        <button id="button1id" type="submit" name="button1id" className="btn btn-success"
-                            onClick={handleAdd}>ADD</button>
-
-                        <button id="button2id" name="button2id" className="btn btn-success" type="submit"
-                            onClick={handleRemove} style={{ marginLeft: "10px" }} >CLEAR</button>
+                    <div className="form-group col-md-3">
+                        <label for="invoice_value">Invoice Value</label>
+                        <input type="text" class="form-control" id="invoice_value" placeholder="Invoice Value" name="supplier_invoice_value" onChange={handleChange} value={details.supplier_invoice_value}/>
                     </div>
                 </div>
             </form>
+            <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
+                <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
+                <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
+                <span>{supplier_code}</span>
+                   
+            </div>
         </div>
     );
 }
 
 export default SupplierForm;
-export { supplierobj };
+export { supplierObj };
