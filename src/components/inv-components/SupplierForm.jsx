@@ -71,12 +71,15 @@ function SupplierForm() {
         const isAnyEmpty=checkObjectisFilled(details);
         console.log("some filed of supplier is empty :-"+isAnyEmpty);
         handleAlert(isAnyEmpty)
+        if(!isAnyEmpty)
+        {
         setDetails({
         supplier_name: "",
         supplier_code: "",
         supplier_invoice_number: "",
         supplier_invoice_value: "" 
         });
+    }
         event.preventDefault();
     }
 

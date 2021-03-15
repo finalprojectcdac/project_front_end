@@ -71,8 +71,9 @@ function Inv_form2(props) {
   {
    if(isAllNotFilled)
   alert("Please fill all the Values of inventory form");
-  else
-  alert("item added successfully to table!!!!")
+  else{
+  props.onAdd(details);
+  }
    }
     //this returns true if any field is empty
    function checkObjectisFilled(obj){
@@ -85,25 +86,27 @@ function Inv_form2(props) {
   }
   
   function handleAdd(event) {
-    props.onAdd(details);
         inventoryDetails.push(details);
         console.log(supplierObj.supplier_invoice_number)
         console.log(inventoryDetails);
         const isAnyEmpty=checkObjectisFilled(details);
         console.log("some filed of inventory is empty :-"+isAnyEmpty);
         handleAlert(isAnyEmpty)
-        setDetails({
-            item_code: "",
-            brand: "",
-            item_name: "",
-            unit_measurement: "",
-            stock_entry_date: "",
-            item_category: "",
-            supplier_invoice_no: "",
-            unit_price: "",
-            total_value: "",
-            quantity: ""
-        });
+      if (!isAnyEmpty) {
+          setDetails({
+              item_code: "",
+              brand: "",
+              item_name: "",
+              unit_measurement: "",
+              stock_entry_date: "",
+              item_category: "",
+              supplier_invoice_no: "",
+              unit_price: "",
+              total_value: "",
+              quantity: ""
+          });
+      }
+        
 
       event.preventDefault();
   }
