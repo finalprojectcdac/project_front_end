@@ -69,9 +69,30 @@ function Inv_form2(props) {
     
     function handleAdd(event) {
         props.onAdd(details);
+  function handleAlert(isAllNotFilled)
+  {
+   if(isAllNotFilled)
+  alert("Please fill all the Values of inventory form");
+  else
+  alert("item added successfully to table!!!!")
+   }
+    //this returns true if any field is empty
+   function checkObjectisFilled(obj){
+       console.log(obj);
+    let arr = [];
+    for (let key in obj) {
+      arr.push(obj[key] !== undefined && obj[key] !== null && obj[key] !== "");
+    }
+    return arr.includes(false);
+  }
+  
+  function handleAdd(event) {
         inventoryDetails.push(details);
         console.log(supplierObj.supplier_invoice_number)
         console.log(inventoryDetails);
+        const isAnyEmpty=checkObjectisFilled(details);
+        console.log("some filed of inventory is empty :-"+isAnyEmpty);
+        handleAlert(isAnyEmpty)
         setDetails({
             item_code: "",
             brand: "",
@@ -137,6 +158,7 @@ function Inv_form2(props) {
             <div style={{paddingLeft:"359px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" 
                 onClick={handleAdd}>ADD</button>
+        
                 <button class="btn btn-success btn-inv" type="submit">UPDATE</button>
                 <button class="btn btn-inv btn-danger" type="submit">REMOVE</button>
                 <button class="btn btn-success btn-inv" type="submit">VIEW</button>
