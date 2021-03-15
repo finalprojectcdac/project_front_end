@@ -139,7 +139,7 @@
     padding: 0px;
   }
   .crd-button {
-    position:relative;
+    position:absolute;
     border-radius: 25px;
     background: #e0e0e0;
     box-shadow:  3px 3px 6px #868686,
