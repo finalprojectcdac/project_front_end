@@ -252,3 +252,6 @@
   .main-buttons {
     position:relative;
   }
+  .sidebyside{
+    display: inline-block;
+  }

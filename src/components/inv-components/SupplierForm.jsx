@@ -4,9 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 let supplierobj = {};
 
 function SupplierForm() {
-
     const [details, setDetails] = useState({
-
         supplier_name: "",
         supplier_code: "",
         supplier_invoice_number: "",
@@ -51,18 +49,34 @@ function SupplierForm() {
             }
         });
     }
-
+    //this returns true if any field is empty
+   function checkObjectisFilled(obj){
+    console.log(obj);
+    let arr = [];
+    for (let key in obj) {
+      arr.push(obj[key] !== undefined && obj[key] !== null && obj[key] !== "");}
+    return arr.includes(false);
+     }
+    function handleAlert(isAllNotFilled)
+  {
+   if(isAllNotFilled)
+  alert("Please fill all fileds of supplier before adding ");
+  else
+  alert(" supplier added successfully!!!!")
+   }
     function handleAdd(event) {
         supplierobj=details;
         console.log(supplierobj);
+        const isAnyEmpty=checkObjectisFilled(details);
+        console.log("some filed of supplier is empty :-"+isAnyEmpty);
+        handleAlert(isAnyEmpty)
         setDetails({
-            supplier_name: "",
+        supplier_name: "",
         supplier_code: "",
         supplier_invoice_number: "",
         supplier_invoice_value: "" 
         });
         event.preventDefault();
-
     }
 
     function handleRemove() {
@@ -100,6 +114,8 @@ function SupplierForm() {
             <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
                 <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
+                <span>  {JSON.stringify(supplierobj)}</span>
+                   
             </div>
         </div>
     );
