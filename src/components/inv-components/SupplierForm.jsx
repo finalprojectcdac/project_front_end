@@ -50,6 +50,11 @@ function SupplierForm() {
             }
         });
     }
+
+    const {
+        supplier_code, supplier_name, supplier_invoice_number, supplier_invoice_value
+    } = supplierObj;
+
     //this returns true if any field is empty
    function checkObjectisFilled(obj){
     console.log(obj);
@@ -80,6 +85,7 @@ function SupplierForm() {
         supplier_invoice_value: "" 
         });
     }
+        
         event.preventDefault();
     }
 
@@ -145,7 +151,7 @@ function SupplierForm() {
             <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
                 <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
-                <span>  {JSON.stringify(supplierObj)}</span>
+                <span>{supplier_code}</span>
                    
             </div>
         </div>
