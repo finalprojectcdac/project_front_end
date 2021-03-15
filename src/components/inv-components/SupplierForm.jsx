@@ -113,9 +113,7 @@ function SupplierForm() {
     if(status === 1) {
         setDetails({
          supplier_name: supplier_name,
-        supplier_code: supplier_code,
-        supplier_invoice_number: supplier_invoice_number,
-        supplier_invoice_value: supplier_invoice_value
+        supplier_code: supplier_code
          })
         }
 
@@ -148,7 +146,7 @@ function SupplierForm() {
                     </div>
                 </div>
             </form>
-            <div style={{paddingLeft:"280px", paddingBottom:"20px"}}>
+            <div style={{paddingLeft:"800px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" onClick={handleAdd}>ADD</button>
                 <button class="btn btn-success btn-inv" type="submit" onClick={handleRemove} style={{ marginLeft: "10px" }}> CLEAR</button>
                 <span>{supplier_code}</span>

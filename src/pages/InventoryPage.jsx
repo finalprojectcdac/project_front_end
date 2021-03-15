@@ -4,9 +4,10 @@ import VerticalNavbar from '../components/general-components/VerticalNavbar';
 import RtdBar from '../components/inv-components/RtdBar';
 import SupplierForm from '../components/inv-components/SupplierForm';
 import user from '../service/serviceLayer';
-import InvForm from "../components/inv-components/inv-form2"
+import InvForm from "../components/inv-components/InvForm"
 import MainButton from '../components/inv-components/MainButton';
-import InvTable from '../components/inv-components/Inv-Table';
+import InvTable from '../components/inv-components/InvTable';
+import TotalTable from '../components/inv-components/TotalTable';
 
 function InventoryPage() {
 
@@ -43,6 +44,7 @@ function InventoryPage() {
             <SupplierForm />
             <InvForm onAdd={addRow} />
             <InvTable tableRows={tableRows} />
+            <TotalTable />
             <MainButton />
         </div>
     )

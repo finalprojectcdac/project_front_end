@@ -4,7 +4,6 @@ function BillForm() {
 
     return (
         <div className="bill-form crd">
-    {/* <div class="card  container-fluid"> */}
     <form class="form-horizontal align-items-center ">
       <fieldset>
         <legend className="text-color">Items</legend>
@@ -57,7 +56,6 @@ function BillForm() {
         </div>
 
         <div class="form-group row">
-          {/* <label class="col-md-4 control-label" for="addinv"></label> */}
           <div class="col-auto">
             <button id="addinv" name="addinv" class="btn btn-success btn-inv" 
            >
@@ -70,7 +68,6 @@ function BillForm() {
         </div>
       </fieldset>
     </form>
-    {/* </div> */}
   </div>
     );
 }
