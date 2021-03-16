@@ -4,6 +4,8 @@ import user from '../../service/serviceLayer';
 import {supplierObj} from"./SupplierForm";
 
 const inventoryDetails = [];
+let sumOfQuantity=0;
+let totalAmount=0;
 function InvForm(props) {
 
   const [details, setDetails] = useState({
@@ -73,6 +75,14 @@ function InvForm(props) {
   alert("Please fill all the Values of inventory form");
   else{
   props.onAdd(details);
+  for(let i=inventoryDetails.length-1; i<inventoryDetails.length; i++)
+  {
+      sumOfQuantity += parseInt(inventoryDetails[i].quantity);
+      totalAmount += parseFloat(inventoryDetails[i].total_value);
+      break;
+  }
+  console.log(sumOfQuantity);
+  console.log(totalAmount);
   }
    }
     //this returns true if any field is empty
@@ -153,7 +163,7 @@ function InvForm(props) {
                     </div>
                     <div class="form-group col-md-3">
                         <label for="total_value">Total Value</label>
-                        <input type="text" class="form-control" id="total_value" placeholder="Total Value" name="total_value"  value={details.total_value=details.unit_price*details.quantity} />
+                        <input type="text" class="form-control" id="total_value" placeholder="Total Value" name="total_value"  value={details.total_value=(details.unit_price*details.quantity).toFixed(2)} />
                     </div>
                 </div>
             </form>
@@ -170,4 +180,4 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export {inventoryDetails};
+export {inventoryDetails, sumOfQuantity, totalAmount};

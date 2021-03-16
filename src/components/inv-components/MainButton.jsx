@@ -14,7 +14,7 @@ function MainButton()
     console.log(x);
     console.log(y);
  }
-    
+   
  function handleCancel()
     
  { console.log("cancel button clicked");}
@@ -22,9 +22,7 @@ function MainButton()
     return(
         <div className="main-buttons">
             <button class="btn btn-success btn-inv"
-             type="submit" onClick={handleSave, async () => {
-            await Alert('Successfully saved to database.', 'Review');
-        }} >SAVE</button>
+             type="submit" onClick={handleSave} >SAVE</button>
             <button class="btn btn-success btn-inv" 
             type="submit" onClick={handleCancel}>CANCEL</button>
         </div>
