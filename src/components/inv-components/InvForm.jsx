@@ -93,7 +93,7 @@ function InvForm(props) {
  
     
   function handleAdd(event) {
-        //details.supplier_invoice_no=supplierObj.supplier_invoice_number;
+        details.supplier_invoice_no=supplierObj.supplier_invoice_number;
         const isAnyEmpty=checkObjectisFilled(details);
         console.log(details);
         console.log("some filed of inventory is empty :-"+isAnyEmpty);
