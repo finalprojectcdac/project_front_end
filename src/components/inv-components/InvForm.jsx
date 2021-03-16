@@ -4,6 +4,8 @@ import user from '../../service/serviceLayer';
 import {supplierObj} from"./SupplierForm";
 
 const inventoryDetails = [];
+let sumOfQuantity=0;
+let totalAmount=0;
 function InvForm(props) {
 
   const [details, setDetails] = useState({
@@ -33,7 +35,10 @@ function InvForm(props) {
     else if(isAllNotFilled )
     {alert("Please fill all the Values of inventory form");}
    else
-     {props.onAdd(details);}}
+     {props.onAdd(details);
+
+        
+    }}
 
   //this returns true if any field is empty
         function checkObjectisFilled(obj){
@@ -41,6 +46,7 @@ function InvForm(props) {
             for (let key in obj) {
              arr.push(obj[key] !== undefined && obj[key] !== null && obj[key] !== "");}
                    return arr.includes(false);}
+
   //checking object and  array conatin
   function checkAllObj(){
     console.log("Inv-form recived obj from supplier-form");
@@ -85,7 +91,7 @@ function InvForm(props) {
     }      
   }
  
-        
+    
   function handleAdd(event) {
         details.supplier_invoice_no=supplierObj.supplier_invoice_number;
         const isAnyEmpty=checkObjectisFilled(details);
@@ -106,6 +112,12 @@ function InvForm(props) {
               total_value: "",
               quantity: ""
           });
+          for(let i=inventoryDetails.length-1; i<inventoryDetails.length; i++)
+  {
+      sumOfQuantity += parseInt(inventoryDetails[i].quantity);
+      totalAmount += parseFloat(inventoryDetails[i].total_value);
+      break;
+  }
       }
         
 
@@ -164,9 +176,7 @@ function InvForm(props) {
                     </div>
                     <div class="form-group col-md-3">
                         <label for="total_value">Total Value</label>
-                        <input type="text" class="form-control" id="total_value" 
-                               placeholder="Total Value" name="total_value"  
-                               value={details.total_value=details.unit_price*details.quantity} />
+                        <input type="text" class="form-control" id="total_value" placeholder="Total Value" name="total_value"  value={details.total_value=(details.unit_price*details.quantity).toFixed(2)} />
                     </div>
                 </div>
             </form>
@@ -185,4 +195,4 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export {inventoryDetails};
+export {inventoryDetails, sumOfQuantity, totalAmount};

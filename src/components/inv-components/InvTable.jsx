@@ -12,8 +12,8 @@ function InvTable(props) {
         <td>{tableRows.item_category}</td>
         <td>{tableRows.unit_measurement}</td>
         <td>{tableRows.quantity}</td>
-        <td>{tableRows.unit_price}</td>
-        <td>{tableRows.quantity * tableRows.unit_price}</td>
+        <td>{(tableRows.unit_price)}</td>
+        <td>{(tableRows.quantity * tableRows.unit_price).toFixed(2)}</td>
       </tr>
     );
 }
