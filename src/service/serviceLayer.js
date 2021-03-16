@@ -23,7 +23,7 @@ class UserService {
         return axios.put("http://localhost:7777//saveSupplierRecordFromInventorypage", (supplierobj));
     }
     getItemDetails(item_code) {
-        console.log(item_code);
+        console.log("CALLING SERVER WITH ITEMCODE :-"+item_code);
         return axios.get("http://localhost:7777//getitemdetailsfrominventorytable/?item_code=" + item_code)
     }
     getSupplierDetails(supplier_name){
