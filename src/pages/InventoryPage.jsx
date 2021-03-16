@@ -8,7 +8,6 @@ import InvForm from "../components/inv-components/InvForm"
 import MainButton from '../components/inv-components/MainButton';
 import InvTable from '../components/inv-components/InvTable';
 import TotalTable from '../components/inv-components/TotalTable';
-import {supplierObj} from"../components/inv-components/SupplierForm";
 function InventoryPage() {
 
     const [tableRows, setTableRows] = useState([]);

@@ -34,7 +34,10 @@ function InvForm(props) {
     else if(isAllNotFilled )
     {alert("Please fill all the Values of inventory form");}
    else
-     {props.onAdd(details);}}
+     {props.onAdd(details);
+
+        
+    }}
 
   //this returns true if any field is empty
         function checkObjectisFilled(obj){
@@ -42,6 +45,7 @@ function InvForm(props) {
             for (let key in obj) {
              arr.push(obj[key] !== undefined && obj[key] !== null && obj[key] !== "");}
                    return arr.includes(false);}
+
   //checking object and  array conatin
   function checkAllObj(){
     console.log("Inv-form recived obj from supplier-form");
@@ -86,35 +90,9 @@ function InvForm(props) {
     }      
   }
  
-        
-  function handleAlert(isAllNotFilled)
-  {
-   if(isAllNotFilled)
-  alert("Please fill all the Values of inventory form");
-  else{
-  props.onAdd(details);
-  for(let i=inventoryDetails.length-1; i<inventoryDetails.length; i++)
-  {
-      sumOfQuantity += parseInt(inventoryDetails[i].quantity);
-      totalAmount += parseFloat(inventoryDetails[i].total_value);
-      break;
-  }
-  console.log(sumOfQuantity);
-  console.log(totalAmount);
-  }
-   }
-    //this returns true if any field is empty
-   function checkObjectisFilled(obj){
-       console.log(obj);
-    let arr = [];
-    for (let key in obj) {
-      arr.push(obj[key] !== undefined && obj[key] !== null && obj[key] !== "");
-    }
-    return arr.includes(false);
-  }
-  
+    
   function handleAdd(event) {
-        details.supplier_invoice_no=supplierObj.supplier_invoice_number;
+        //details.supplier_invoice_no=supplierObj.supplier_invoice_number;
         const isAnyEmpty=checkObjectisFilled(details);
         console.log(details);
         console.log("some filed of inventory is empty :-"+isAnyEmpty);
@@ -133,6 +111,12 @@ function InvForm(props) {
               total_value: "",
               quantity: ""
           });
+          for(let i=inventoryDetails.length-1; i<inventoryDetails.length; i++)
+  {
+      sumOfQuantity += parseInt(inventoryDetails[i].quantity);
+      totalAmount += parseFloat(inventoryDetails[i].total_value);
+      break;
+  }
       }
         
 
