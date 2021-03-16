@@ -8,7 +8,6 @@ import InvForm from "../components/inv-components/InvForm"
 import MainButton from '../components/inv-components/MainButton';
 import InvTable from '../components/inv-components/InvTable';
 import TotalTable from '../components/inv-components/TotalTable';
-
 function InventoryPage() {
 
     const [tableRows, setTableRows] = useState([]);
@@ -29,7 +28,8 @@ function InventoryPage() {
             })
         })
     }
-
+ 
+    
     function addRow(details) {
         setTableRows(prevRows => {
            return [...prevRows, details];
@@ -42,7 +42,7 @@ function InventoryPage() {
             <VerticalNavbar />
             <RtdBar totalNoOfItems={rtd.totalNoOfItems} totalItemValue={rtd.totalItemValue} />
             <SupplierForm />
-            <InvForm onAdd={addRow} />
+            <InvForm onAdd={addRow}/>
             <InvTable tableRows={tableRows} />
             <TotalTable />
             <MainButton />
