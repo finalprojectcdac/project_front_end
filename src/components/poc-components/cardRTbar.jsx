@@ -1,7 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function cardRTbar(){
+function CardRtBar(){
 
 
     window.onload= function (){
@@ -20,4 +20,4 @@ function cardRTbar(){
     );
 }
 
-export default cardRTbar;
+export default CardRtBar;

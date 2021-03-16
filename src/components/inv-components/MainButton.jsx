@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from '../../service/serviceLayer';
 import {supplierObj} from './SupplierForm';
-import {inventoryDetails} from './inv-form2';
+import {inventoryDetails} from './InvForm';
+import {Alert} from 'react-st-modal';
    
 function MainButton()
 {
@@ -21,10 +22,11 @@ function MainButton()
     return(
         <div className="main-buttons">
             <button class="btn btn-success btn-inv"
-             type="submit" onClick={handleSave} >SAVE</button>
+             type="submit" onClick={handleSave, async () => {
+            await Alert('Successfully saved to database.', 'Review');
+        }} >SAVE</button>
             <button class="btn btn-success btn-inv" 
             type="submit" onClick={handleCancel}>CANCEL</button>
-            <span>Hello</span>
         </div>
     );
 

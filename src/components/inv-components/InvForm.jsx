@@ -4,7 +4,7 @@ import user from '../../service/serviceLayer';
 import {supplierObj} from"./SupplierForm";
 
 const inventoryDetails = [];
-function Inv_form2(props) {
+function InvForm(props) {
 
   const [details, setDetails] = useState({
       item_code:"",
@@ -157,7 +157,7 @@ function Inv_form2(props) {
                     </div>
                 </div>
             </form>
-            <div style={{paddingLeft:"359px", paddingBottom:"20px"}}>
+            <div style={{paddingLeft:"680px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" 
                 onClick={handleAdd}>ADD</button>
         
@@ -169,5 +169,5 @@ function Inv_form2(props) {
     );
 }
 
-export default Inv_form2;
+export default InvForm;
 export {inventoryDetails};
