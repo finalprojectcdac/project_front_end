@@ -18,7 +18,7 @@ function InvForm(props) {
       total_value:"",
       quantity:""
   });
-
+ //arranged by sagar
   function handleChange(event) {
             const { name, value } = event.target;
             setDetails(prevValue => {
@@ -26,6 +26,7 @@ function InvForm(props) {
                 supplier_invoice_no:supplierObj.supplier_invoice_number};});}
 
 
+ //arranged by sagar
   function handleAlert(isAllNotFilled){
     if(details.supplier_invoice_no===undefined)
     {alert("Please fill all the Values of supplier form");}
@@ -172,6 +173,7 @@ function InvForm(props) {
             <div style={{paddingLeft:"680px", paddingBottom:"20px"}}>
                 <button class="btn btn-success btn-inv" type="submit" 
                 onClick={handleAdd}>ADD</button>
+                    {/* button created for testing */}
                 <button class="btn btn-success btn-inv" type="submit" 
                 onClick={checkAllObj}>check</button>
                 <button class="btn btn-success btn-inv" type="submit">UPDATE</button>
