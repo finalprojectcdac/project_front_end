@@ -1,10 +1,37 @@
-import React from 'react';
+import React ,{useState} from 'react';
 
 function BillForm() {
+  const billno=0; //this will be set on service function
+  
+    const [details, setDetails] = useState({
+    item_code:"",
+    brand:"",
+    item_name:"",
+    unit_measurement: "",
+    quantity:"",
+    total_value:""
+    });
+    function handleChange(event) {
+      const { name, value } = event.target;
+      setDetails(prevValue => {
+        return {...prevValue, [name]:value };});}
 
+    function handleBlur()
+    {
+      console.log("blur called");
+    }
+    //check function for debuging purpose
+  function checkAllObj(){
+    console.log("checking of variable will be done here");
+    console.log("Bill No.");
+    console.log(billno);
+    console.log("Details:-");
+    console.log(details);
+}
+  
     return (
         <div className="bill-form crd">
-    <form class="form-horizontal align-items-center ">
+    <form >
       <fieldset>
         <legend className="text-color">Items</legend>
 
@@ -20,6 +47,7 @@ function BillForm() {
               placeholder="Bill No."
               class="form-control input-md"
               required=""
+              disabled
             />
           </div>
         </div>
@@ -36,6 +64,9 @@ function BillForm() {
               placeholder="Item Code"
               class="form-control input-md"
               required=""
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={details.item_code} 
             />
           </div>
         </div>
@@ -51,10 +82,13 @@ function BillForm() {
               type="text"
               placeholder="Quantity"
               class="form-control input-md"
+              onChange={handleChange}
+              value={details.quantity} 
             />
           </div>
         </div>
-
+        </fieldset>
+        </form>
         <div class="form-group row">
           <div class="col-auto">
             <button id="addinv" name="addinv" class="btn btn-success btn-inv" 
@@ -64,10 +98,13 @@ function BillForm() {
             <button id="updateinv" name="updateinv" class="btn btn-danger btn-remove">
               Remove
                 </button>
+                {/* button created for testing */}
+                <button class="btn btn-success btn-inv" type="submit" 
+                onClick={checkAllObj}>check</button>
           </div>
         </div>
-      </fieldset>
-    </form>
+    
+    
   </div>
     );
 }

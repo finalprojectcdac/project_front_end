@@ -1,6 +1,28 @@
-import React from 'react';
+import React,{useState} from 'react';
+
+
 
 function CustomerForm() {
+  const [cust_details, setDetails] = useState({
+    mobile_no:"",
+    customer_name:"",
+    amount_received:""
+    });
+    function handleChange(event) {
+      const { name, value } = event.target;
+      setDetails(prevValue => {
+        return {...prevValue, [name]:value };});}
+   function handleBlur()
+        {
+          console.log("blur called");
+        }
+  
+    //check function for debuging purpose
+  function checkAllObj(){
+    console.log("checking of variable will be done here");
+    console.log("Details:-");
+    console.log(cust_details);
+  }
     return (
         <div className="customer-form crd">
             <form class="form-horizontal align-items-center ">
@@ -19,6 +41,9 @@ function CustomerForm() {
               placeholder="Mobile No."
               class="form-control input-md"
               required=""
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={cust_details.mobile_no} 
             />
           </div>
         </div>
@@ -35,6 +60,8 @@ function CustomerForm() {
               placeholder="Name"
               class="form-control input-md"
               required=""
+              onChange={handleChange}
+              value={cust_details.customer_name} 
             />
           </div>
         </div>
@@ -50,11 +77,16 @@ function CustomerForm() {
               type="text"
               placeholder="Amout Received"
               class="form-control input-md"
+              onChange={handleChange}
+              value={cust_details.amount_received} 
             />
           </div>
         </div>
       </fieldset>
     </form>
+    {/* button created for testing */}
+    <button class="btn btn-success btn-inv" type="submit" 
+                onClick={checkAllObj}>check</button>
         </div>
     );
 }
