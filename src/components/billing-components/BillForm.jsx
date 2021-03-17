@@ -1,16 +1,23 @@
 import React ,{useState} from 'react';
-
+import user from '../../service/serviceLayer';
 function BillForm() {
   const billno=0; //this will be set on service function
   
     const [details, setDetails] = useState({
     item_code:"",
-    brand:"",
+    billno:"",
     item_name:"",
     unit_measurement: "",
     quantity:"",
     total_value:""
     });
+
+    function getBillNO()
+    {
+      user.getSaleInvoiceNo().then(rsp =>{
+        console.log(rsp.data);
+      });
+    }
     function handleChange(event) {
       const { name, value } = event.target;
       setDetails(prevValue => {
@@ -101,6 +108,9 @@ function BillForm() {
                 {/* button created for testing */}
                 <button class="btn btn-success btn-inv" type="submit" 
                 onClick={checkAllObj}>check</button>
+                {/* dummy to fetch bill no */}
+                <button class="btn btn-success btn-inv" type="submit" 
+                onClick={getBillNO}>GET bill no</button>
           </div>
         </div>
     
