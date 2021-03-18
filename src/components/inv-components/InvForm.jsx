@@ -4,9 +4,15 @@ import user from "../../service/serviceLayer";
 import { supplierObj } from "./SupplierForm";
 
 const inventoryDetails = [];
+const prvQuantityDetails = [];
 let sumOfQuantity = 0;
 let totalAmount = 0;
+//to temporary store the item quantity of fecthed item in store
 function InvForm(props) {
+  const [quantitydetails, setquantity] = useState({
+    item_code: "",
+    quantity: "",
+  });
   const [details, setDetails] = useState({
     item_code: "",
     brand: "",
@@ -22,14 +28,29 @@ function InvForm(props) {
   //arranged by sagar
   function handleChange(event) {
     const { name, value } = event.target;
-    setDetails((prevValue) => {
-      return {
-        ...prevValue,
-        [name]: value,
-        stock_entry_date: new Date().toLocaleDateString(),
-        supplier_invoice_no: supplierObj.supplier_invoice_number,
-      };
-    });
+    if (name === "item_code" && value === "") {
+      setDetails({
+        item_code: "",
+        brand: "",
+        item_name: "",
+        unit_measurement: "",
+        stock_entry_date: "",
+        item_category: "",
+        supplier_invoice_no: "",
+        unit_price: "",
+        total_value: "",
+        quantity: "",
+      })
+    } else {
+      setDetails((prevValue) => {
+        return {
+          ...prevValue,
+          [name]: value,
+          stock_entry_date: new Date().toLocaleDateString(),
+          supplier_invoice_no: supplierObj.supplier_invoice_number,
+        };
+      });
+    }
   }
 
   //arranged by sagar
@@ -60,8 +81,10 @@ function InvForm(props) {
     console.log(inventoryDetails);
     console.log("our details array :-");
     console.log(details);
-    //console.log("supplier inv no :-");
-    //console.log(supplierObj.supplier_invoice_number);
+    console.log(" quantity in store is :-");
+    console.log(quantitydetails);
+    console.log(" Array item quantity in store is :-");
+    console.log(prvQuantityDetails);
   }
 
   function handleBlur(event) {
@@ -69,19 +92,25 @@ function InvForm(props) {
     if (item_code !== 0) {
       console.log("handle blur called with:-" + item_code);
       user.getItemDetails(item_code).then((resp) => {
-        const {
-          item_code,
-          brand,
-          item_name,
-          unit_measurement,
-          item_category,
-          unit_price,
-          supplier_invoice_no,
-          stock_entry_date,
-        } = resp.data.content;
         const status = resp.data.status;
-        console.log(status);
         if (status === 1) {
+          const {
+            item_code,
+            brand,
+            item_name,
+            unit_measurement,
+            item_category,
+            unit_price,
+            quantity,
+            supplier_invoice_no,
+            stock_entry_date,
+          } = resp.data.content;
+
+          setquantity({
+            item_code: item_code,
+            quantity: quantity,
+          });
+
           setDetails({
             item_code: item_code,
             brand: brand,
@@ -94,15 +123,36 @@ function InvForm(props) {
             supplier_invoice_no: "",
             stock_entry_date: "",
           });
+        } else {
+          setDetails({
+            item_code: item_code,
+            brand: "",
+            item_name: "",
+            unit_measurement: "",
+            stock_entry_date: "",
+            item_category: "",
+            supplier_invoice_no: "",
+            unit_price: "",
+            total_value: "",
+            quantity: "",
+          })
         }
+        
+        
         console.log("our item obj is:-");
         console.log(details);
       });
     }
   }
+  function setPrevQuantity() {
+    if (quantitydetails.quantity !== "")
+      prvQuantityDetails.push(quantitydetails);
+  }
 
   function handleAdd(event) {
+    setPrevQuantity();
     details.supplier_invoice_no = supplierObj.supplier_invoice_number;
+    //details.quantity=details.quantity+itemQuant;
     const isAnyEmpty = checkObjectisFilled(details);
     console.log(details);
     console.log("some filed of inventory is empty :-" + isAnyEmpty);
@@ -119,6 +169,10 @@ function InvForm(props) {
         supplier_invoice_no: "",
         unit_price: "",
         total_value: "",
+        quantity: "",
+      });
+      setquantity({
+        item_code: "",
         quantity: "",
       });
       for (
@@ -139,7 +193,7 @@ function InvForm(props) {
     <div className="inv-form crd">
       <p
         className="text-color"
-        style={{ textAlign: "center", paddingTop: "0px", paddingBottom: "0px" }}
+        style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
       >
         Inventory Entry
       </p>
@@ -222,6 +276,7 @@ function InvForm(props) {
               id="quantity"
               placeholder="Quantity"
               name="quantity"
+              // onBlur={setPrevQuantity}
               onChange={handleChange}
               value={details.quantity}
             />
@@ -264,21 +319,18 @@ function InvForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        <button
+        {/* <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
-        </button>
+        </button> */}
         <button class="btn btn-success btn-inv" type="submit">
           UPDATE
         </button>
         <button class="btn btn-inv btn-danger" type="submit">
           REMOVE
-        </button>
-        <button class="btn btn-success btn-inv" type="submit">
-          VIEW
         </button>
       </div>
     </div>
@@ -286,4 +338,4 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export { inventoryDetails, sumOfQuantity, totalAmount };
+export { inventoryDetails, sumOfQuantity, prvQuantityDetails, totalAmount };

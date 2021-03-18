@@ -1,13 +1,13 @@
 import React from "react";
 import * as ReactBootStrap from "react-bootstrap";
-import { sumOfQuantity, totalAmount } from "./InvForm";
+import { sumOfQuantity, totalAmount } from "./BillForm";
 
 function TotalTable() {
   return (
     <div>
       <div
         class="card crd"
-        style={{ width: "30%", height: "50px", left: "16%", top: "-45px" }}
+        style={{ width: "30%", height: "50px", left: "16%", top: "-390px" }}
       >
         <h4
           class="card-title text-color text-bold"
@@ -20,7 +20,7 @@ function TotalTable() {
       </div>
       <div
         class="card crd"
-        style={{ width: "30%", height: "50px", left: "65%", top: "-95px" }}
+        style={{ width: "30%", height: "50px", left: "65%", top: "-440px" }}
       >
         <h4
           class="card-title text-color text-bold"
