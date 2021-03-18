@@ -4,9 +4,15 @@ import user from "../../service/serviceLayer";
 import { supplierObj } from "./SupplierForm";
 
 const inventoryDetails = [];
-let sumOfQuantity = 0;
-let totalAmount = 0;
+const prvQuantityDetails=[];
+let sumOfQuantity=0;
+let totalAmount=0;
+//to temporary store the item quantity of fecthed item in store
 function InvForm(props) {
+  const [quantitydetails,setquantity]= useState({
+    item_code:"",
+    quantity:"" 
+  });
   const [details, setDetails] = useState({
     item_code: "",
     brand: "",
@@ -60,75 +66,92 @@ function InvForm(props) {
     console.log(inventoryDetails);
     console.log("our details array :-");
     console.log(details);
+    console.log(" quantity in store is :-");
+    console.log(quantitydetails);
+    
+    console.log(" Array item quantity in store is :-");
+    console.log(prvQuantityDetails);
+  
     //console.log("supplier inv no :-");
     //console.log(supplierObj.supplier_invoice_number);
   }
 
   function handleBlur(event) {
-    const item_code = event.target.value;
-    if (item_code !== 0) {
-      console.log("handle blur called with:-" + item_code);
-      user.getItemDetails(item_code).then((resp) => {
-        const {
-          item_code,
-          brand,
-          item_name,
-          unit_measurement,
-          item_category,
-          unit_price,
-          supplier_invoice_no,
-          stock_entry_date,
-        } = resp.data.content;
+      const item_code = event.target.value;
+      if(item_code !== 0) {
+          console.log("handle blur called with:-"+item_code);
+          user.getItemDetails(item_code).then(resp => {
+            const { item_code, brand, item_name, unit_measurement,
+                item_category,unit_price,quantity,supplier_invoice_no,stock_entry_date
+            } = resp.data.content;
         const status = resp.data.status;
         console.log(status);
-        if (status === 1) {
-          setDetails({
-            item_code: item_code,
-            brand: brand,
-            item_name: item_name,
-            unit_measurement: unit_measurement,
-            item_category: item_category,
-            unit_price: unit_price,
-            total_value: "",
-            quantity: "",
-            supplier_invoice_no: "",
-            stock_entry_date: "",
-          });
+        
+        if(status === 1) {
+            setquantity({
+                item_code:item_code,
+                quantity:quantity
+            })
+            //console.log(quantitydetails);
+            //
+            setDetails({
+                item_code:item_code,
+                brand:brand,
+                item_name:item_name,
+                unit_measurement:unit_measurement,
+                item_category:item_category,
+                unit_price:unit_price,
+                total_value:"",
+                quantity:"",
+                supplier_invoice_no:"",
+                stock_entry_date:""
+
+            })
         }
         console.log("our item obj is:-");
         console.log(details);
-      });
-    }
-  }
+       
+    })
+    }  
+} 
+ function setPrevQuantity()
+ {    if(quantitydetails.quantity!=="")
+    prvQuantityDetails.push(quantitydetails);   
 
+ }
+    
   function handleAdd(event) {
-    details.supplier_invoice_no = supplierObj.supplier_invoice_number;
-    const isAnyEmpty = checkObjectisFilled(details);
-    console.log(details);
-    console.log("some filed of inventory is empty :-" + isAnyEmpty);
-    handleAlert(isAnyEmpty);
-    if (!isAnyEmpty) {
-      inventoryDetails.push(details);
-      setDetails({
-        item_code: "",
-        brand: "",
-        item_name: "",
-        unit_measurement: "",
-        stock_entry_date: "",
-        item_category: "",
-        supplier_invoice_no: "",
-        unit_price: "",
-        total_value: "",
-        quantity: "",
-      });
-      for (
-        let i = inventoryDetails.length - 1;
-        i < inventoryDetails.length;
-        i++
-      ) {
-        sumOfQuantity += parseInt(inventoryDetails[i].quantity);
-        totalAmount += parseFloat(inventoryDetails[i].total_value);
-        break;
+    setPrevQuantity();
+        details.supplier_invoice_no=supplierObj.supplier_invoice_number;
+     //   details.quantity=details.quantity+itemQuant;
+        const isAnyEmpty=checkObjectisFilled(details);
+        console.log(details);
+        console.log("some filed of inventory is empty :-"+isAnyEmpty);
+        handleAlert(isAnyEmpty)
+      if (!isAnyEmpty) {
+        inventoryDetails.push(details);
+          setDetails({
+              item_code: "",
+              brand: "",
+              item_name: "",
+              unit_measurement: "",
+              stock_entry_date: "",
+              item_category: "",
+              supplier_invoice_no: "",
+              unit_price: "",
+              total_value: "",
+              quantity: ""
+          });
+          setquantity({
+            item_code:"",
+            quantity:""
+        });
+          for(let i=inventoryDetails.length-1; i<inventoryDetails.length; i++)
+  {
+      sumOfQuantity += parseInt(inventoryDetails[i].quantity);
+      totalAmount += parseFloat(inventoryDetails[i].total_value);
+      break;
+  }
       }
     }
 
@@ -286,4 +309,4 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export { inventoryDetails, sumOfQuantity, totalAmount };
+export {inventoryDetails, sumOfQuantity,prvQuantityDetails, totalAmount};

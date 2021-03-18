@@ -40,6 +40,9 @@ class UserService {
         supplier_name
     );
   }
+  getSaleInvoiceNo() {
+    return axios.get("http://localhost:7777/getSalesInvoicenumber");
+  }
 }
 
 export default new UserService();
