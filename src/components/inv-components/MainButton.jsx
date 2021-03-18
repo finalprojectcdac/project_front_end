@@ -7,7 +7,6 @@ import {Alert} from 'react-st-modal';
    
 function MainButton()
 {   
-    const updatedQuantityDetails=[];
     var count=0;
     function matchQuantityandValue(){
         for(var i=0;i<inventoryDetails.length;i++)
