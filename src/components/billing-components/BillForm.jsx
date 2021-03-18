@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import user from "../../service/serviceLayer";
 
-function BillForm() {
+function BillForm(props) {
+  const billNo = props.billNo; //this will be set on service function
+
+  const [details, setDetails] = useState({
+    item_code: "",
+    billno: "",
+    item_name: "",
+    unit_measurement: "",
+    quantity: "",
+    total_value: "",
+  });
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setDetails((prevValue) => {
+      return { ...prevValue, [name]: value };
+    });
+  }
+
+  function handleBlur() {
+    console.log("blur called");
+  }
+  //check function for debuging purpose
+  function checkAllObj() {
+    console.log("checking of variable will be done here");
+    console.log("Bill No.");
+    console.log(billNo);
+    console.log("Details:-");
+    console.log(details);
+  }
+
   return (
     <div className="bill-form crd">
-      <form class="form-horizontal align-items-center ">
+      <form>
         <fieldset>
           <legend className="text-color">Items</legend>
 
@@ -19,6 +50,8 @@ function BillForm() {
                 placeholder="Bill No."
                 class="form-control input-md"
                 required=""
+                value={billNo}
+                disabled
               />
             </div>
           </div>
@@ -35,6 +68,28 @@ function BillForm() {
                 placeholder="Item Code"
                 class="form-control input-md"
                 required=""
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={details.item_code}
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-4 control-label" for="item_code">
+              Item Name
+            </label>
+            <div class="col-md-8">
+              <input
+                id="item_name"
+                name="item_name"
+                type="text"
+                placeholder="Item Name"
+                class="form-control input-md"
+                required=""
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={details.item_name}
               />
             </div>
           </div>
@@ -50,26 +105,35 @@ function BillForm() {
                 type="text"
                 placeholder="Quantity"
                 class="form-control input-md"
+                onChange={handleChange}
+                value={details.quantity}
               />
-            </div>
-          </div>
-
-          <div class="form-group row">
-            <div class="col-auto">
-              <button id="addinv" name="addinv" class="btn btn-success btn-inv">
-                ADD
-              </button>
-              <button
-                id="updateinv"
-                name="updateinv"
-                class="btn btn-danger btn-remove"
-              >
-                Remove
-              </button>
             </div>
           </div>
         </fieldset>
       </form>
+      <div class="form-group row">
+        <div class="col-auto">
+          <button id="addinv" name="addinv" class="btn btn-success btn-inv">
+            ADD
+          </button>
+          <button
+            id="updateinv"
+            name="updateinv"
+            class="btn btn-danger btn-remove"
+          >
+            Remove
+          </button>
+          {/* button created for testing */}
+          <button
+            class="btn btn-success btn-inv"
+            type="submit"
+            onClick={checkAllObj}
+          >
+            check
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
