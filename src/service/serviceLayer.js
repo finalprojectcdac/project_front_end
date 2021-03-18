@@ -43,6 +43,8 @@ class UserService {
   getSaleInvoiceNo() {
     return axios.get("http://localhost:7777/getSalesInvoicenumber");
   }
+ 
+  
 }
 
 export default new UserService();
