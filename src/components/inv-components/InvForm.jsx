@@ -58,7 +58,6 @@ function InvForm(props) {
 
   //checking object and  array conatin
   function checkAllObj(){
-    
     console.log("Inv-form recived obj from supplier-form");
     console.log({supplierObj});
     console.log("inventory array of obj:-");
@@ -67,12 +66,8 @@ function InvForm(props) {
     console.log(details);
     console.log(" quantity in store is :-");
     console.log(quantitydetails);
-    
     console.log(" Array item quantity in store is :-");
     console.log(prvQuantityDetails);
-  
-    //console.log("supplier inv no :-");
-    //console.log(supplierObj.supplier_invoice_number);
 }
    
 
@@ -123,7 +118,7 @@ function InvForm(props) {
   function handleAdd(event) {
     setPrevQuantity();
         details.supplier_invoice_no=supplierObj.supplier_invoice_number;
-     //   details.quantity=details.quantity+itemQuant;
+     //details.quantity=details.quantity+itemQuant;
         const isAnyEmpty=checkObjectisFilled(details);
         console.log(details);
         console.log("some filed of inventory is empty :-"+isAnyEmpty);
