@@ -43,8 +43,17 @@ class UserService {
   getSaleInvoiceNo() {
     return axios.get("http://localhost:7777/getSalesInvoicenumber");
   }
- 
-  
+  getItemDetailsForSale(item_code) {
+    return axios.get(
+      "http://localhost:7777/getitemdetailsforsale?item_code=" + item_code
+    );
+  }
+  getCustomerDetails(mobile_no) {
+    return axios.get(
+      "http://localhost:7777/getCustomerdetailsfromInvoices?mobile_no=" +
+        mobile_no
+    );
+  }
 }
 
 export default new UserService();

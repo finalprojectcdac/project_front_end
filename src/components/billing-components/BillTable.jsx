@@ -1,53 +1,59 @@
 import React from "react";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import items from "../poc-components/BillItems";
+import itemsSoldList from "../poc-components/BillItems";
 import "../../styles.css";
+import * as ReactBootStrap from "react-bootstrap";
 
-function BillTable() {
+function BillTable(props) {
+  const tableRows = props.tableRows;
+  const renderTableColoumn = (tableRows, index) => {
+    return (
+      <tr key={index}>
+        <th scope="row">{index+1}</th>
+        <td>{tableRows.item_name}</td>
+        <td>{tableRows.quantity}</td>
+        <td>{tableRows.selling_price}</td>
+        <td>{(tableRows.quantity * tableRows.selling_price).toFixed(2)}</td>
+      </tr>
+    );
+  };
+
+  const emptyRows = (
+    <tr style={{ height: "30px" }}>
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  );
+
   return (
-    <div>
-      <table className="table table-bordered table-sm table-striped">
+    <div className="bill-table">
+      <ReactBootStrap.Table striped bordered className="table-sm">
         <thead className="thead-dark">
           <tr>
-            <th scope="col" className="sno">
-              S.No.
-            </th>
-            <th scope="col" className="item-name">
-              Item
-            </th>
-            <th scope="col" className="qty">
-              Quantity
-            </th>
-            <th scope="col" className="price">
-              Price (per Unit)
-            </th>
-            <th scope="col" className="price">
-              Total
-            </th>
+            <th className="sticky-heading">S. No.</th>
+            <th className="sticky-heading">Item</th>
+            <th className="sticky-heading">Quantity</th>
+            <th className="sticky-heading">Price (per Unit)</th>
+            <th className="sticky-heading">Total</th>
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => {
-            return (
-              <tr key={index}>
-                <th scope="row" className="sno">
-                  {index + 1}
-                </th>
-                <td className="item-name">{item.name}</td>
-                <td className="qty">{item.quantity}</td>
-                <td className="price">
-                  <span>Rs. </span>
-                  {item.price}
-                </td>
-                <td className="price">
-                  <span>Rs. </span>
-                  {item.price * item.quantity}
-                </td>
-              </tr>
-            );
-          })}
+          {tableRows.map(renderTableColoumn)}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
+          {emptyRows}
         </tbody>
-      </table>
+      </ReactBootStrap.Table>
     </div>
   );
 }

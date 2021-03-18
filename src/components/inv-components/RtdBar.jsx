@@ -27,7 +27,7 @@ function RtdBar(props) {
               class="card-title text-center text-color fw-bold"
               style={{ padding: "0px" }}
             >
-              Total number of items
+              NUMBER OF ITEMS
             </h5>
             <h4 class="card-text text-center" style={{ padding: "0px" }}>
               {totalNoOfItems}
@@ -42,7 +42,7 @@ function RtdBar(props) {
               class="card-title text-center text-color text-bold"
               style={{ padding: "0px" }}
             >
-              Total value of items
+              VALUE OF ITEMS
             </h5>
             <h4 class="card-text text-center" style={{ padding: "0px" }}>
               {totalItemValue}

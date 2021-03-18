@@ -125,7 +125,7 @@ function SupplierForm() {
 
   return (
     <div className="supplier-form crd">
-      <p className="text-color" style={{ textAlign: "center" }}>
+      <p className="text-color" style={{ textAlign: "center", paddingTop: "10px" }}>
         Supplier Details
       </p>
       <form style={{ width: "50%" }}>
