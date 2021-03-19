@@ -54,6 +54,17 @@ class UserService {
         mobile_no
     );
   }
+  updateItemQuantity(item_code, quantity) {
+    return axios.post(
+      "http://localhost:7777/updateitemquantity?item_code=" +
+        item_code +
+        "&quantity=" +
+        quantity
+    );
+  }
+  insertListOfItems(arrayOfItemSaleObjects) {
+    return axios.put("http://localhost:7777/ListItemsinserttoItemSale", arrayOfItemSaleObjects);
+  }
 }
 
 export default new UserService();
