@@ -41,6 +41,7 @@ function BillForm(props) {
       console.log("blur called with item_code: " + item_code);
       user.getItemDetailsForSale(item_code).then((resp) => {
         const status = resp.data.status;
+        console.log(status);
         if (status === 1) {
           const {
             item_code,
