@@ -4,7 +4,7 @@ import user from "../../service/serviceLayer";
 let sumOfQuantity = 0;
 let totalAmount = 0;
 const itemsSoldList = [];
-const arrayOfItemSaleObjects = [];
+var arrayOfItemSaleObjects = [];
 
 function BillForm(props) {
   const [details, setDetails] = useState({
@@ -115,7 +115,8 @@ function BillForm(props) {
     console.log(
       "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
     );
-    console.log("Array of Items sold: " + arrayOfItemSaleObjects);
+    console.log("Array of Items sold: ")
+     console.log(arrayOfItemSaleObjects);
   }
 
   function handleAdd(event) {
