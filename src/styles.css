@@ -299,3 +299,27 @@ li a:hover {
 .bill-table tr {
   text-align: center;
 }
+
+.monitoring-table {
+  position: absolute;
+  display: block;
+  height: 340px;
+  left: 16%;
+  overflow-y: scroll;
+  top: 230px;
+  width: 83%;
+}
+
+.monitoring-table tr {
+  text-align: center;
+}
+
+.date-form {
+  position: absolute;
+  top: 580px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 25%;
+  width: 35%;
+  font-weight: 700;
+}

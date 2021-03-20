@@ -12,6 +12,7 @@ import LoginPage from "../pages/LoginPage";
 import InventoryPage from "../pages/InventoryPage";
 import BillingPage from "../pages/BillingPage";
 import LogoutPage from "../pages/LogoutPage";
+import MonitoringPage from "../pages/MonitoringPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/inventory" component={InventoryPage} />
         <Route exact path="/billing" component={BillingPage} />
+        <Route exact path="/monitoring" component={MonitoringPage} />
         <Route exact path="/logout" component={LogoutPage} />
         <Route exact path="/test" component={TestForm} />
         <Route exact path="/404" component={PageNotFound} />

@@ -1,7 +1,15 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
 
-function CustomerForm() {
+let invoice = {
+  invoice_no: "",
+  mobile_no: "",
+  customer_name: "",
+  invoice_value: "",
+  email_id: "",
+};
+
+function CustomerForm(props) {
   const [customerDetails, setCustomerDetails] = useState({
     mobile_no: "",
     customer_name: "",
@@ -12,47 +20,57 @@ function CustomerForm() {
     const { name, value } = event.target;
     if (name === "mobile_no" && value === "") {
       setCustomerDetails({
-        mobile_no:"",
-        customer_name:"",
-        email_id:"",
-        amount_received:""
-      })
-    }
-    else {
+        mobile_no: "",
+        customer_name: "",
+        email_id: "",
+        amount_received: "",
+      });
+    } else {
       setCustomerDetails((prevValue) => {
         return { ...prevValue, [name]: value };
       });
     }
   }
+
+  function getCustomerDetails(mobile_no) {
+    user.getCustomerDetails(mobile_no).then((resp) => {
+      const status = resp.data.status;
+      console.log(status);
+      if (status !== 0) {
+        const { mobile_no, customer_name, email_id } = resp.data.contentinvoice;
+        setCustomerDetails({
+          mobile_no: mobile_no,
+          customer_name: customer_name,
+          email_id: email_id,
+          amount_received: "",
+        });
+      } else {
+        setCustomerDetails({
+          mobile_no: mobile_no,
+          customer_name: "",
+          email_id: "",
+          amount_received: "",
+        });
+      }
+    });
+  }
+
   function handleBlur(event) {
     const mobile_no = event.target.value;
     if (mobile_no !== 0) {
       console.log("blur called with mobile no: " + mobile_no);
-      user.getCustomerDetails(mobile_no).then((resp) => {
-        const status = resp.data.status;
-        console.log(status);
-        if (status !== 0) {
-          const {
-            mobile_no,
-            customer_name,
-            email_id,
-          } = resp.data.contentinvoice;
-          setCustomerDetails({
-            mobile_no: mobile_no,
-            customer_name: customer_name,
-            email_id: email_id,
-            amount_received: "",
-          });
-        } else {
-          setCustomerDetails({
-            mobile_no: mobile_no,
-            customer_name: "",
-            email_id: "",
-            amount_received: "",
-          });
-        }
-      });
+      getCustomerDetails(mobile_no);
     }
+  }
+
+  function handleAdd() {
+    invoice = {
+      invoice_no: props.billNo,
+      mobile_no: customerDetails.mobile_no,
+      customer_name: customerDetails.customer_name,
+      invoice_value: customerDetails.amount_received,
+      email_id: customerDetails.email_id,
+    };
   }
 
   //check function for debuging purpose
@@ -65,7 +83,11 @@ function CustomerForm() {
     <div className="customer-form crd">
       <p
         className="text-color"
-        style={{ textAlign: "center", paddingTop: "10px", paddingBottom: "0px" }}
+        style={{
+          textAlign: "center",
+          paddingTop: "10px",
+          paddingBottom: "0px",
+        }}
       >
         Customer Details
       </p>
@@ -120,20 +142,21 @@ function CustomerForm() {
               id="amount_received"
               placeholder="Amount Received"
               name="amount_received"
+              onChange={handleChange}
             />
           </div>
         </div>
       </form>
       <div style={{ paddingLeft: "900px", paddingBottom: "20px" }}>
-      <button
+        <button
           class="btn btn-success btn-inv"
           type="submit"
-          // onClick={}
+          onClick={handleAdd}
         >
           ADD
         </button>
-      {/* button created for testing */}
-      {/* <button
+        {/* button created for testing */}
+        {/* <button
         class="btn btn-success btn-inv"
         type="submit"
         onClick={checkAllObj}
@@ -146,3 +169,4 @@ function CustomerForm() {
 }
 
 export default CustomerForm;
+export { invoice };
