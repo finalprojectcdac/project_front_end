@@ -4,11 +4,11 @@ import user from "../../service/serviceLayer";
 let sumOfQuantity = 0;
 let totalAmount = 0;
 const itemsSoldList = [];
+const arrayOfItemSaleObjects = [];
 
 function BillForm(props) {
-  const billNo = props.billNo; //this will be set on service function
-
   const [details, setDetails] = useState({
+    invoice_no: props.billNo,
     item_code: "",
     brand: "",
     item_name: "",
@@ -17,10 +17,22 @@ function BillForm(props) {
     selling_price: "",
   });
 
+  const [updateObject, setUpdateObject] = useState({
+    item_code: "",
+    quantity: "",
+  });
+
+  const [itemSaleObject, setItemSaleObject] = useState({
+    invoice_no: props.billNo,
+    item_code: "",
+    quantity_sold: "",
+  });
+
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "item_code" && value === "") {
       setDetails({
+        invoice_no: props.billNo,
         item_code: "",
         brand: "",
         item_name: "",
@@ -35,64 +47,105 @@ function BillForm(props) {
     }
   }
 
+  function getItemDetailsForSale(item_code) {
+    user.getItemDetailsForSale(item_code).then((resp) => {
+      const status = resp.data.status;
+      console.log(status);
+      if (status === 1) {
+        const {
+          item_code,
+          brand,
+          item_name,
+          quantity,
+          unit_measurement,
+          selling_price,
+        } = resp.data.bo;
+        console.log();
+        setUpdateObject({
+          item_code: item_code,
+          quantity: quantity,
+        });
+        setDetails({
+          invoice_no: props.billNo,
+          item_code: item_code,
+          item_name: brand + " " + item_name,
+          unit_measurement: unit_measurement,
+          quantity: "",
+          selling_price: selling_price,
+        });
+      } else if (status === 2) {
+        setDetails({
+          invoice_no: props.billNo,
+          item_code: item_code,
+          item_name: "",
+          unit_measurement: "",
+          quantity: "",
+          total_value: "",
+        });
+      } else {
+        setDetails({
+          invoice_no: props.billNo,
+          item_code: item_code,
+          item_name: "",
+          unit_measurement: "",
+          quantity: "",
+          total_value: "",
+        });
+      }
+      console.log(status);
+    });
+  }
+
   function handleBlur(event) {
     const item_code = event.target.value;
     if (item_code !== 0) {
       console.log("blur called with item_code: " + item_code);
-      user.getItemDetailsForSale(item_code).then((resp) => {
-        const status = resp.data.status;
-        if (status === 1) {
-          const {
-            item_code,
-            brand,
-            item_name,
-            quantity,
-            unit_measurement,
-            selling_price,
-          } = resp.data.bo;
-          setDetails({
-            item_code: item_code,
-            item_name: brand + " " + item_name,
-            unit_measurement: unit_measurement,
-            quantity: "",
-            selling_price: selling_price,
-          });
-        } else if (status === 2) {
-          setDetails({
-            item_code: item_code,
-            item_name: "",
-            unit_measurement: "",
-            quantity: "",
-            total_value: "",
-          });
-        } else {
-          setDetails({
-            item_code: item_code,
-            item_name: "",
-            unit_measurement: "",
-            quantity: "",
-            total_value: "",
-          });
-        }
-        console.log(status);
-      });
-      console.log(details);
+      getItemDetailsForSale(item_code);
     }
   }
   //check function for debuging purpose
   function checkAllObj() {
     console.log("checking of variable will be done here");
     console.log("Bill No.");
-    console.log(billNo);
+    console.log(props.billNo);
     console.log("Details:-");
     console.log(details);
+    console.log("Items sold list:-");
+    console.log(itemsSoldList);
+    console.log(
+      "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
+    );
+    console.log("Array of Items sold: ");
+    console.log(arrayOfItemSaleObjects);
   }
-
-  function handleAdd(event) {
+   function hi()
+   {
+    console.log(details.item_code);
+    setItemSaleObject({
+      item_code: details.item_code,
+      quantity_sold: details.quantity,
+    });
+    if(itemSaleObject.item_code!=="")
+    arrayOfItemSaleObjects.push(itemSaleObject);
+    console.log(arrayOfItemSaleObjects)
+    if(details.item_code!=="")
     itemsSoldList.push(details);
     console.log(itemsSoldList);
+   }
+  function handleAdd(event) {
+    hi();
+
+      user.updateItemQuantity(
+      details.item_code,
+      updateObject.quantity - details.quantity
+    );
+    
+    
+    
+  
     props.onAdd(details);
     setDetails({
+      invoice_no: props.billNo,
       item_code: "",
       brand: "",
       item_name: "",
@@ -107,13 +160,18 @@ function BillForm(props) {
       );
       break;
     }
+    
   }
 
   return (
     <div className="bill-form crd">
       <p
         className="text-color"
-        style={{ textAlign: "center", paddingTop: "10px", paddingBottom: "0px" }}
+        style={{
+          textAlign: "center",
+          paddingTop: "10px",
+          paddingBottom: "0px",
+        }}
       >
         Items
       </p>
@@ -131,7 +189,7 @@ function BillForm(props) {
               placeholder="Bill No."
               name="bill_no"
               onChange={handleChange}
-              value={billNo}
+              value={props.billNo}
               disabled
             />
           </div>
@@ -186,7 +244,11 @@ function BillForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        <button class="btn btn-success btn-inv" type="submit">
+        <button
+          class="btn btn-success btn-inv"
+          type="submit"
+          onClick={checkAllObj}
+        >
           check
         </button>
         <button class="btn btn-inv btn-danger" type="submit">
@@ -198,4 +260,4 @@ function BillForm(props) {
 }
 
 export default BillForm;
-export { itemsSoldList, sumOfQuantity, totalAmount };
+export { arrayOfItemSaleObjects, itemsSoldList, sumOfQuantity, totalAmount };

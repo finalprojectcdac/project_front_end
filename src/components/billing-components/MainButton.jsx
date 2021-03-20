@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from '../../service/serviceLayer';
-import {Alert} from 'react-st-modal';
+import arrayOfItemSaleObjects from './BillForm';
    
 function MainButton() {   
+
+  function handleSave() {
+    user.insertListOfItems(arrayOfItemSaleObjects);
+    console.log("called");
+  }
+
   return (
     <div className="main-buttons">
       <form>
         <button
           class="btn btn-success btn-inv"
           type="submit"
-          // onClick={handleSave}
+          onClick={handleSave}
         >
           PRINT
         </button>

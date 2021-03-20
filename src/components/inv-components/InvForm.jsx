@@ -9,6 +9,7 @@ let sumOfQuantity = 0;
 let totalAmount = 0;
 //to temporary store the item quantity of fecthed item in store
 function InvForm(props) {
+
   const [quantitydetails, setquantity] = useState({
     item_code: "",
     quantity: "",
@@ -85,10 +86,14 @@ function InvForm(props) {
     console.log(quantitydetails);
     console.log(" Array item quantity in store is :-");
     console.log(prvQuantityDetails);
+    
+
+
   }
 
   function handleBlur(event) {
     const item_code = event.target.value;
+   
     if (item_code !== 0) {
       console.log("handle blur called with:-" + item_code);
       user.getItemDetails(item_code).then((resp) => {
@@ -319,13 +324,13 @@ function InvForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        {/* <button
+         <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
-        </button> */}
+        </button> 
         <button class="btn btn-success btn-inv" type="submit">
           UPDATE
         </button>
