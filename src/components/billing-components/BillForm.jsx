@@ -20,7 +20,7 @@ function BillForm(props) {
   const [updateObject, setUpdateObject] = useState({
     item_code: "",
     quantity: "",
-  });
+});
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -45,7 +45,7 @@ function BillForm(props) {
     user.getItemDetailsForSale(item_code).then((resp) => {
       const status = resp.data.status;
       console.log(status);
-      if (status === 1) {
+      if (status === 1) {//status 1 is when we have entry in both inventory and retail table
         const {
           item_code,
           brand,
@@ -67,7 +67,7 @@ function BillForm(props) {
           quantity: "",
           selling_price: selling_price,
         });
-      } else if (status === 2) {
+      } else if (status === 2) {//status 2 is when we have entry only in  inventory and not  retail table
         setDetails({
           invoice_no: props.billNo,
           item_code: item_code,
@@ -153,6 +153,7 @@ function BillForm(props) {
       ); //adds the total value and shows it below the table
       break;
     }
+    
   }
 
   return (
