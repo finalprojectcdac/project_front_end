@@ -350,7 +350,6 @@ function InvForm(props) {
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
-          disabled={fieldDisabled}
         >
           ADD
         </button>

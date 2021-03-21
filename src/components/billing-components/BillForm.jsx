@@ -62,6 +62,14 @@ function BillForm(props) {
         if (selling_price === -1) {
           console.log("Selling Price not set");
           setIsFound(false);
+          setDetails({
+            invoice_no: props.billNo,
+            item_code: item_code,
+            item_name: "",
+            unit_measurement: "",
+            quantity: "",
+            selling_price: "",
+          });
         } else {
           setIsFound(true);
           setUpdateObject({
