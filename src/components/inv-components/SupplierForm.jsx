@@ -10,41 +10,33 @@ function SupplierForm() {
     supplier_code: "",
     supplier_invoice_number: "",
     supplier_invoice_value: "",
+    purchase_date: "",
   });
 
   function handleChange(event) {
     const { name, value } = event.target;
-    setDetails((prevValue) => {
-      if (name === "supplier_name") {
+    if (name === "supplier_name" && value == "") {
+      setDetails({
+        supplier_name: "",
+        supplier_code: "",
+        supplier_invoice_number: "",
+        supplier_invoice_value: "",
+        purchase_date: "",
+      });
+    } else {
+      setDetails((prevValue) => {
         return {
-          supplier_name: value,
-          supplier_code: prevValue.supplier_code,
-          supplier_invoice_number: prevValue.supplier_invoice_number,
-          supplier_invoice_value: prevValue.supplier_invoice_value,
+          ...prevValue,
+          [name]: value,
+          purchase_date:
+            new Date().getFullYear().toString() +
+            "-" +
+            (new Date().getMonth() + 1).toString() +
+            "-" +
+            new Date().getDate().toString(),
         };
-      } else if (name === "supplier_code") {
-        return {
-          supplier_name: prevValue.supplier_name,
-          supplier_code: value,
-          supplier_invoice_number: prevValue.supplier_invoice_number,
-          supplier_invoice_value: prevValue.supplier_invoice_value,
-        };
-      } else if (name === "supplier_invoice_number") {
-        return {
-          supplier_name: prevValue.supplier_name,
-          supplier_code: prevValue.supplier_code,
-          supplier_invoice_number: value,
-          supplier_invoice_value: prevValue.supplier_invoice_value,
-        };
-      } else if (name === "supplier_invoice_value") {
-        return {
-          supplier_name: prevValue.supplier_name,
-          supplier_code: prevValue.supplier_code,
-          supplier_invoice_number: prevValue.supplier_invoice_number,
-          supplier_invoice_value: value,
-        };
-      }
-    });
+      });
+    }
   }
 
   const {
@@ -52,6 +44,7 @@ function SupplierForm() {
     supplier_name,
     supplier_invoice_number,
     supplier_invoice_value,
+    purchase_date,
   } = supplierObj;
 
   //this returns true if any field is empty
@@ -83,6 +76,7 @@ function SupplierForm() {
         supplier_code: "",
         supplier_invoice_number: "",
         supplier_invoice_value: "",
+        purchase_date: "",
       });
     }
 
@@ -117,6 +111,7 @@ function SupplierForm() {
           supplier_code: supplier_code,
           supplier_invoice_number: "",
           supplier_invoice_value: "",
+          purchase_date: "",
         });
       } else console.log("no supplier with such name in DB");
     });
@@ -125,7 +120,10 @@ function SupplierForm() {
 
   return (
     <div className="supplier-form crd">
-      <p className="text-color" style={{ textAlign: "center", paddingTop: "10px" }}>
+      <p
+        className="text-color"
+        style={{ textAlign: "center", paddingTop: "10px" }}
+      >
         Supplier Details
       </p>
       <form style={{ width: "50%" }}>

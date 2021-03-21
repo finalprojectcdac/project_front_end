@@ -7,6 +7,7 @@ let invoice = {
   customer_name: "",
   invoice_value: "",
   email_id: "",
+  billing_date: "",
 };
 
 function CustomerForm(props) {
@@ -15,6 +16,7 @@ function CustomerForm(props) {
     customer_name: "",
     email_id: "",
     amount_received: "",
+    billing_date: "",
   });
   function handleChange(event) {
     const { name, value } = event.target;
@@ -24,10 +26,20 @@ function CustomerForm(props) {
         customer_name: "",
         email_id: "",
         amount_received: "",
+        billing_date: "",
       });
     } else {
       setCustomerDetails((prevValue) => {
-        return { ...prevValue, [name]: value };
+        return {
+          ...prevValue,
+          [name]: value,
+          billing_date:
+            new Date().getFullYear().toString() +
+            "-" +
+            (new Date().getMonth() + 1).toString() +
+            "-" +
+            new Date().getDate().toString(),
+        };
       });
     }
   }
@@ -43,6 +55,12 @@ function CustomerForm(props) {
           customer_name: customer_name,
           email_id: email_id,
           amount_received: "",
+          billing_date:
+            new Date().getFullYear().toString() +
+            "-" +
+            (new Date().getMonth() + 1).toString() +
+            "-" +
+            new Date().getDate().toString(),
         });
       } else {
         setCustomerDetails({
@@ -50,6 +68,7 @@ function CustomerForm(props) {
           customer_name: "",
           email_id: "",
           amount_received: "",
+          billing_date: "",
         });
       }
     });
@@ -70,6 +89,7 @@ function CustomerForm(props) {
       customer_name: customerDetails.customer_name,
       invoice_value: customerDetails.amount_received,
       email_id: customerDetails.email_id,
+      billing_date: customerDetails.billing_date,
     };
   }
 

@@ -40,13 +40,18 @@ function InvForm(props) {
         unit_price: "",
         total_value: "",
         quantity: "",
-      })
+      });
     } else {
       setDetails((prevValue) => {
         return {
           ...prevValue,
           [name]: value,
-          stock_entry_date: new Date().toLocaleDateString(),
+          stock_entry_date:
+            new Date().getFullYear().toString() +
+            "-" +
+            (new Date().getMonth()+1).toString() +
+            "-" +
+            new Date().getDate().toString(),
           supplier_invoice_no: supplierObj.supplier_invoice_number,
         };
       });
@@ -105,6 +110,7 @@ function InvForm(props) {
             supplier_invoice_no,
             stock_entry_date,
           } = resp.data.content;
+          console.log(resp.data.content.item_name);
 
           setquantity({
             item_code: item_code,
@@ -135,10 +141,9 @@ function InvForm(props) {
             unit_price: "",
             total_value: "",
             quantity: "",
-          })
+          });
         }
-        
-        
+
         console.log("our item obj is:-");
         console.log(details);
       });

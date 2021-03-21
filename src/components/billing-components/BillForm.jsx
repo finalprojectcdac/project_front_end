@@ -92,7 +92,7 @@ function BillForm(props) {
 
   function handleBlur(event) {
     const item_code = event.target.value;
-    if (item_code !== 0) {
+    if (item_code !== "") {
       console.log("blur called with item_code: " + item_code);
       getItemDetailsForSale(item_code);
     }
