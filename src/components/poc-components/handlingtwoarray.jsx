@@ -5,7 +5,6 @@ import { supplierObj } from "./SupplierForm";
 
 const inventoryDetails = [];
 const prvQuantityDetails = [];
-const retailDataArray = [];
 let sumOfQuantity = 0;
 let totalAmount = 0;
 //to temporary store the item quantity of fecthed item in store
@@ -14,10 +13,6 @@ function InvForm(props) {
   const [quantitydetails, setquantity] = useState({
     item_code: "",
     quantity: "",
-  });
-  const [reatailPriceDetails,setRetailPriceDetails]=useState({
-    item_code: "",
-    selling_price:0,
   });
   const [details, setDetails] = useState({
     item_code: "",
@@ -89,10 +84,9 @@ function InvForm(props) {
     console.log(details);
     console.log(" quantity in store is :-");
     console.log(quantitydetails);
-    console.log(" Array of item quantity in store is :-");
+    console.log(" Array item quantity in store is :-");
     console.log(prvQuantityDetails);
-    console.log(" Array of retail data is :-");
-    console.log(retailDataArray);
+    
 
 
   }
@@ -121,11 +115,7 @@ function InvForm(props) {
             item_code: item_code,
             quantity: quantity,
           });
-          setRetailPriceDetails({
-            item_code: item_code,
-            selling_price:-1,
-          }
-          )
+
           setDetails({
             item_code: item_code,
             brand: brand,
@@ -163,13 +153,9 @@ function InvForm(props) {
     if (quantitydetails.quantity !== "")
       prvQuantityDetails.push(quantitydetails);
   }
-  function steRetailPrice(){
-    if(reatailPriceDetails.item_code!=="");
-    retailDataArray.push(reatailPriceDetails);
-  }
+
   function handleAdd(event) {
     setPrevQuantity();
-    steRetailPrice();
     details.supplier_invoice_no = supplierObj.supplier_invoice_number;
     //details.quantity=details.quantity+itemQuant;
     const isAnyEmpty = checkObjectisFilled(details);
@@ -177,7 +163,9 @@ function InvForm(props) {
     console.log("some filed of inventory is empty :-" + isAnyEmpty);
     handleAlert(isAnyEmpty);
     if (!isAnyEmpty) {
+      
       inventoryDetails.push(details);
+
       setDetails({
         item_code: "",
         brand: "",

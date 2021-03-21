@@ -153,6 +153,7 @@ function BillForm(props) {
       ); //adds the total value and shows it below the table
       break;
     }
+    
   }
 
   return (

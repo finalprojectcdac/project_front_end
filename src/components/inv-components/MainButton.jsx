@@ -7,6 +7,7 @@ import {Alert} from 'react-st-modal';
    
 function MainButton()
 {   
+
     var count=0;
     function matchQuantityandValue(){
         for(var i=0;i<inventoryDetails.length;i++)
@@ -19,15 +20,18 @@ function MainButton()
                inventoryDetails[i].total_value=parseInt(inventoryDetails[i].quantity)*parseInt(inventoryDetails[i].unit_price);
                count++}
             }   
+          
+         
         }
     }
      //checking object and  array conatin
   function checkAllObj(){
       matchQuantityandValue();
-    console.log("inventory array of obj:-");
+    console.log("Inventory array of obj:-");
     console.log(inventoryDetails);
     console.log(" Array item quantity in store is :-");
     console.log(prvQuantityDetails);
+    
     console.log(" Total Item matched");
     console.log(count);
     //console.log("supplier inv no :-");
@@ -64,6 +68,12 @@ function MainButton()
           CANCEL
         </button>
       </form>
+      <button
+          class="btn btn-success btn-inv"
+          type="submit"
+          onClick={checkAllObj}>
+            check
+        </button>
     </div>
   );
 }
