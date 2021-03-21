@@ -13,6 +13,8 @@ function SupplierForm() {
     purchase_date: "",
   });
 
+  const [fieldDisabled, setFieldDisabled] = useState(false);
+
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "supplier_name" && value == "") {
@@ -72,22 +74,26 @@ function SupplierForm() {
       console.log("pushing details into supplier obj");
       console.log(supplierObj);
       setDetails({
-        supplier_name: "",
-        supplier_code: "",
-        supplier_invoice_number: "",
-        supplier_invoice_value: "",
-        purchase_date: "",
+        supplier_name: details.supplier_name,
+        supplier_code: details.supplier_code,
+        supplier_invoice_number: details.supplier_invoice_number,
+        supplier_invoice_value: details.supplier_invoice_value,
+        purchase_date: details.purchase_date,
       });
+      setFieldDisabled(true);
     }
 
     event.preventDefault();
   }
 
   function handleRemove() {
-    let btnClear = document.querySelector("button");
-    let inputs = document.querySelectorAll("input");
-    btnClear.addEventListener("click", () => {
-      inputs.forEach((input) => (input.value = ""));
+    setFieldDisabled(false);
+    setDetails({
+      supplier_name: "",
+      supplier_code: "",
+      supplier_invoice_number: "",
+      supplier_invoice_value: "",
+      purchase_date: "",
     });
   }
 
@@ -142,6 +148,7 @@ function SupplierForm() {
               onBlur={handleBlur}
               onChange={handleChange}
               value={details.supplier_name}
+              disabled={fieldDisabled}
             />
           </div>
           <div class="form-group col-md-3">
@@ -154,6 +161,7 @@ function SupplierForm() {
               name="supplier_code"
               onChange={handleChange}
               value={details.supplier_code}
+              disabled={fieldDisabled}
             />
           </div>
           <div className="form-group col-md-3">
@@ -166,6 +174,7 @@ function SupplierForm() {
               name="supplier_invoice_number"
               onChange={handleChange}
               value={details.supplier_invoice_number}
+              disabled={fieldDisabled}
             />
           </div>
           <div className="form-group col-md-3">
@@ -178,6 +187,7 @@ function SupplierForm() {
               name="supplier_invoice_value"
               onChange={handleChange}
               value={details.supplier_invoice_value}
+              disabled={fieldDisabled}
             />
           </div>
         </div>
@@ -187,6 +197,7 @@ function SupplierForm() {
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
+          disabled={fieldDisabled}
         >
           ADD
         </button>
@@ -196,8 +207,7 @@ function SupplierForm() {
           onClick={handleRemove}
           style={{ marginLeft: "10px" }}
         >
-          {" "}
-          CLEAR
+          EDIT
         </button>
       </div>
     </div>

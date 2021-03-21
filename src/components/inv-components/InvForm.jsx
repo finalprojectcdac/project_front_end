@@ -15,10 +15,14 @@ function InvForm(props) {
     item_code: "",
     quantity: "",
   });
+
+  const [fieldDisabled, setFieldDisabled] = useState(true);
+
   const [reatailPriceDetails,setRetailPriceDetails]=useState({
     item_code: "",
     selling_price:0,
   });
+
   const [details, setDetails] = useState({
     item_code: "",
     brand: "",
@@ -71,6 +75,7 @@ function InvForm(props) {
     } else if (isAllNotFilled) {
       alert("Please fill all the Values of inventory form");
     } else {
+      setFieldDisabled(false);
       props.onAdd(details);
     }
   }
@@ -345,6 +350,7 @@ function InvForm(props) {
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
+          disabled={fieldDisabled}
         >
           ADD
         </button>
