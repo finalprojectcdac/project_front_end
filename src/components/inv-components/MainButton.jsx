@@ -4,6 +4,12 @@ import user from '../../service/serviceLayer';
 import {supplierObj} from './SupplierForm';
 import {inventoryDetails,prvQuantityDetails,retailDataArray} from './InvForm';
 import {Alert} from 'react-st-modal';
+
+
+
+// async () => {
+//     await Alert('Successfully saved to database.', 'Review');
+// }
    
 function MainButton()
 {   
@@ -37,9 +43,13 @@ function MainButton()
     console.log(retailDataArray);
 }
     function handleSave() {
+<<<<<<< HEAD
     matchQuantityandValue();
     //inser retail price data
     
+=======
+        console.log("clicked");
+>>>>>>> 074a03c51ab5c972b9cfcdd05a0a781f4c61ab5a
     const x = user.insertInventoryData(inventoryDetails);
     const y = user.insertSupplierDetails(supplierObj);
 
@@ -47,9 +57,20 @@ function MainButton()
     console.log(y);
   }
 
+<<<<<<< HEAD
   function handleCancel() {
     console.log("cancel button clicked");
   }
+=======
+    return(
+        <div className="main-buttons">
+            <button class="btn btn-success btn-inv"
+             type="submit" onClick={handleSave} >SAVE</button>
+            <button class="btn btn-success btn-inv" 
+            type="submit" onClick={handleCancel}>CANCEL</button>
+        </div>
+    );
+>>>>>>> 074a03c51ab5c972b9cfcdd05a0a781f4c61ab5a
 
   return (
     <div className="main-buttons">
