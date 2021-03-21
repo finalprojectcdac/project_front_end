@@ -1,5 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
 
 * {
   padding: 0;
@@ -179,7 +179,7 @@ li a:hover {
 
 .text-color {
   /* font-family: 'Lato'; */
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   color: #2a9d8f;
   font-size: 20px;
   font-weight: 900;
@@ -303,7 +303,7 @@ li a:hover {
 .monitoring-table {
   position: absolute;
   display: block;
-  height: 340px;
+  height: 341px;
   left: 16%;
   overflow-y: scroll;
   top: 230px;
@@ -314,12 +314,38 @@ li a:hover {
   text-align: center;
 }
 
+.monitoring-table td {
+  border: solid thin #454d55;
+}
+
+.monitoring-table input {
+  padding: 0px;
+  width: 140px;
+  text-align: center;
+  margin: 0px;
+  height: 25px;
+  border: none;
+  background-color: #e2e2e2;
+}
+
 .date-form {
   position: absolute;
-  top: 580px;
+  top: 590px;
   padding: 20px 20px;
   margin: auto 200px;
   height: 25%;
   width: 35%;
   font-weight: 700;
+}
+
+.printme {
+  display: none;
+}
+@media print {
+  .no-printme {
+    display: none;
+  }
+  .printme {
+    display: block;
+  }
 }

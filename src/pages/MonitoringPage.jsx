@@ -1,49 +1,64 @@
 import React, { useState, useEffect } from "react";
 import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
-import RtdBar from "../components/inv-components/RtdBar";
+import RtdBar from "../components/monitoring-components/RtdBar";
 import DateForm from "../components/monitoring-components/DateForm";
 import InventoryItemTable from "../components/monitoring-components/InventoryItemTable";
 import user from "../service/serviceLayer";
 
 function MonitoringPage() {
   useEffect(getRealTimeData, []);
-  useEffect(getBillingObjDetails, []);
+  useEffect(getArrayOfBillingObject, []);
+
   const [rtd, setRtd] = useState({
-    totalNoOfItems: "",
-    totalItemValue: "",
+    todaysSale: "",
+    noOfItemsWithoutSp: "",
   });
 
-  const [arrayOfBillingObject, setArrayOfBillingObject] = useState([])
+  const [arrayOfBillingObject, setArrayOfBillingObject] = useState([]);
 
-  function getRealTimeData() {
-    user.getRealTimeData().then((resp) => {
-      const { totalNoOfItems, totalItemValue } = resp.data.rtd;
-      setRtd({
-        totalNoOfItems: totalNoOfItems,
-        totalItemValue: totalItemValue,
-      });
-    });
-  }
-
-  function getBillingObjDetails() {
+  function getArrayOfBillingObject() {
     user.getArrayOfBillingObject().then((resp) => {
       if (resp.data.status === 1) {
         setArrayOfBillingObject(resp.data.billingObjList);
-        console.log(arrayOfBillingObject);
       }
     });
   }
 
-  console.log(arrayOfBillingObject);
+  function getRealTimeData() {
+    user.getRealTimeData().then((resp) => {
+      const { totalValueofInvoices, totalNoOfItemsWithoutSp } = resp.data.rtd;
+      if (totalValueofInvoices === null && totalNoOfItemsWithoutSp === 0) {
+        setRtd({
+          todaysSale: "₹ 0.00",
+          noOfItemsWithoutSp: "-",
+        });
+      } else if (totalValueofInvoices === null) {
+        setRtd({
+          todaysSale: "₹ 0.00",
+          noOfItemsWithoutSp: totalNoOfItemsWithoutSp,
+        });
+      } else if (totalNoOfItemsWithoutSp === 0) {
+        setRtd({
+          todaysSale: "₹ " + totalValueofInvoices,
+          noOfItemsWithoutSp: "-",
+        });
+      } else {
+        setRtd({
+          todaysSale: "₹ " + totalValueofInvoices,
+          noOfItemsWithoutSp: totalNoOfItemsWithoutSp + " ITEM(S)",
+        });
+      }
+    });
+  }
 
   return (
     <div>
       <HorizontalNavbar />
       <VerticalNavbar />
       <RtdBar
-        totalNoOfItems={rtd.totalNoOfItems}
-        totalItemValue={rtd.totalItemValue}
+        todaysSale={rtd.todaysSale}
+        noOfItemsWithoutSp={rtd.noOfItemsWithoutSp}
       />
       <InventoryItemTable tableRows={arrayOfBillingObject} />
       <DateForm />

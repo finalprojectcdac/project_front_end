@@ -1,25 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import * as ReactBootStrap from "react-bootstrap";
+import user from "../../service/serviceLayer";
 
 function InventoryItemTable(props) {
   const tableRows = props.tableRows;
+
   const renderTableColoumn = (tableRows, index) => {
     return (
       <tr key={index}>
-        <th scope="row">{tableRows.item_code}</th>
+        <td>{tableRows.item_code}</td>
         <td>{tableRows.brand}</td>
         <td>{tableRows.item_name}</td>
         <td>{tableRows.unit_measurement}</td>
         <td>{tableRows.quantity}</td>
         <td>{tableRows.unit_price}</td>
-        <td contentEditable>{tableRows.selling_price}</td>
+        <td>{tableRows.selling_price}</td>
       </tr>
     );
   };
 
   const emptyRows = (
     <tr style={{ height: "30px" }}>
-      <th></th>
+      <td></td>
       <td></td>
       <td></td>
       <td></td>

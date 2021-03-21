@@ -8,7 +8,7 @@ import {
   retailDataArray,
   totalAmount,
 } from "./InvForm";
-import { Alert } from "react-st-modal";
+
 
 function MainButton() {
   var count = 0;

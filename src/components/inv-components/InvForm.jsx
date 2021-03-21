@@ -15,10 +15,14 @@ function InvForm(props) {
     item_code: "",
     quantity: "",
   });
+
+  const [fieldDisabled, setFieldDisabled] = useState(true);
+
   const [reatailPriceDetails,setRetailPriceDetails]=useState({
     item_code: "",
     selling_price:0,
   });
+
   const [details, setDetails] = useState({
     item_code: "",
     brand: "",
@@ -46,13 +50,18 @@ function InvForm(props) {
         unit_price: "",
         total_value: "",
         quantity: "",
-      })
+      });
     } else {
       setDetails((prevValue) => {
         return {
           ...prevValue,
           [name]: value,
-          stock_entry_date: new Date().toLocaleDateString(),
+          stock_entry_date:
+            new Date().getFullYear().toString() +
+            "-" +
+            (new Date().getMonth()+1).toString() +
+            "-" +
+            new Date().getDate().toString(),
           supplier_invoice_no: supplierObj.supplier_invoice_number,
         };
       });
@@ -66,6 +75,7 @@ function InvForm(props) {
     } else if (isAllNotFilled) {
       alert("Please fill all the Values of inventory form");
     } else {
+      setFieldDisabled(false);
       props.onAdd(details);
     }
   }
@@ -116,6 +126,7 @@ function InvForm(props) {
             supplier_invoice_no,
             stock_entry_date,
           } = resp.data.content;
+          console.log(resp.data.content.item_name);
 
           setquantity({
             item_code: item_code,
@@ -158,8 +169,7 @@ function InvForm(props) {
           );
           
         }
-        
-        
+
         console.log("our item obj is:-");
         console.log(details);
       });

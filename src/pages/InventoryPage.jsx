@@ -21,10 +21,17 @@ function InventoryPage() {
   function getRealTimeData() {
     user.getRealTimeData().then((resp) => {
       const { totalNoOfItems, totalItemValue } = resp.data.rtd;
+      if(totalNoOfItems === 0) {
+        setRtd({
+          totalNoOfItems: "-",
+          totalItemValue: "-"
+        })
+      } else{
       setRtd({
-        totalNoOfItems: totalNoOfItems,
-        totalItemValue: totalItemValue,
+        totalNoOfItems: totalNoOfItems + " ITEM(S)",
+        totalItemValue: "₹ " + totalItemValue,
       });
+    }
     });
   }
 
