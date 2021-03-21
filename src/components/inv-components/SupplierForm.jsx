@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import user from "../../service/serviceLayer";
 
 let supplierObj = {};
-
+let totalInvoiceValue=0;
 function SupplierForm() {
   const [details, setDetails] = useState({
     supplier_name: "",
@@ -122,7 +122,10 @@ function SupplierForm() {
     });
     event.preventDefault();
   }
-
+function setInvoicevalue()
+{
+  totalInvoiceValue=details.supplier_invoice_value;
+}
   return (
     <div className="supplier-form crd">
       <p className="text-color" style={{ textAlign: "center", paddingTop: "10px" }}>
@@ -179,6 +182,7 @@ function SupplierForm() {
               placeholder="Invoice Value"
               name="supplier_invoice_value"
               onChange={handleChange}
+              onblur={setInvoicevalue}
               value={details.supplier_invoice_value}
             />
           </div>
@@ -207,4 +211,4 @@ function SupplierForm() {
 }
 
 export default SupplierForm;
-export { supplierObj };
+export { supplierObj , totalInvoiceValue };
