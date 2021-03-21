@@ -42,9 +42,10 @@ function MainButton()
     
     const x = user.insertInventoryData(inventoryDetails);
     const y = user.insertSupplierDetails(supplierObj);
-
+    const z=  user.insertListofRetailPriceData(retailDataArray);
     console.log(x);
     console.log(y);
+    console.log(z);
   }
 
   function handleCancel() {
@@ -54,13 +55,7 @@ function MainButton()
   return (
     <div className="main-buttons">
       <form>
-        <button
-          class="btn btn-success btn-inv"
-          type="submit"
-          onClick={handleSave}
-        >
-          SAVE
-        </button>
+       
         <button
           class="btn btn-success btn-inv"
           type="submit"
@@ -68,7 +63,15 @@ function MainButton()
         >
           CANCEL
         </button>
+        <button
+          class="btn btn-success btn-inv"
+          type="submit"
+          onClick={handleSave}
+        >
+          SAVE
+        </button>
       </form>
+    
       <button
           class="btn btn-success btn-inv"
           type="submit"

@@ -77,6 +77,12 @@ class UserService {
   getArrayOfBillingObject() {
     return axios.get("http://localhost:7777/getArrayOfBillingObject");
   }
+  insertListofRetailPriceData(arrayofRPD){
+    console.log(arrayofRPD);
+    return axios.put("http://localhost:7777/addItemsToRetailPriceData",
+    arrayofRPD
+    );
+  }
 }
 
 export default new UserService();
