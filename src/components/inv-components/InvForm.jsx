@@ -123,9 +123,9 @@ function InvForm(props) {
           });
           setRetailPriceDetails({
             item_code: item_code,
-            selling_price:-1,
+            selling_price:1,//in place of it will better if call the value from the database and assing it.
           }
-          )
+          );
           setDetails({
             item_code: item_code,
             brand: brand,
@@ -150,7 +150,13 @@ function InvForm(props) {
             unit_price: "",
             total_value: "",
             quantity: "",
-          })
+          });
+          setRetailPriceDetails({
+            item_code: item_code,
+            selling_price:-1,
+          }
+          );
+          
         }
         
         
@@ -357,4 +363,4 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export { inventoryDetails, sumOfQuantity, prvQuantityDetails, totalAmount };
+export { inventoryDetails, retailDataArray, sumOfQuantity, prvQuantityDetails, totalAmount };
