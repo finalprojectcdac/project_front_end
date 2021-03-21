@@ -315,7 +315,7 @@ li a:hover {
 }
 
 .monitoring-table td {
-  border: solid thin #454D55;
+  border: solid thin #454d55;
 }
 
 .monitoring-table input {
@@ -325,7 +325,7 @@ li a:hover {
   margin: 0px;
   height: 25px;
   border: none;
-  background-color: #E2E2E2;
+  background-color: #e2e2e2;
 }
 
 .date-form {
@@ -336,4 +336,16 @@ li a:hover {
   height: 25%;
   width: 35%;
   font-weight: 700;
+}
+
+.printme {
+  display: none;
+}
+@media print {
+  .no-printme {
+    display: none;
+  }
+  .printme {
+    display: block;
+  }
 }

@@ -22,9 +22,12 @@ function BillForm(props) {
     quantity: "",
   });
 
+  const [isFound, setIsFound] = useState(false); //to enable and disable the quantity field
+
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "item_code" && value === "") {
+      setIsFound(false);
       setDetails({
         invoice_no: props.billNo,
         item_code: "",
@@ -46,6 +49,7 @@ function BillForm(props) {
       const status = resp.data.status;
       console.log(status);
       if (status === 1) {
+        //status 1 is when we have entry in both inventory and retail table
         const {
           item_code,
           brand,
@@ -55,19 +59,35 @@ function BillForm(props) {
           selling_price,
         } = resp.data.bo;
         console.log();
-        setUpdateObject({
-          item_code: item_code,
-          quantity: quantity,
-        });
-        setDetails({
-          invoice_no: props.billNo,
-          item_code: item_code,
-          item_name: brand + " " + item_name,
-          unit_measurement: unit_measurement,
-          quantity: "",
-          selling_price: selling_price,
-        });
+        if (selling_price === -1) {
+          console.log("Selling Price not set");
+          setIsFound(false);
+          setDetails({
+            invoice_no: props.billNo,
+            item_code: item_code,
+            item_name: "",
+            unit_measurement: "",
+            quantity: "",
+            selling_price: "",
+          });
+        } else {
+          setIsFound(true);
+          setUpdateObject({
+            item_code: item_code,
+            quantity: quantity,
+          });
+          setDetails({
+            invoice_no: props.billNo,
+            item_code: item_code,
+            item_name: brand + " " + item_name,
+            unit_measurement: unit_measurement,
+            quantity: "",
+            selling_price: selling_price,
+          });
+        }
       } else if (status === 2) {
+        //status 2 is when we have entry only in  inventory and not  retail table
+        setIsFound(false);
         setDetails({
           invoice_no: props.billNo,
           item_code: item_code,
@@ -77,6 +97,7 @@ function BillForm(props) {
           total_value: "",
         });
       } else {
+        setIsFound(false);
         setDetails({
           invoice_no: props.billNo,
           item_code: item_code,
@@ -92,7 +113,7 @@ function BillForm(props) {
 
   function handleBlur(event) {
     const item_code = event.target.value;
-    if (item_code !== 0) {
+    if (item_code !== "") {
       console.log("blur called with item_code: " + item_code);
       getItemDetailsForSale(item_code);
     }
@@ -153,7 +174,6 @@ function BillForm(props) {
       ); //adds the total value and shows it below the table
       break;
     }
-    
   }
 
   return (
@@ -223,6 +243,7 @@ function BillForm(props) {
               name="quantity"
               onChange={handleChange}
               value={details.quantity}
+              disabled = {!isFound}
               // onBlur={setPrevQuantity}
             />
           </div>
@@ -233,6 +254,7 @@ function BillForm(props) {
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
+          disabled={!isFound}
         >
           ADD
         </button>
