@@ -5,6 +5,8 @@ let sumOfQuantity = 0;
 let totalAmount = 0;
 const itemsSoldList = [];
 let arrayOfItemSaleObjects = [];
+let arrayOfQuantityUpdate=[];
+
 
 function BillForm(props) {
   const [details, setDetails] = useState({
@@ -134,15 +136,14 @@ function BillForm(props) {
     console.log(arrayOfItemSaleObjects);
   }
 
-  function updateItemQuantity(item_code, quantity) {
-    user.updateItemQuantity(item_code, quantity);
-  }
+
 
   function handleAdd(event) {
-    updateItemQuantity(
-      details.item_code,
-      updateObject.quantity - details.quantity
-    ); //this will update the quantity and total_value of the items in the inventory table
+    arrayOfQuantityUpdate.push({item_code: details.item_code,quantity:updateObject.quantity - details.quantity})
+    // updateItemQuantity(
+    //   details.item_code,
+    //   updateObject.quantity - details.quantity
+    // ); //this will update the quantity and total_value of the items in the inventory table
 
     itemsSoldList.push(details); //this is pushing the details object in the array
     arrayOfItemSaleObjects = itemsSoldList.map((item) => {
@@ -275,4 +276,4 @@ function BillForm(props) {
 }
 
 export default BillForm;
-export { arrayOfItemSaleObjects, itemsSoldList, sumOfQuantity, totalAmount };
+export { arrayOfItemSaleObjects, itemsSoldList, sumOfQuantity, totalAmount,arrayOfQuantityUpdate };

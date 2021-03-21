@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from "../../service/serviceLayer";
-import { arrayOfItemSaleObjects } from "./BillForm";
+import { arrayOfItemSaleObjects ,arrayOfQuantityUpdate} from "./BillForm";
 import { invoice } from "./CustomerForm";
 
 function MainButton() {
   function handleSave(event) {
+    //console.log(arrayOfQuantityUpdate);
     const x = user.insertListOfItems(arrayOfItemSaleObjects);
     const y = user.insertInvoice(invoice);
+    const z =  user.updateItemQuantity(arrayOfQuantityUpdate);
     console.log(x);
     console.log(y);
+    console.log(z);
+    //event.preventDefault();
   }
 
   return (
