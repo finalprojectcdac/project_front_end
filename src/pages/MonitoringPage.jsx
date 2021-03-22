@@ -5,6 +5,7 @@ import RtdBar from "../components/monitoring-components/RtdBar";
 import DateForm from "../components/monitoring-components/DateForm";
 import InventoryItemTable from "../components/monitoring-components/InventoryItemTable";
 import user from "../service/serviceLayer";
+import UpdateForm from "../components/monitoring-components/UpdateForm";
 
 function MonitoringPage() {
   useEffect(getRealTimeData, []);
@@ -61,6 +62,7 @@ function MonitoringPage() {
         noOfItemsWithoutSp={rtd.noOfItemsWithoutSp}
       />
       <InventoryItemTable tableRows={arrayOfBillingObject} />
+      <UpdateForm />
       <DateForm />
     </div>
   );

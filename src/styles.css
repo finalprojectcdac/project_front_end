@@ -254,6 +254,7 @@ li a:hover {
   overflow-y: scroll;
   top: 760px;
   width: 83%;
+  border: solid thin black;
 }
 
 .inv-table tr {
@@ -289,11 +290,12 @@ li a:hover {
 .bill-table {
   position: absolute;
   display: block;
-  height: 340px;
+  height: 320px;
   left: 16%;
   overflow-y: scroll;
   top: 450px;
   width: 83%;
+  border: solid thin black;
 }
 
 .bill-table tr {
@@ -308,44 +310,43 @@ li a:hover {
   overflow-y: scroll;
   top: 230px;
   width: 83%;
+  border: solid thin black;
 }
 
 .monitoring-table tr {
   text-align: center;
 }
 
-.monitoring-table td {
-  border: solid thin #454d55;
+.search-report {
+  position: absolute;
+  top: 920px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 500px;
+  width: 83%;
+  font-weight: 700;
 }
 
-.monitoring-table input {
-  padding: 0px;
-  width: 140px;
-  text-align: center;
-  margin: 0px;
-  height: 25px;
-  border: none;
-  background-color: #e2e2e2;
-}
-
-.date-form {
+.update-form {
   position: absolute;
   top: 590px;
   padding: 20px 20px;
   margin: auto 200px;
-  height: 25%;
-  width: 35%;
+  height: 48%;
+  width: 83%;
   font-weight: 700;
 }
 
-.printme {
-  display: none;
+.search-table {
+  position: absolute;
+  display: block;
+  height: 341px;
+  overflow-y: scroll;
+  top: 130px;
+  width: 95%;
+  border: solid thin black;
 }
-@media print {
-  .no-printme {
-    display: none;
-  }
-  .printme {
-    display: block;
-  }
+
+.search-table tr {
+  text-align: center;
 }

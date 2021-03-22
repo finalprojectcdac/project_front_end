@@ -1,35 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import * as ReactBootStrap from "react-bootstrap";
-import user from "../../service/serviceLayer";
 
 function InventoryItemTable(props) {
   const tableRows = props.tableRows;
 
   const renderTableColoumn = (tableRows, index) => {
+    function checkPrice(selling_price) {
+      if (selling_price >= 0) {
+        return selling_price;
+      } else {
+        return "NOT SET";
+      }
+    }
+
     return (
       <tr key={index}>
-        <td>{tableRows.item_code}</td>
+        <th scope="row">{tableRows.item_code}</th>
         <td>{tableRows.brand}</td>
         <td>{tableRows.item_name}</td>
-        <td>{tableRows.unit_measurement}</td>
         <td>{tableRows.quantity}</td>
-        <td>{tableRows.unit_price}</td>
-        <td>{tableRows.selling_price}</td>
+        <td>{tableRows.unit_measurement}</td>
+        <td>₹ {tableRows.unit_price}</td>
+        <td>₹ {checkPrice(tableRows.selling_price)}</td>
       </tr>
     );
   };
-
-  const emptyRows = (
-    <tr style={{ height: "30px" }}>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  );
 
   return (
     <div className="monitoring-table">
@@ -39,25 +34,13 @@ function InventoryItemTable(props) {
             <th className="sticky-heading">Item Code</th>
             <th className="sticky-heading">Brand</th>
             <th className="sticky-heading">Item Name</th>
-            <th className="sticky-heading">Unit Measurement</th>
             <th className="sticky-heading">Quantity</th>
+            <th className="sticky-heading">Unit Measurement</th>
             <th className="sticky-heading">Cost Price</th>
             <th className="sticky-heading">Selling Price</th>
           </tr>
         </thead>
-        <tbody>
-          {tableRows.map(renderTableColoumn)}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-        </tbody>
+        <tbody>{tableRows.map(renderTableColoumn)}</tbody>
       </ReactBootStrap.Table>
     </div>
   );

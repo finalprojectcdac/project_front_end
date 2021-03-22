@@ -56,8 +56,8 @@ class UserService {
   }
   updateItemQuantity(arrayOfQuantityUpdate) {
     return axios.put(
-      "http://localhost:7777/updateitemquantity",arrayOfQuantityUpdate
-        
+      "http://localhost:7777/updateitemquantity",
+      arrayOfQuantityUpdate
     );
   }
   insertListOfItems(arrayOfItemSaleObjects) {
@@ -75,10 +75,18 @@ class UserService {
   getArrayOfBillingObject() {
     return axios.get("http://localhost:7777/getArrayOfBillingObject");
   }
-  insertListofRetailPriceData(arrayofRPD){
+  insertListofRetailPriceData(arrayofRPD) {
     console.log(arrayofRPD);
-    return axios.put("http://localhost:7777/addItemsToRetailPriceData",
-    arrayofRPD
+    return axios.put(
+      "http://localhost:7777/addItemsToRetailPriceData",
+      arrayofRPD
+    );
+  }
+  updateInventoryAndSellingPriceData(details) {
+    console.log(details);
+    return axios.put(
+      "http://localhost:7777/updateInventoryAndSellingPrice",
+      details
     );
   }
 }
