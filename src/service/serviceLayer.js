@@ -89,6 +89,16 @@ class UserService {
       details
     );
   }
+  getPruchaseReport(startDate, endDate) {
+    console.log(startDate);
+    console.log(endDate);
+    return axios.get(
+      "http://localhost:7777/getPurchaseReport?startDate=" +
+        startDate +
+        "&endDate=" +
+        endDate
+    );
+  }
 }
 
 export default new UserService();
