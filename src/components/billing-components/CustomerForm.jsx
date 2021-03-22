@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
+import {totalAmount} from"./BillForm";
 
 let invoice = {
   invoice_no: "",
@@ -10,14 +11,16 @@ let invoice = {
   billing_date: "",
 };
 
+
 function CustomerForm(props) {
   const [customerDetails, setCustomerDetails] = useState({
     mobile_no: "",
     customer_name: "",
     email_id: "",
-    amount_received: "",
+    invoice_value: "",
     billing_date: "",
   });
+ 
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "mobile_no" && value === "") {
@@ -25,7 +28,7 @@ function CustomerForm(props) {
         mobile_no: "",
         customer_name: "",
         email_id: "",
-        amount_received: "",
+        invoice_value: "",
         billing_date: "",
       });
     } else {
@@ -42,6 +45,7 @@ function CustomerForm(props) {
         };
       });
     }
+    
   }
 
   function getCustomerDetails(mobile_no) {
@@ -54,7 +58,7 @@ function CustomerForm(props) {
           mobile_no: mobile_no,
           customer_name: customer_name,
           email_id: email_id,
-          amount_received: "",
+          invoice_value: "",
           billing_date:
             new Date().getFullYear().toString() +
             "-" +
@@ -67,7 +71,7 @@ function CustomerForm(props) {
           mobile_no: mobile_no,
           customer_name: "",
           email_id: "",
-          amount_received: "",
+          invoice_value: "",
           billing_date: "",
         });
       }
@@ -87,7 +91,7 @@ function CustomerForm(props) {
       invoice_no: props.billNo,
       mobile_no: customerDetails.mobile_no,
       customer_name: customerDetails.customer_name,
-      invoice_value: customerDetails.amount_received,
+      invoice_value: customerDetails.invoice_value,
       email_id: customerDetails.email_id,
       billing_date: customerDetails.billing_date,
     };
@@ -98,6 +102,10 @@ function CustomerForm(props) {
     console.log("checking of variable will be done here");
     console.log("Details:-");
     console.log(customerDetails);
+    console.log("amaount recived is:")
+    console.log(customerDetails.invoice_value);
+    console.log(totalAmount);
+    console.log(totalAmount<=customerDetails.invoice_value);
   }
   return (
     <div className="customer-form crd">
@@ -159,10 +167,11 @@ function CustomerForm(props) {
             <input
               type="text"
               class="form-control"
-              id="amount_received"
+              id="invoice_value"
               placeholder="Amount Received"
-              name="amount_received"
+              name="invoice_value"
               onChange={handleChange}
+              value={customerDetails.invoice_value}
             />
           </div>
         </div>
@@ -176,13 +185,13 @@ function CustomerForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        {/* <button
+         <button
         class="btn btn-success btn-inv"
         type="submit"
         onClick={checkAllObj}
       >
         check
-      </button> */}
+      </button> 
       </div>
     </div>
   );
