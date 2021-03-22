@@ -139,6 +139,8 @@ function BillForm(props) {
   }
 
   function handleAdd(event) {
+    if(updateObject.quantity>=details.quantity)
+    {
     arrayOfQuantityUpdate.push({
       item_code: details.item_code,
       quantity: updateObject.quantity - details.quantity,
@@ -177,7 +179,9 @@ function BillForm(props) {
         itemsSoldList[i].quantity * itemsSoldList[i].selling_price
       ); //adds the total value and shows it below the table
       break;
-    }
+    }}
+    else
+    alert("the entered quantity should be less then the quantity in store")
   }
 
   return (
