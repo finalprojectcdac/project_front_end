@@ -5,8 +5,7 @@ let sumOfQuantity = 0;
 let totalAmount = 0;
 const itemsSoldList = [];
 let arrayOfItemSaleObjects = [];
-let arrayOfQuantityUpdate=[];
-
+let arrayOfQuantityUpdate = [];
 
 function BillForm(props) {
   const [details, setDetails] = useState({
@@ -49,7 +48,7 @@ function BillForm(props) {
   function getItemDetailsForSale(item_code) {
     user.getItemDetailsForSale(item_code).then((resp) => {
       const status = resp.data.status;
-      console.log(status);
+      //console.log(status);
       if (status === 1) {
         //status 1 is when we have entry in both inventory and retail table
         const {
@@ -59,14 +58,14 @@ function BillForm(props) {
           quantity,
           unit_measurement,
           selling_price,
-        } = resp.data.bo;
-        console.log();
+        } = resp.data.bo; //billing object data to
         if (selling_price === -1) {
           console.log("Selling Price not set");
+          alert("The Item cannot be sold before being verified by Manager");
           setIsFound(false);
           setDetails({
             invoice_no: props.billNo,
-            item_code: item_code,
+            item_code: "",
             item_name: "",
             unit_measurement: "",
             quantity: "",
@@ -89,6 +88,7 @@ function BillForm(props) {
         }
       } else if (status === 2) {
         //status 2 is when we have entry only in  inventory and not  retail table
+        alert("The item is NOT ready for sale....");
         setIsFound(false);
         setDetails({
           invoice_no: props.billNo,
@@ -99,17 +99,17 @@ function BillForm(props) {
           total_value: "",
         });
       } else {
+        alert("The item is not in our store!!!");
         setIsFound(false);
         setDetails({
           invoice_no: props.billNo,
-          item_code: item_code,
+          item_code: "",
           item_name: "",
           unit_measurement: "",
           quantity: "",
           total_value: "",
         });
       }
-      console.log(status);
     });
   }
 
@@ -134,12 +134,15 @@ function BillForm(props) {
     );
     console.log("Array of ItemSale Object:");
     console.log(arrayOfItemSaleObjects);
+    console.log("Array of Quantity Object:");
+    console.log(arrayOfQuantityUpdate);
   }
 
-
-
   function handleAdd(event) {
-    arrayOfQuantityUpdate.push({item_code: details.item_code,quantity:updateObject.quantity - details.quantity})
+    arrayOfQuantityUpdate.push({
+      item_code: details.item_code,
+      quantity: updateObject.quantity - details.quantity,
+    });
     // updateItemQuantity(
     //   details.item_code,
     //   updateObject.quantity - details.quantity
@@ -244,7 +247,7 @@ function BillForm(props) {
               name="quantity"
               onChange={handleChange}
               value={details.quantity}
-              disabled = {!isFound}
+              disabled={!isFound}
               // onBlur={setPrevQuantity}
             />
           </div>
@@ -276,4 +279,10 @@ function BillForm(props) {
 }
 
 export default BillForm;
-export { arrayOfItemSaleObjects, itemsSoldList, sumOfQuantity, totalAmount,arrayOfQuantityUpdate };
+export {
+  arrayOfItemSaleObjects,
+  itemsSoldList,
+  sumOfQuantity,
+  totalAmount,
+  arrayOfQuantityUpdate,
+};
