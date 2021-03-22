@@ -4,13 +4,12 @@ import BillTable from "../components/billing-components/BillTable";
 import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import CustomerForm from "../components/billing-components/CustomerForm";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
-import user from '../service/serviceLayer';
+import user from "../service/serviceLayer";
 import TotalTable from "../components/billing-components/TotalTable";
-import RtdBar from '../components/inv-components/RtdBar';
+import RtdBar from "../components/inv-components/RtdBar";
 import MainButton from "../components/billing-components/MainButton";
 
 function BillingPage() {
-
   const [tableRows, setTableRows] = useState([]);
 
   const [billNo, setBillNo] = useState("");
@@ -34,19 +33,18 @@ function BillingPage() {
     });
   }
 
-  function getBillNO()
-    {
-      user.getSaleInvoiceNo().then(rsp =>{
-        const billNo = rsp.data;
-        setBillNo(billNo);
-      });
-    }
+  function getBillNO() {
+    user.getSaleInvoiceNo().then((rsp) => {
+      const billNo = rsp.data;
+      setBillNo(billNo);
+    });
+  }
 
-    function addRow(details) {
-      setTableRows((prevRows) => {
-        return [...prevRows, details];
-      });
-    }
+  function addRow(details) {
+    setTableRows((prevRows) => {
+      return [...prevRows, details];
+    });
+  }
 
   return (
     <div>
@@ -56,9 +54,9 @@ function BillingPage() {
         totalNoOfItems={rtd.totalNoOfItems}
         totalItemValue={rtd.totalItemValue}
       />
-      <BillForm billNo={billNo} onAdd={addRow}/>
-      <CustomerForm />
-      <BillTable tableRows={tableRows}/>
+      <BillForm billNo={billNo} onAdd={addRow} />
+      <CustomerForm billNo={billNo} />
+      <BillTable tableRows={tableRows} />
       <TotalTable />
       <MainButton />
     </div>

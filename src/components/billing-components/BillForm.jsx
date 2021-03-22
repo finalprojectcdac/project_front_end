@@ -4,7 +4,7 @@ import user from "../../service/serviceLayer";
 let sumOfQuantity = 0;
 let totalAmount = 0;
 const itemsSoldList = [];
-var arrayOfItemSaleObjects = [];
+let arrayOfItemSaleObjects = [];
 
 function BillForm(props) {
   const [details, setDetails] = useState({
@@ -22,11 +22,8 @@ function BillForm(props) {
     quantity: "",
   });
 
-  const [itemSaleObject, setItemSaleObject] = useState({
-    invoice_no: "",
-    item_code: "",
-    quantity_sold: "",
-  });
+
+  
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -115,27 +112,33 @@ function BillForm(props) {
     console.log(
       "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
     );
-    console.log("Array of Items sold: ")
-     console.log(arrayOfItemSaleObjects);
+    console.log("Array of ItemSale Object:");
+    console.log(arrayOfItemSaleObjects);
+  }
+
+  function updateItemQuantity(item_code, quantity) {
+    user.updateItemQuantity(item_code, quantity);
   }
 
   function handleAdd(event) {
-    user.updateItemQuantity(
+    updateItemQuantity(
       details.item_code,
       updateObject.quantity - details.quantity
-    );
-    
-    itemsSoldList.push(details);
+    ); //this will update the quantity and total_value of the items in the inventory table
 
-    setItemSaleObject({
-      invoice_no: props.billNo,
-      item_code: details.item_code,
-      quantity_sold: details.quantity,
+    itemsSoldList.push(details); //this is pushing the details object in the array
+    arrayOfItemSaleObjects = itemsSoldList.map((item) => {
+      return {
+        invoice_no: item.invoice_no,
+        item_code: item.item_code,
+        quantity_sold: item.quantity,
+      };
     });
 
-    arrayOfItemSaleObjects.push(itemSaleObject);
+    console.log(arrayOfItemSaleObjects);
 
-    props.onAdd(details);
+    props.onAdd(details); //this will add details in the table below
+
     setDetails({
       invoice_no: props.billNo,
       item_code: "",
@@ -144,12 +147,13 @@ function BillForm(props) {
       quantity: "",
       unit_measurement: "",
       selling_price: "",
-    });
+    }); //to make the fields of billForm empty
+
     for (let i = itemsSoldList.length - 1; i < itemsSoldList.length; i++) {
-      sumOfQuantity += parseInt(itemsSoldList[i].quantity);
+      sumOfQuantity += parseInt(itemsSoldList[i].quantity); //adds the total quantity and shows it below the table
       totalAmount += parseFloat(
         itemsSoldList[i].quantity * itemsSoldList[i].selling_price
-      );
+      ); //adds the total value and shows it below the table
       break;
     }
   }

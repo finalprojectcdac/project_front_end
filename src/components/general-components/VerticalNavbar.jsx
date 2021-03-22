@@ -15,9 +15,11 @@ function VerticalNavbar() {
             <a>Billing</a>
           </li>
         </Link>
-        <li className="text-color" style={{ width: "180px" }}>
-          <a>Monitoring</a>
-        </li>
+        <Link to="/monitoring" style={{ textDecoration: "none" }}>
+          <li className="text-color" style={{ width: "180px" }}>
+            <a>Monitoring</a>
+          </li>
+        </Link>
       </ul>
     </div>
   );

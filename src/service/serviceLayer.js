@@ -63,7 +63,19 @@ class UserService {
     );
   }
   insertListOfItems(arrayOfItemSaleObjects) {
-    return axios.put("http://localhost:7777/ListItemsinserttoItemSale", arrayOfItemSaleObjects);
+    return axios.put(
+      "http://localhost:7777/ListItemsinserttoItemSale",
+      arrayOfItemSaleObjects
+    );
+  }
+  insertInvoice(invoice) {
+    return axios.put(
+      "http://localhost:7777/insertInvoicefromInvoices",
+      invoice
+    );
+  }
+  getArrayOfBillingObject() {
+    return axios.get("http://localhost:7777/getArrayOfBillingObject");
   }
 }
 
