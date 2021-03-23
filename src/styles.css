@@ -319,10 +319,10 @@ li a:hover {
 
 .search-report {
   position: absolute;
-  top: 920px;
+  top: 925px;
   padding: 20px 20px;
   margin: auto 200px;
-  height: 500px;
+  height: 530px;
   width: 83%;
   font-weight: 700;
 }
@@ -337,16 +337,36 @@ li a:hover {
   font-weight: 700;
 }
 
-.search-table {
+.purchasereport-table {
   position: absolute;
+  left:30px;
   display: block;
   height: 341px;
   overflow-y: scroll;
-  top: 130px;
+  top: 155px;
   width: 95%;
   border: solid thin black;
 }
 
-.search-table tr {
+.purchasereport-table tr {
   text-align: center;
+}
+
+.salesreport-table {
+  position: absolute;
+  left: 30px;
+  display: block;
+  height: 341px;
+  overflow-y: scroll;
+  top: 155px;
+  width: 95%;
+  border: solid thin black;
+}
+
+.salesreport-table tr {
+  text-align: center;
+}
+
+.date-picker {
+  width:225px;
 }

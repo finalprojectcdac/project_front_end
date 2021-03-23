@@ -10,14 +10,16 @@ import { invoice } from "./CustomerForm";
 function checkAll()
 {
   console.log("invoices details:")
-  console.log(invoice)
+  console.log(invoice.mobile_no!="")
   console.log("Total Amount:")
   console.log(totalAmount)
   console.log(totalAmount<=invoice.invoice_value);
 }
 function MainButton() {
+
   function handleSave(event) {
-    if(totalAmount==0){
+    if(invoice.mobile_no!=""&&invoice.customer_name!=""){
+        if(totalAmount==0){
       alert("please Add the items into your list")
       event.preventDefault()
     }
@@ -33,11 +35,15 @@ function MainButton() {
     const z = user.updateItemQuantity(arrayOfQuantityUpdate);
     console.log(x);
     console.log(y);
-    console.log(z);}
+    console.log(z);
+    alert("Bill no "+invoice.invoice_no+": your bill generated successfully")}
     //event.preventDefault();
   else{
-    alert("please recive complete amount")
+    alert(" please recive complete amount")
+    event.preventDefault();
   }
+}else {alert("please enter cutomer mobile no and cutomer name");
+event.preventDefault();}
 }
   return (
     <div className="main-buttons">
@@ -57,13 +63,13 @@ function MainButton() {
           CANCEL
         </button>
       </form>
-      <button
+      {/* <button
         class="btn btn-success btn-inv"
         type="submit"
         onClick={checkAll}
       >
         check
-      </button>
+      </button> */}
     </div>
   );
 }
