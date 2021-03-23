@@ -1,5 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
 
 * {
   padding: 0;
@@ -179,7 +179,7 @@ li a:hover {
 
 .text-color {
   /* font-family: 'Lato'; */
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   color: #2a9d8f;
   font-size: 20px;
   font-weight: 900;
@@ -254,6 +254,7 @@ li a:hover {
   overflow-y: scroll;
   top: 760px;
   width: 83%;
+  border: solid thin black;
 }
 
 .inv-table tr {
@@ -289,11 +290,12 @@ li a:hover {
 .bill-table {
   position: absolute;
   display: block;
-  height: 340px;
+  height: 320px;
   left: 16%;
   overflow-y: scroll;
   top: 450px;
   width: 83%;
+  border: solid thin black;
 }
 
 .bill-table tr {
@@ -303,23 +305,48 @@ li a:hover {
 .monitoring-table {
   position: absolute;
   display: block;
-  height: 340px;
+  height: 341px;
   left: 16%;
   overflow-y: scroll;
   top: 230px;
   width: 83%;
+  border: solid thin black;
 }
 
 .monitoring-table tr {
   text-align: center;
 }
 
-.date-form {
+.search-report {
   position: absolute;
-  top: 580px;
+  top: 920px;
   padding: 20px 20px;
   margin: auto 200px;
-  height: 25%;
-  width: 35%;
+  height: 500px;
+  width: 83%;
   font-weight: 700;
+}
+
+.update-form {
+  position: absolute;
+  top: 590px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 48%;
+  width: 83%;
+  font-weight: 700;
+}
+
+.search-table {
+  position: absolute;
+  display: block;
+  height: 341px;
+  overflow-y: scroll;
+  top: 130px;
+  width: 95%;
+  border: solid thin black;
+}
+
+.search-table tr {
+  text-align: center;
 }

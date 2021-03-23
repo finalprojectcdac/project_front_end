@@ -18,19 +18,6 @@ function InvTable(props) {
     );
   };
 
-  const emptyRows = (
-    <tr style={{ height: "30px" }}>
-      <th></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  );
-
   return (
     <div className="inv-table">
       <ReactBootStrap.Table striped bordered className="table-sm">
@@ -48,16 +35,6 @@ function InvTable(props) {
         </thead>
         <tbody>
           {tableRows.map(renderTableColoumn)}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
-          {emptyRows}
         </tbody>
       </ReactBootStrap.Table>
     </div>
