@@ -63,13 +63,13 @@ event.preventDefault();}
           CANCEL
         </button>
       </form>
-      <button
+      {/* <button
         class="btn btn-success btn-inv"
         type="submit"
         onClick={checkAll}
       >
         check
-      </button>
+      </button> */}
     </div>
   );
 }

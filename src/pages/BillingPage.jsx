@@ -6,7 +6,7 @@ import CustomerForm from "../components/billing-components/CustomerForm";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import user from "../service/serviceLayer";
 import TotalTable from "../components/billing-components/TotalTable";
-import RtdBar from "../components/inv-components/RtdBar";
+import RtdBar from "../components/billing-components/RtdBar";
 import MainButton from "../components/billing-components/MainButton";
 
 function BillingPage() {
@@ -16,29 +16,34 @@ function BillingPage() {
 
   useEffect(getBillNO, []);
 
-  const [rtd, setRtd] = useState({
-    totalNoOfItems: "",
-    totalItemValue: "",
+  const [quantityAndPrice, setQuantityAndPrice] = useState({
+    availableQuantity: "",
+    itemPrice: "",
   });
 
-  useEffect(getRealTimeData, []);
-
-  function getRealTimeData() {
-    user.getRealTimeData().then((resp) => {
-      const { totalNoOfItems, totalItemValue } = resp.data.rtd;
-      if(totalNoOfItems === 0) {
-        setRtd({
-          totalNoOfItems: "-",
-          totalItemValue: "-"
-        })
-      } else{
-      setRtd({
-        totalNoOfItems: totalNoOfItems + " ITEM(S)",
-        totalItemValue: "₹ " + totalItemValue,
+  const getQuantityAndPrice = (item_code) => {
+    if (item_code !== "") {
+      user.getItemDetailsForSale(item_code).then((resp) => {
+        const status = resp.data.status;
+        if (status === 1) {
+          setQuantityAndPrice({
+            availableQuantity: resp.data.bo.quantity + " nos.",
+            itemPrice: "₹ " + resp.data.bo.selling_price,
+          });
+        } else {
+          setQuantityAndPrice({
+            availableQuantity: resp.data.bo.quantity + " nos.",
+            itemPrice: "-",
+          });
+        }
+      });
+    } else {
+      setQuantityAndPrice({
+        availableQuantity: "-",
+        itemPrice: "-",
       });
     }
-    });
-  }
+  };
 
   function getBillNO() {
     user.getSaleInvoiceNo().then((rsp) => {
@@ -57,11 +62,14 @@ function BillingPage() {
     <div>
       <HorizontalNavbar userName="User" />
       <VerticalNavbar />
-      <RtdBar
-        totalNoOfItems={rtd.totalNoOfItems}
-        totalItemValue={rtd.totalItemValue}
+      <RtdBar quantityAndPrice={quantityAndPrice} />
+      <BillForm
+        billNo={billNo}
+        onAdd={addRow}
+        getQuantityAndPrice={(item_code) => {
+          getQuantityAndPrice(item_code);
+        }}
       />
-      <BillForm billNo={billNo} onAdd={addRow} />
       <CustomerForm billNo={billNo} />
       <BillTable tableRows={tableRows} />
       <TotalTable />

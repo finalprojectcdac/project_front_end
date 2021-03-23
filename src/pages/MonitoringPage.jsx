@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import RtdBar from "../components/monitoring-components/RtdBar";
-import SearchReport from "../components/monitoring-components/SearchReport";
+import SearchReportForm from "../components/monitoring-components/SearchReportForm";
 import InventoryItemTable from "../components/monitoring-components/InventoryItemTable";
 import user from "../service/serviceLayer";
 import UpdateForm from "../components/monitoring-components/UpdateForm";
@@ -63,7 +63,7 @@ function MonitoringPage() {
       />
       <InventoryItemTable tableRows={arrayOfBillingObject} />
       <UpdateForm />
-      <SearchReport />
+      <SearchReportForm />
     </div>
   );
 }
