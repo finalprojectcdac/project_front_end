@@ -1,5 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap");
 
 * {
   padding: 0;
@@ -132,18 +132,6 @@ li a:hover {
   margin-left: 3px;
 }
 
-  .rtdBar {
-    /* background-color: #e9c46a; */
-    position:absolute;
-    height:50px;
-    top:72px;
-    left:225px;
-    right:15px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    margin-top: 20px;
-    margin-left: 5px;
-  }
 .rtdBar h6 {
   position: relative;
   top: 25%;
@@ -191,7 +179,7 @@ li a:hover {
 
 .text-color {
   /* font-family: 'Lato'; */
-  font-family: 'Merriweather';
+  font-family: "Merriweather";
   color: #2a9d8f;
   font-size: 20px;
   font-weight: 900;
@@ -266,6 +254,7 @@ li a:hover {
   overflow-y: scroll;
   top: 760px;
   width: 83%;
+  border: solid thin black;
 }
 
 .inv-table tr {
@@ -301,13 +290,83 @@ li a:hover {
 .bill-table {
   position: absolute;
   display: block;
-  height: 340px;
+  height: 320px;
   left: 16%;
   overflow-y: scroll;
   top: 450px;
   width: 83%;
+  border: solid thin black;
 }
 
 .bill-table tr {
   text-align: center;
+}
+
+.monitoring-table {
+  position: absolute;
+  display: block;
+  height: 341px;
+  left: 16%;
+  overflow-y: scroll;
+  top: 230px;
+  width: 83%;
+  border: solid thin black;
+}
+
+.monitoring-table tr {
+  text-align: center;
+}
+
+.search-report {
+  position: absolute;
+  top: 925px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 530px;
+  width: 83%;
+  font-weight: 700;
+}
+
+.update-form {
+  position: absolute;
+  top: 590px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 48%;
+  width: 83%;
+  font-weight: 700;
+}
+
+.purchasereport-table {
+  position: absolute;
+  left:30px;
+  display: block;
+  height: 341px;
+  overflow-y: scroll;
+  top: 155px;
+  width: 95%;
+  border: solid thin black;
+}
+
+.purchasereport-table tr {
+  text-align: center;
+}
+
+.salesreport-table {
+  position: absolute;
+  left: 30px;
+  display: block;
+  height: 341px;
+  overflow-y: scroll;
+  top: 155px;
+  width: 95%;
+  border: solid thin black;
+}
+
+.salesreport-table tr {
+  text-align: center;
+}
+
+.date-picker {
+  width:225px;
 }

@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 function HorizontalNavbar(props) {
   return (
     <header>
-      <p style={{ fontFamily: "georgia", fontSize: "21px" }}>
+     
+      <p style={{ fontFamily: "Merriweather", fontSize: "21px" }}>
         INVENTORY & BILLING MANAGEMENT SYSTEM
       </p>
       <Link to="/logout">
