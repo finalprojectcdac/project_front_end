@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
+import { Link } from "react-router-dom";
 
 function UpdateForm() {
   const [itemDetails, setItemDetails] = useState({
@@ -12,6 +13,7 @@ function UpdateForm() {
     unit_price: "",
     selling_price: "",
   });
+  const [hideUpdateForm, setHideUpdateForm] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -132,12 +134,22 @@ function UpdateForm() {
 
   return (
     <div className="update-form crd">
-      <p
-        className="text-color"
-        style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
-      >
-        Update Inventory
-      </p>
+      <div style={{ height: "50px" }}>
+        <p
+          className="text-color"
+          style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
+        >
+          Update Inventory
+        </p>
+        <Link to="/monitoring/checkinventory">
+          <button
+            className="btn btn-inv btn-success btn-sm"
+            style={{ position: "relative", left: "1000px", top: "-61px" }}
+          >
+            <b>CLOSE</b>
+          </button>
+        </Link>
+      </div>
       <form style={{ width: "50%" }}>
         <div
           className="form-row"

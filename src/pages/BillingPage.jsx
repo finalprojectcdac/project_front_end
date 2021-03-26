@@ -17,8 +17,8 @@ function BillingPage() {
   useEffect(getBillNO, []);
 
   const [quantityAndPrice, setQuantityAndPrice] = useState({
-    availableQuantity: "",
-    itemPrice: "",
+    availableQuantity: "-",
+    itemPrice: "-",
   });
 
   const getQuantityAndPrice = (item_code) => {
@@ -55,7 +55,7 @@ function BillingPage() {
   function addRow(details) {
     setTableRows((prevRows) => {
       return [...prevRows, details];
-    });
+    }); //Check here, how to update quantity of an item in real time
   }
 
   return (

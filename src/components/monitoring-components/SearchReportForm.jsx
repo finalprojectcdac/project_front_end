@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import user from "../../service/serviceLayer";
 import PurchaseReport from "./PurchaseReport";
 import SalesReport from "./SalesReport";
+import { Link } from "react-router-dom";
 
 function SearchReportForm(props) {
   const [reportType, setReportType] = useState("");
@@ -13,6 +14,7 @@ function SearchReportForm(props) {
   const [hideSalesTable, setHideSalesTable] = useState(true);
   const [purchaseReport, setPurchaseReport] = useState([]);
   const [salesReport, setSalesReport] = useState([]);
+  const [reportOpen, setReportOpen] = useState("search-report-close");
 
   function clearTable() {
     setReportType("");
@@ -22,6 +24,7 @@ function SearchReportForm(props) {
     setPurchaseReport([]);
     setHideSalesTable(true);
     setSalesReport([]);
+    setReportOpen("search-report-close");
   }
 
   function handleClick() {
@@ -43,9 +46,11 @@ function SearchReportForm(props) {
       user.getPruchaseReport(sd, ed).then((resp) => {
         const status = resp.data.status;
         if (status === 1) {
+          setReportOpen("search-report-open");
           setPurchaseReport(resp.data.supplierdtls);
           setHidePurchaseTable(false);
         } else {
+          setReportOpen("search-report-close");
           console.log("No details found.");
           setHidePurchaseTable(true);
         }
@@ -72,10 +77,12 @@ function SearchReportForm(props) {
       user.getSalesReport(sd, ed).then((resp) => {
         const status = resp.data.status;
         if (status === 1) {
+          setReportOpen("search-report-open");
           setSalesReport(resp.data.invoiceList);
           console.log(salesReport);
           setHideSalesTable(false);
         } else {
+          setReportOpen("search-report-close");
           console.log("No details found.");
           setHideSalesTable(true);
         }
@@ -87,17 +94,27 @@ function SearchReportForm(props) {
   }
 
   return (
-    <div className="search-report crd">
-      <p
-        className="text-color"
-        style={{
-          textAlign: "center",
-          paddingTop: "0px",
-          paddingBottom: "0px",
-        }}
-      >
-        Search Report
-      </p>
+    <div className={reportOpen}>
+      <div style={{ height: "50px" }}>
+        <p
+          className="text-color"
+          style={{
+            textAlign: "center",
+            paddingTop: "0px",
+            paddingBottom: "0px",
+          }}
+        >
+          Generate Report
+        </p>
+        <Link to="/monitoring">
+          <button
+            className="btn btn-inv btn-success btn-sm"
+            style={{ position: "absolute", left: "1010px", top: "10px", height:"min-content" }}
+          >
+            <b>CLOSE</b>
+          </button>
+        </Link>
+      </div>
       <form style={{ width: "100%" }}>
         <div className="form-row">
           <div className="form-group col-md-3">
@@ -177,7 +194,7 @@ function SearchReportForm(props) {
       </form>
       <div>
         <button
-          style={{ position: "absolute", left: "860px", bottom: "394px" }}
+          style={{ position: "absolute", left: "860px" }}
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleClick}
@@ -185,7 +202,7 @@ function SearchReportForm(props) {
           SEARCH
         </button>
         <button
-          style={{ position: "absolute", left: "990px", bottom: "394px" }}
+          style={{ position: "absolute", left: "990px" }}
           class="btn btn-success btn-inv"
           type="submit"
           onClick={clearTable}
