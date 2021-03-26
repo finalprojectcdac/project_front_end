@@ -2,39 +2,32 @@ import React from "react";
 import * as ReactBootStrap from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-function InventoryItemTable(props) {
+function UserTable(props) {
   const tableRows = props.tableRows;
 
   const renderTableColoumn = (tableRows, index) => {
-    function checkPrice(selling_price) {
-      if (selling_price >= 0) {
-        return selling_price;
-      } else {
-        return "NOT SET";
-      }
-    }
-
     return (
       <tr key={index}>
-        <th scope="row">{tableRows.item_code}</th>
-        <td>{tableRows.brand}</td>
-        <td>{tableRows.item_name}</td>
-        <td>{tableRows.quantity}</td>
-        <td>{tableRows.unit_measurement}</td>
-        <td>₹ {tableRows.unit_price}</td>
-        <td>₹ {checkPrice(tableRows.selling_price)}</td>
+        <th scope="row">{tableRows.empId}</th>
+        <td>
+          {tableRows.fName} {tableRows.lName}
+        </td>
+        <td>{tableRows.dob}</td>
+        <td>{tableRows.dateOfJoining}</td>
+        <td>{tableRows.state}</td>
+        <td>{tableRows.privilege}</td>
       </tr>
     );
   };
 
   return (
-    <div className="inventory-item-table crd">
+    <div className="user-table crd">
       <span>
         <p
           className="text-color"
           style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
         >
-          Inventory Data
+          Employee Data
         </p>
         <Link to="/monitoring">
           <button
@@ -53,13 +46,12 @@ function InventoryItemTable(props) {
         <ReactBootStrap.Table striped bordered className="table-sm">
           <thead className="thead-dark">
             <tr>
-              <th className="sticky-heading">Item Code</th>
-              <th className="sticky-heading">Brand</th>
-              <th className="sticky-heading">Item Name</th>
-              <th className="sticky-heading">Quantity</th>
-              <th className="sticky-heading">Unit Measurement</th>
-              <th className="sticky-heading">Cost Price</th>
-              <th className="sticky-heading">Selling Price</th>
+              <th className="sticky-heading">Employee ID</th>
+              <th className="sticky-heading">Employee Name</th>
+              <th className="sticky-heading">Date of Birth</th>
+              <th className="sticky-heading">Date of Joining</th>
+              <th className="sticky-heading">State</th>
+              <th className="sticky-heading">Privilege</th>
             </tr>
           </thead>
           <tbody>{tableRows.map(renderTableColoumn)}</tbody>
@@ -69,4 +61,4 @@ function InventoryItemTable(props) {
   );
 }
 
-export default InventoryItemTable;
+export default UserTable;
