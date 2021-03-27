@@ -103,14 +103,12 @@ function InvForm(props) {
     console.log(prvQuantityDetails);
     console.log(" Array of retail data is :-");
     console.log(retailDataArray);
-
-
   }
 
   function handleBlur(event) {
     const item_code = event.target.value;
    
-    if (item_code !== 0) {
+    if (item_code !== "") {
       console.log("handle blur called with:-" + item_code);
       user.getItemDetails(item_code).then((resp) => {
         const status = resp.data.status;
@@ -134,7 +132,7 @@ function InvForm(props) {
           });
           setRetailPriceDetails({
             item_code: item_code,
-            selling_price:1,//in place of it will better if call the value from the database and assing it.
+            selling_price:1 ,
           }
           );
           setDetails({

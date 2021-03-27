@@ -85,6 +85,19 @@ function BillForm(props) {
             quantity: "",
             selling_price: selling_price,
           });
+          //check weather the item is already in item list
+          //if it is then check the list and change update quantity value accordingly
+          for (let i = 0; i < itemsSoldList.length; i++) {
+            if (itemsSoldList[i].item_code === details.item_code) {
+             // console.log("yes already in the list");
+            //  updateObject.quantity =
+             //   updateObject.quantity - parseInt(itemsSoldList[i].quantity);
+            //  console.log("new updated quantity");
+             // console.log(updateObject);
+            }
+
+            //parseInt(itemsSoldList[i].quantity));
+          }
         }
       } else if (status === 2) {
         //status 2 is when we have entry only in  inventory and not  retail table
@@ -123,65 +136,66 @@ function BillForm(props) {
   //check function for debuging purpose
   function checkAllObj() {
     console.log("checking of variable will be done here");
-    console.log("Bill No.");
-    console.log(props.billNo);
-    console.log("Details:-");
-    console.log(details);
-    console.log("Items sold list:-");
-    console.log(itemsSoldList);
-    console.log(
-      "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
-    );
+    // console.log("Bill No.");
+    // console.log(props.billNo);
+    // console.log("Details:-");
+    // console.log(details);
+    // console.log(
+    //  "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
+    //);
+
     console.log("Array of ItemSale Object:");
     console.log(arrayOfItemSaleObjects);
     console.log("Array of Quantity Object:");
     console.log(arrayOfQuantityUpdate);
+    console.log("item sold list:-");
+    console.log(itemsSoldList);
   }
 
   function handleAdd(event) {
-    if(updateObject.quantity>=details.quantity)
-    {
-    arrayOfQuantityUpdate.push({
-      item_code: details.item_code,
-      quantity: updateObject.quantity - details.quantity,
-    });
-    // updateItemQuantity(
-    //   details.item_code,
-    //   updateObject.quantity - details.quantity
-    // ); //this will update the quantity and total_value of the items in the inventory table
+    if (updateObject.quantity >= details.quantity) {
+      arrayOfQuantityUpdate.push({
+        item_code: details.item_code,
+        quantity: updateObject.quantity - details.quantity,
+      });
 
-    itemsSoldList.push(details); //this is pushing the details object in the array
-    arrayOfItemSaleObjects = itemsSoldList.map((item) => {
-      return {
-        invoice_no: item.invoice_no,
-        item_code: item.item_code,
-        quantity_sold: item.quantity,
-      };
-    });
+      // updateItemQuantity(
+      //   details.item_code,
+      //   updateObject.quantity - details.quantity
+      // ); //this will update the quantity and total_value of the items in the inventory table
 
-    console.log(arrayOfItemSaleObjects);
+      itemsSoldList.push(details); //this is pushing the details object in the array
+      arrayOfItemSaleObjects = itemsSoldList.map((item) => {
+        return {
+          invoice_no: item.invoice_no,
+          item_code: item.item_code,
+          quantity_sold: item.quantity,
+        };
+      });
 
-    props.onAdd(details); //this will add details in the table below
+      console.log(arrayOfItemSaleObjects);
 
-    setDetails({
-      invoice_no: props.billNo,
-      item_code: "",
-      brand: "",
-      item_name: "",
-      quantity: "",
-      unit_measurement: "",
-      selling_price: "",
-    }); //to make the fields of billForm empty
+      props.onAdd(details); //this will add details in the table below
 
-    for (let i = itemsSoldList.length - 1; i < itemsSoldList.length; i++) {
-      sumOfQuantity += parseInt(itemsSoldList[i].quantity); //adds the total quantity and shows it below the table
-      totalAmount += parseFloat(
-        itemsSoldList[i].quantity * itemsSoldList[i].selling_price
-      ); //adds the total value and shows it below the table
-      break;
-    }}
-    else
-    alert("the entered quantity should be less then the quantity in store")
+      setDetails({
+        invoice_no: props.billNo,
+        item_code: "",
+        brand: "",
+        item_name: "",
+        quantity: "",
+        unit_measurement: "",
+        selling_price: "",
+      }); //to make the fields of billForm empty
+
+      for (let i = itemsSoldList.length - 1; i < itemsSoldList.length; i++) {
+        sumOfQuantity += parseInt(itemsSoldList[i].quantity); //adds the total quantity and shows it below the table
+        totalAmount += parseFloat(
+          itemsSoldList[i].quantity * itemsSoldList[i].selling_price
+        ); //adds the total value and shows it below the table
+        break;
+      }
+    } else
+      alert("the entered quantity should be less then the quantity in store");
   }
 
   return (
@@ -209,7 +223,7 @@ function BillForm(props) {
               id="bill_no"
               placeholder="Bill No."
               name="bill_no"
-              onChange={handleChange}
+             // onChange={handleChange}
               value={props.billNo}
               disabled
             />
@@ -286,7 +300,8 @@ export default BillForm;
 export {
   arrayOfItemSaleObjects,
   itemsSoldList,
+  arrayOfQuantityUpdate,
   sumOfQuantity,
   totalAmount,
-  arrayOfQuantityUpdate,
+  
 };
