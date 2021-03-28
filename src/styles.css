@@ -302,34 +302,64 @@ li a:hover {
   text-align: center;
 }
 
-.monitoring-table {
+.inventory-item-table {
+  position: absolute;
+  height: 421px;
+  width: 83%;
+  left: 16%;
+  top: 300px;
+}
+
+.inventory-item-table div{
   position: absolute;
   display: block;
   height: 341px;
-  left: 16%;
   overflow-y: scroll;
-  top: 230px;
-  width: 83%;
-  border: solid thin black;
+  top: 50px;
+  width: 100%;
 }
 
-.monitoring-table tr {
+.inventory-item-table tr {
   text-align: center;
 }
 
-.search-report {
+.search-report-open {
   position: absolute;
-  top: 925px;
+  top: 300px;
   padding: 20px 20px;
   margin: auto 200px;
   height: 530px;
   width: 83%;
   font-weight: 700;
+  border-radius: 25px !important;
+  background: #e0e0e0 !important;
+  box-shadow: 6px 6px 12px #868686, -6px -6px 12px #ffffff;
+}
+
+.search-report-open button {
+  bottom: 394px;
+}
+
+.search-report-close {
+  position: absolute;
+  top: 300px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 180px;
+  width: 83%;
+  font-weight: 700;
+  border-radius: 25px !important;
+  background: #e0e0e0 !important;
+  box-shadow: 6px 6px 12px #868686, -6px -6px 12px #ffffff;
+}
+
+.search-report-close button {
+  bottom: 44px;
 }
 
 .update-form {
   position: absolute;
-  top: 590px;
+  top: 745px;
   padding: 20px 20px;
   margin: auto 200px;
   height: 48%;
@@ -339,7 +369,7 @@ li a:hover {
 
 .purchasereport-table {
   position: absolute;
-  left:30px;
+  left: 30px;
   display: block;
   height: 341px;
   overflow-y: scroll;
@@ -368,5 +398,48 @@ li a:hover {
 }
 
 .date-picker {
-  width:225px;
+  width: 225px;
+}
+
+.user-table {
+  position: absolute;
+  height: 421px;
+  width: 83%;
+  left: 16%;
+  top: 300px;
+}
+
+.user-table div {
+  position: absolute;
+  display: block;
+  height: 341px;
+  overflow-y: scroll;
+  top: 50px;
+  width: 100%;
+}
+
+.user-table tr {
+  text-align: center;
+}
+
+.set-employee-form {
+  position: absolute;
+  top: 745px;
+  padding: 20px 20px;
+  margin: auto 200px;
+  height: 260px;
+  width: 83%;
+  font-weight: 700;
+}
+
+.options {
+  position: absolute;
+  margin: 200px;
+  top: 0px;
+  width: 83%;
+  text-align: center;
+}
+
+.options button {
+  margin: 30px;
 }
