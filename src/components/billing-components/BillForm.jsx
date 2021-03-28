@@ -9,7 +9,7 @@ let arrayOfItemSaleObjects = [];
 let arrayOfQuantityUpdate = [];
 
 function BillForm(props) {
-  const [details, setDetails] = useState({
+  const [details, setDetails] = useState({//conatins billing obj
     invoice_no: props.billNo,
     item_code: "",
     brand: "",
@@ -19,13 +19,28 @@ function BillForm(props) {
     selling_price: "",
   });
 
-  const [updateObject, setUpdateObject] = useState({
+  const [updateObject, setUpdateObject] = useState({//contains item code and quantity
     item_code: "",
     quantity: "",
   });
 
   const [isFound, setIsFound] = useState(true); //to enable and disable the quantity field
   const [disableAddButton, setDisableAddButton] = useState(true);
+
+  function checkAllObj() {
+    console.log("checking of variable will be done here");
+    console.log("item sold list:-");
+    console.log(itemsSoldList);
+    console.log("Array of ItemSale Object:");
+    console.log(arrayOfItemSaleObjects);
+    console.log("Array of Quantity Object:");
+    console.log(arrayOfQuantityUpdate);
+    console.log("Details Object:");
+    console.log(details);
+    console.log("updateQuantity Object:");
+    console.log(updateObject);
+    
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -91,15 +106,28 @@ function BillForm(props) {
             quantity: "",
             selling_price: selling_price,
           });
+          //check weather the item is already in item list
+          //if it is then check the list and change update quantity value accordingly
+          for (let i = 0; i < itemsSoldList.length; i++) {
+            if (itemsSoldList[i].item_code === details.item_code) {
+              setUpdateObject({
+                item_code: item_code,
+                quantity: quantity-itemsSoldList[i].quantity
+              });         
+            }
+
+    
+          }
         }
       } else if (status === 2) {
         //status 2 is when we have entry only in  inventory and not  retail table
+        //the segment will be invoked only if there has been some manual manupulation
         alert("The item is NOT ready for sale....");
         setIsFound(false);
         setDisableAddButton(true);
         setDetails({
           invoice_no: props.billNo,
-          item_code: item_code,
+          item_code: "",
           item_name: "",
           unit_measurement: "",
           quantity: "",
@@ -126,27 +154,14 @@ function BillForm(props) {
     if (item_code !== "") {
       console.log("blur called with item_code: " + item_code);
       getItemDetailsForSale(item_code);
-      props.getQuantityAndPrice(item_code);
+      props.getQuantityAndPrice(item_code);//setting up the Quantity and Price card.
+
+
+
     }
   }
   //check function for debuging purpose
-  function checkAllObj() {
-    console.log("checking of variable will be done here");
-    console.log("Bill No.");
-    console.log(props.billNo);
-    console.log("Details:-");
-    console.log(details);
-    console.log("Items sold list:-");
-    console.log(itemsSoldList);
-    console.log(
-      "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
-    );
-    console.log("Array of ItemSale Object:");
-    console.log(arrayOfItemSaleObjects);
-    console.log("Array of Quantity Object:");
-    console.log(arrayOfQuantityUpdate);
-  }
-
+  
   function handleAdd(event) {
     if (updateObject.quantity >= details.quantity && details.quantity > 0) {
       arrayOfQuantityUpdate.push({
@@ -222,7 +237,7 @@ function BillForm(props) {
               id="bill_no"
               placeholder="Bill No."
               name="bill_no"
-              onChange={handleChange}
+             // onChange={handleChange}
               value={props.billNo}
               disabled
             />
@@ -280,13 +295,13 @@ function BillForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        {/* <button
+        <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
-        </button> */}
+        </button> 
         <button class="btn btn-inv btn-danger" type="submit">
           REMOVE
         </button>
@@ -299,7 +314,8 @@ export default BillForm;
 export {
   arrayOfItemSaleObjects,
   itemsSoldList,
+  arrayOfQuantityUpdate,
   sumOfQuantity,
   totalAmount,
-  arrayOfQuantityUpdate,
+  
 };
