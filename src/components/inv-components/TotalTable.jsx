@@ -27,7 +27,7 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Amout: Rs. {totalAmount.toFixed(2)}
+            Total Amout: ₹ {totalAmount.toFixed(2)}
           </span>
         </h4>
       </div>

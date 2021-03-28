@@ -54,6 +54,79 @@ class UserService {
         mobile_no
     );
   }
+  updateItemQuantity(arrayOfQuantityUpdate) {
+    return axios.put(
+      "http://localhost:7777/updateitemquantity",
+      arrayOfQuantityUpdate
+    );
+  }
+  insertListOfItems(arrayOfItemSaleObjects) {
+    return axios.put(
+      "http://localhost:7777/ListItemsinserttoItemSale",
+      arrayOfItemSaleObjects
+    );
+  }
+  insertInvoice(invoice) {
+    return axios.put(
+      "http://localhost:7777/insertInvoicefromInvoices",
+      invoice
+    );
+  }
+  getArrayOfBillingObject() {
+    return axios.get("http://localhost:7777/getArrayOfBillingObject");
+  }
+  insertListofRetailPriceData(arrayofRPD) {
+    console.log(arrayofRPD);
+    return axios.put(
+      "http://localhost:7777/addItemsToRetailPriceData",
+      arrayofRPD
+    );
+  }
+  updateInventoryAndSellingPriceData(details) {
+    console.log(details);
+    return axios.put(
+      "http://localhost:7777/updateInventoryAndSellingPrice",
+      details
+    );
+  }
+  getPruchaseReport(startDate, endDate) {
+    console.log(startDate);
+    console.log(endDate);
+    return axios.get(
+      "http://localhost:7777/getPurchaseReport?startDate=" +
+        startDate +
+        "&endDate=" +
+        endDate
+    );
+  }
+  getSalesReport(startDate, endDate) {
+    console.log(startDate);
+    console.log(endDate);
+    return axios.get(
+      "http://localhost:7777/getSalesReport?startDate=" +
+        startDate +
+        "&endDate=" +
+        endDate
+    );
+  }
+
+  getEmployeeDetails(empId) {
+    return axios.get("http://localhost:7777/getEmployeeDetails?empId=" + empId);
+  }
+
+  setEmployeeDetails(empDetails) {
+    return axios.put("http://localhost:7777/setEmployeeDetails", empDetails);
+  }
+
+  getListOfEmployees() {
+    return axios.get("http://localhost:7777/getListOfEmployees");
+  }
+
+  login(empId, password) {
+    return axios.get(
+      "http://localhost:7777/login?empId=" + empId + "&password=" + password
+    );
+  }
 }
 
 export default new UserService();
