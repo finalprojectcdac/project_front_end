@@ -105,7 +105,46 @@ class UserService {
       details
     );
   }
+  getPruchaseReport(startDate, endDate) {
+    console.log(startDate);
+    console.log(endDate);
+    return axios.get(
+      "http://localhost:7777/getPurchaseReport?startDate=" +
+        startDate +
+        "&endDate=" +
+        endDate
+    );
+  }
+  getSalesReport(startDate, endDate) {
+    console.log(startDate);
+    console.log(endDate);
+    return axios.get(
+      "http://localhost:7777/getSalesReport?startDate=" +
+        startDate +
+        "&endDate=" +
+        endDate
+    );
+  }
+
+  getEmployeeDetails(empId) {
+    return axios.get("http://localhost:7777/getEmployeeDetails?empId=" + empId);
+  }
+
+  setEmployeeDetails(empDetails) {
+    return axios.put("http://localhost:7777/setEmployeeDetails", empDetails);
+  }
+
+  getListOfEmployees() {
+    return axios.get("http://localhost:7777/getListOfEmployees");
+  }
+
+  login(empId, password) {
+    return axios.get(
+      "http://localhost:7777/login?empId=" + empId + "&password=" + password
+    );
+  }
+}
 
   //==================================user function===================================
-}
+
 export default new UserService();

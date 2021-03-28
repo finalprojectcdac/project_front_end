@@ -2,14 +2,23 @@ import React, { useState, useEffect } from "react";
 import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import RtdBar from "../components/monitoring-components/RtdBar";
-import DateForm from "../components/monitoring-components/DateForm";
+import SearchReportForm from "../components/monitoring-components/SearchReportForm";
 import InventoryItemTable from "../components/monitoring-components/InventoryItemTable";
 import user from "../service/serviceLayer";
 import UpdateForm from "../components/monitoring-components/UpdateForm";
+import UserTable from "../components/monitoring-components/employee-components/UserTable";
+import SetEmployeeForm from "../components/monitoring-components/employee-components/SetEmployeeForm";
+import Options from "../components/monitoring-components/Options";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function MonitoringPage() {
   useEffect(getRealTimeData, []);
   useEffect(getArrayOfBillingObject, []);
+  useEffect(getArrayOfEmpObject, []);
 
   const [rtd, setRtd] = useState({
     todaysSale: "",
@@ -17,11 +26,20 @@ function MonitoringPage() {
   });
 
   const [arrayOfBillingObject, setArrayOfBillingObject] = useState([]);
+  const [arrayOfEmpObject, setArrayOfEmpObject] = useState([]);
 
   function getArrayOfBillingObject() {
     user.getArrayOfBillingObject().then((resp) => {
       if (resp.data.status === 1) {
         setArrayOfBillingObject(resp.data.billingObjList);
+      }
+    });
+  }
+
+  function getArrayOfEmpObject() {
+    user.getListOfEmployees().then((resp) => {
+      if (resp.data.status === 1) {
+        setArrayOfEmpObject(resp.data.empList);
       }
     });
   }
@@ -61,9 +79,27 @@ function MonitoringPage() {
         todaysSale={rtd.todaysSale}
         noOfItemsWithoutSp={rtd.noOfItemsWithoutSp}
       />
-      <InventoryItemTable tableRows={arrayOfBillingObject} />
-      <UpdateForm />
-      <DateForm />
+
+      <Options />
+      <Switch>
+        <Route path="/monitoring/checkinventory">
+          <InventoryItemTable tableRows={arrayOfBillingObject} />
+        </Route>
+        <Route path="/monitoring/updateinventory">
+          <InventoryItemTable tableRows={arrayOfBillingObject} />
+          <UpdateForm />
+        </Route>
+        <Route path="/monitoring/generatereport">
+          <SearchReportForm />
+        </Route>
+        <Route path="/monitoring/checkemployees">
+          <UserTable tableRows={arrayOfEmpObject} />
+        </Route>
+        <Route path="/monitoring/manageemployees">
+          <UserTable tableRows={arrayOfEmpObject} />
+          <SetEmployeeForm />
+        </Route>
+      </Switch>
     </div>
   );
 }

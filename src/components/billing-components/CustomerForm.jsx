@@ -185,13 +185,13 @@ function CustomerForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-         <button
+         {/* <button
         class="btn btn-success btn-inv"
         type="submit"
         onClick={checkAllObj}
       >
         check
-      </button> 
+      </button>  */}
       </div>
     </div>
   );

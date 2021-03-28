@@ -8,7 +8,7 @@ let arrayOfItemSaleObjects = [];
 let arrayOfQuantityUpdate = [];
 
 function BillForm(props) {
-  const [details, setDetails] = useState({
+  const [details, setDetails] = useState({//conatins billing obj
     invoice_no: props.billNo,
     item_code: "",
     brand: "",
@@ -18,17 +18,34 @@ function BillForm(props) {
     selling_price: "",
   });
 
-  const [updateObject, setUpdateObject] = useState({
+  const [updateObject, setUpdateObject] = useState({//contains item code and quantity
     item_code: "",
     quantity: "",
   });
 
-  const [isFound, setIsFound] = useState(false); //to enable and disable the quantity field
+  const [isFound, setIsFound] = useState(true); //to enable and disable the quantity field
+  const [disableAddButton, setDisableAddButton] = useState(true);
+
+  function checkAllObj() {
+    console.log("checking of variable will be done here");
+    console.log("item sold list:-");
+    console.log(itemsSoldList);
+    console.log("Array of ItemSale Object:");
+    console.log(arrayOfItemSaleObjects);
+    console.log("Array of Quantity Object:");
+    console.log(arrayOfQuantityUpdate);
+    console.log("Details Object:");
+    console.log(details);
+    console.log("updateQuantity Object:");
+    console.log(updateObject);
+    
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "item_code" && value === "") {
-      setIsFound(false);
+      props.getQuantityAndPrice("");
+      setDisableAddButton(true);
       setDetails({
         invoice_no: props.billNo,
         item_code: "",
@@ -39,6 +56,7 @@ function BillForm(props) {
         selling_price: "",
       });
     } else {
+      setDisableAddButton(false);
       setDetails((prevValue) => {
         return { ...prevValue, [name]: value };
       });
@@ -63,6 +81,7 @@ function BillForm(props) {
           console.log("Selling Price not set");
           alert("The Item cannot be sold before being verified by Manager");
           setIsFound(false);
+          setDisableAddButton(true);
           setDetails({
             invoice_no: props.billNo,
             item_code: "",
@@ -73,6 +92,7 @@ function BillForm(props) {
           });
         } else {
           setIsFound(true);
+          setDisableAddButton(false);
           setUpdateObject({
             item_code: item_code,
             quantity: quantity,
@@ -89,23 +109,24 @@ function BillForm(props) {
           //if it is then check the list and change update quantity value accordingly
           for (let i = 0; i < itemsSoldList.length; i++) {
             if (itemsSoldList[i].item_code === details.item_code) {
-             // console.log("yes already in the list");
-            //  updateObject.quantity =
-             //   updateObject.quantity - parseInt(itemsSoldList[i].quantity);
-            //  console.log("new updated quantity");
-             // console.log(updateObject);
+              setUpdateObject({
+                item_code: item_code,
+                quantity: quantity-itemsSoldList[i].quantity
+              });         
             }
 
-            //parseInt(itemsSoldList[i].quantity));
+    
           }
         }
       } else if (status === 2) {
         //status 2 is when we have entry only in  inventory and not  retail table
+        //the segment will be invoked only if there has been some manual manupulation
         alert("The item is NOT ready for sale....");
         setIsFound(false);
+        setDisableAddButton(true);
         setDetails({
           invoice_no: props.billNo,
-          item_code: item_code,
+          item_code: "",
           item_name: "",
           unit_measurement: "",
           quantity: "",
@@ -114,6 +135,7 @@ function BillForm(props) {
       } else {
         alert("The item is not in our store!!!");
         setIsFound(false);
+        setDisableAddButton(true);
         setDetails({
           invoice_no: props.billNo,
           item_code: "",
@@ -131,34 +153,20 @@ function BillForm(props) {
     if (item_code !== "") {
       console.log("blur called with item_code: " + item_code);
       getItemDetailsForSale(item_code);
+      props.getQuantityAndPrice(item_code);//setting up the Quantity and Price card.
+
+
+
     }
   }
   //check function for debuging purpose
-  function checkAllObj() {
-    console.log("checking of variable will be done here");
-    // console.log("Bill No.");
-    // console.log(props.billNo);
-    // console.log("Details:-");
-    // console.log(details);
-    // console.log(
-    //  "Sum of Quantity: " + sumOfQuantity + " Total Amount: " + totalAmount
-    //);
-
-    console.log("Array of ItemSale Object:");
-    console.log(arrayOfItemSaleObjects);
-    console.log("Array of Quantity Object:");
-    console.log(arrayOfQuantityUpdate);
-    console.log("item sold list:-");
-    console.log(itemsSoldList);
-  }
-
+  
   function handleAdd(event) {
-    if (updateObject.quantity >= details.quantity) {
+    if (updateObject.quantity >= details.quantity && details.quantity > 0) {
       arrayOfQuantityUpdate.push({
         item_code: details.item_code,
         quantity: updateObject.quantity - details.quantity,
       });
-
       // updateItemQuantity(
       //   details.item_code,
       //   updateObject.quantity - details.quantity
@@ -194,8 +202,12 @@ function BillForm(props) {
         ); //adds the total value and shows it below the table
         break;
       }
-    } else
-      alert("the entered quantity should be less then the quantity in store");
+    } else if (details.quantity === "" || details.quantity === 0) {
+      alert("Please enter the quantity");
+    } else {
+      alert("Entered quantity should be less than or equal to the quantity available in store");
+    }
+    setDisableAddButton(true);
   }
 
   return (
@@ -271,12 +283,12 @@ function BillForm(props) {
           </div>
         </div>
       </form>
-      <div style={{ paddingLeft: "680px", paddingBottom: "20px" }}>
+      <div style={{ paddingLeft: "840px", paddingBottom: "20px" }}>
         <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
-          disabled={!isFound}
+          disabled={disableAddButton}
         >
           ADD
         </button>
@@ -287,7 +299,7 @@ function BillForm(props) {
           onClick={checkAllObj}
         >
           check
-        </button>
+        </button> 
         <button class="btn btn-inv btn-danger" type="submit">
           REMOVE
         </button>
