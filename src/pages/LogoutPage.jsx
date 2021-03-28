@@ -5,7 +5,7 @@ function LogoutPage() {
   return (
     <div>
       <h1>Logged out successfully!</h1>
-      <Link to="/">
+      <Link to="/login">
         <u>Click here to login again</u>
       </Link>
     </div>

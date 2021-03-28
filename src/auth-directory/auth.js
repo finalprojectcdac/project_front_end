@@ -6,11 +6,13 @@ class Auth {
 
   login(cb) {
     this.authenticated = true;
+    localStorage.setItem("isAuthenticated", true);
     cb();
   }
 
   logout(cb) {
     this.authenticated = false;
+    localStorage.removeItem("isAuthenticated");
     cb();
   }
 
@@ -20,10 +22,12 @@ class Auth {
 
   setAdmin() {
     this.admin = true;
+    localStorage.setItem("isAdmin", true);
   }
 
   unsetAdmin() {
     this.admin = false;
+    localStorage.removeItem("isAdmin");
   }
 
   isPrivileged() {
