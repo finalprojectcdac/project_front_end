@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
+import Alert from "react-s-alert";
 
 let sumOfQuantity = 0;
 let totalAmount = 0;
@@ -64,7 +65,7 @@ function BillForm(props) {
         } = resp.data.bo; //billing object data to
         if (selling_price === -1) {
           console.log("Selling Price not set");
-          alert("The Item cannot be sold before being verified by Manager");
+          Alert.error("Entered item is not for sale. Contact manager!");
           setIsFound(false);
           setDisableAddButton(true);
           setDetails({
@@ -105,7 +106,7 @@ function BillForm(props) {
           total_value: "",
         });
       } else {
-        alert("The item is not in our store!!!");
+        Alert.error("Item not found in inventory!");
         setIsFound(false);
         setDisableAddButton(true);
         setDetails({
@@ -187,10 +188,11 @@ function BillForm(props) {
         ); //adds the total value and shows it below the table
         break;
       }
+      Alert.success("Item added to the table!")
     } else if (details.quantity === "" || details.quantity === 0) {
-      alert("Please enter the quantity");
+      Alert.error("Please enter the quantity!");
     } else {
-      alert("Entered quantity should be less than or equal to the quantity available in store");
+      Alert.error("Entered quantity exceeds the quantity available in store!");
     }
     setDisableAddButton(true);
   }

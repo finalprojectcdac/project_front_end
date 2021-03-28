@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
 import { Link } from "react-router-dom";
+import Alert from "react-s-alert";
 
 function UpdateForm() {
   const [itemDetails, setItemDetails] = useState({
@@ -104,6 +105,7 @@ function UpdateForm() {
               unit_price: "",
               selling_price: "",
             });
+            Alert.error("Error! Item not found in inventory!");
           }
         });
       });
@@ -128,7 +130,7 @@ function UpdateForm() {
         selling_price: "",
       });
     } else {
-      console.log("Empty Object");
+      Alert.error("Fields are empty!");
     }
   }
 

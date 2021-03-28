@@ -188,7 +188,7 @@ li a:hover {
 
 .login-page {
   width: 360px;
-  padding: 8% 0 0;
+  padding: 15px 0 0;
   margin: auto;
 }
 .form {
@@ -310,7 +310,7 @@ li a:hover {
   top: 300px;
 }
 
-.inventory-item-table div{
+.inventory-item-table div {
   position: absolute;
   display: block;
   height: 341px;
