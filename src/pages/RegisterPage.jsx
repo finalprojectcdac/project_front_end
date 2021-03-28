@@ -1,14 +1,14 @@
 import React from "react";
 import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
-import Login from "../components/login-components/Login";
+import Register from "../components/login-components/Register";
 
-function LoginPage() {
+function RegisterPage() {
   return (
     <div>
       <HorizontalNavbar />
-      <Login />
+      <Register />
     </div>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

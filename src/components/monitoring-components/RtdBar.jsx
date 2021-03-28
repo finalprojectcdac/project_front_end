@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function RtdBar(props) {
-  const totalNoOfItems = props.totalNoOfItems;
-  const totalItemValue = props.totalItemValue;
+  const todaysSale = props.todaysSale;
+  const noOfItemsWithoutSp = props.noOfItemsWithoutSp;
   const today = new Date().toLocaleDateString();
   const now = new Date().toLocaleTimeString();
 
@@ -27,10 +27,10 @@ function RtdBar(props) {
               class="card-title text-center text-color fw-bold"
               style={{ padding: "0px" }}
             >
-              NUMBER OF ITEMS
+              TODAY'S SALE
             </h5>
             <h4 class="card-text text-center" style={{ padding: "0px" }}>
-              {totalNoOfItems}
+            {todaysSale}
             </h4>
           </div>
         </div>
@@ -42,10 +42,10 @@ function RtdBar(props) {
               class="card-title text-center text-color text-bold"
               style={{ padding: "0px" }}
             >
-              VALUE OF ITEMS
+              SP TO SET
             </h5>
             <h4 class="card-text text-center" style={{ padding: "0px" }}>
-              {totalItemValue}
+              {noOfItemsWithoutSp}
             </h4>
           </div>
         </div>
