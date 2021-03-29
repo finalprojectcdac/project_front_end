@@ -5,6 +5,7 @@ import user from "../../service/serviceLayer";
 import PurchaseReport from "./PurchaseReport";
 import SalesReport from "./SalesReport";
 import { Link } from "react-router-dom";
+import Alert from "react-s-alert";
 
 function SearchReportForm(props) {
   const [reportType, setReportType] = useState("");
@@ -51,7 +52,7 @@ function SearchReportForm(props) {
           setHidePurchaseTable(false);
         } else {
           setReportOpen("search-report-close");
-          console.log("No details found.");
+          Alert.error("No details found for these dates!");
           setHidePurchaseTable(true);
         }
       });
@@ -83,13 +84,13 @@ function SearchReportForm(props) {
           setHideSalesTable(false);
         } else {
           setReportOpen("search-report-close");
-          console.log("No details found.");
+          Alert.error("No details found for these dates!");
           setHideSalesTable(true);
         }
       });
     } else {
       clearTable();
-      console.log("Fields empty.");
+      Alert.error("Error! Fields empty!");
     }
   }
 
@@ -162,7 +163,6 @@ function SearchReportForm(props) {
                 onChange={(date) => setStartDate(date)}
                 dateFormat="dd/MM/yyyy"
                 maxDate={new Date()}
-                isClearable
                 showYearDropdown
                 scrollableMonthYearDropdown
                 value={startDate}
@@ -183,7 +183,6 @@ function SearchReportForm(props) {
                 onChange={(date) => setEndDate(date)}
                 dateFormat="dd/MM/yyyy"
                 maxDate={new Date()}
-                isClearable
                 showYearDropdown
                 scrollableMonthYearDropdown
                 value={endDate}

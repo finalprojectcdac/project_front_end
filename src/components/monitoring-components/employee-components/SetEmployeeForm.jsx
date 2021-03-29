@@ -5,12 +5,9 @@ import { Link } from "react-router-dom";
 function SetEmployeeForm() {
   const [empDetails, setEmpDetails] = useState({
     empId: "",
-    fName: "",
-    lName: "",
+    name: "",
     password: "",
-    dob: "",
-    dateOfJoining: "",
-    state: "",
+    email: "",
     privilege: "",
   });
 
@@ -19,12 +16,9 @@ function SetEmployeeForm() {
     if (name === "empId" && value === "") {
       setEmpDetails({
         empId: "",
-        fName: "",
-        lName: "",
+        name: "",
         password: "",
-        dob: "",
-        dateOfJoining: "",
-        state: "",
+        email: "",
         privilege: "",
       });
     } else {
@@ -37,12 +31,9 @@ function SetEmployeeForm() {
   function clearForm() {
     setEmpDetails({
       empId: "",
-      fName: "",
-      lName: "",
+      name: "",
       password: "",
-      dob: "",
-      dateOfJoining: "",
-      state: "",
+      email: "",
       privilege: "",
     });
   }
@@ -58,33 +49,34 @@ function SetEmployeeForm() {
         if (status === 1) {
           const {
             empId,
-            fName,
-            lName,
+            name,
             password,
-            dob,
-            dateOfJoining,
-            state,
+            email,
             privilege,
           } = resp.data.employee;
-          setEmpDetails({
-            empId: empId,
-            fName: fName,
-            lName: lName,
-            password: password,
-            dob: dob,
-            dateOfJoining: dateOfJoining,
-            state: state,
-            privilege: privilege,
-          });
+          if (privilege === "NOT SET") {
+            setEmpDetails({
+              empId: empId,
+              name: name,
+              password: password,
+              email: email,
+              privilege: "",
+            });
+          } else {
+            setEmpDetails({
+              empId: empId,
+              name: name,
+              password: password,
+              email: email,
+              privilege: privilege,
+            });
+          }
         } else {
           setEmpDetails({
             empId: empId,
-            fName: "",
-            lName: "",
+            name: "",
             password: "",
-            dob: "",
-            dateOfJoining: "",
-            state: "",
+            email: "",
             privilege: "",
           });
         }
@@ -94,19 +86,16 @@ function SetEmployeeForm() {
 
   function handleUpdate() {
     if (empDetails.empId !== "") {
-      user.setEmployeeDetails(empDetails).then((resp) => {
+      user.updateEmployeeDetails(empDetails).then((resp) => {
         const { status, reason } = resp.data;
         console.log(status);
         console.log(reason);
       });
       setEmpDetails({
         empId: "",
-        fName: "",
-        lName: "",
+        name: "",
         password: "",
-        dob: "",
-        dateOfJoining: "",
-        state: "",
+        email: "",
         privilege: "",
       });
     } else {
@@ -121,7 +110,7 @@ function SetEmployeeForm() {
           className="text-color"
           style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
         >
-          Create/Update Employee Details
+          Update Employee Details
         </p>
         <Link to="/monitoring/checkemployees">
           <button
@@ -151,74 +140,33 @@ function SetEmployeeForm() {
             />
           </div>
           <div class="form-group col-md-3">
-            <label for="fName">First Name</label>
+            <label for="fName">Full Name</label>
             <input
               type="text"
               class="form-control"
-              id="fName"
-              placeholder="First Name"
-              name="fName"
+              id="name"
+              placeholder="Full Name"
+              name="name"
               onChange={handleChange}
-              value={empDetails.fName}
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="lName">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="lName"
-              placeholder="Last Name"
-              name="lName"
-              onChange={handleChange}
-              value={empDetails.lName}
+              value={empDetails.name}
             />
           </div>
           <div className="form-group col-md-3">
-            <label for="dob">Date of Birth</label>
-            <input
-              type="date"
-              class="form-control"
-              id="dob"
-              placeholder="Date of Birth"
-              name="dob"
-              onChange={handleChange}
-              value={empDetails.dob}
-            />
-          </div>
-        </div>
-        <div
-          className="form-row"
-          style={{ width: "200%", paddingLeft: "30px" }}
-        >
-          <div class="form-group col-md-3">
-            <label for="dateOfJoining">Date of Joining</label>
-            <input
-              type="date"
-              class="form-control"
-              id="dateOfJoining"
-              placeholder="Date of Joining"
-              name="dateOfJoining"
-              onChange={handleChange}
-              value={empDetails.dateOfJoining}
-            />
-          </div>
-          <div className="form-group col-md-3">
-            <label for="state">State</label>
+            <label for="state">Email ID</label>
             <input
               type="text"
               class="form-control"
-              id="state"
-              placeholder="State"
-              name="state"
+              id="email"
+              placeholder="Email ID"
+              name="email"
               onChange={handleChange}
-              value={empDetails.state}
+              value={empDetails.email}
             />
           </div>
           <div class="form-group col-md-3">
             <label for="privilege">Privilege</label>
             <input
-              type="text"
+              list="privileges"
               class="form-control"
               id="privilege"
               placeholder="Privilege"
@@ -226,10 +174,14 @@ function SetEmployeeForm() {
               onChange={handleChange}
               value={empDetails.privilege}
             />
+            <datalist id="privileges">
+              <option value="ADMIN" />
+              <option value="LIMITED USER" />
+            </datalist>
           </div>
         </div>
       </form>
-      <div style={{ position:"absolute", left:"900px", bottom:"34px"}}>
+      <div style={{ position: "absolute", left: "900px", bottom: "34px" }}>
         <button
           class="btn btn-success btn-inv"
           type="submit"

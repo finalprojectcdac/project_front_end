@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from "../../service/serviceLayer";
+import Alert from "react-s-alert";
 
 let supplierObj = {};
 let totalInvoiceValue = 0;
@@ -61,8 +62,8 @@ function SupplierForm() {
   //this handels alert message
   function handleAlert(isAllNotFilled) {
     if (isAllNotFilled)
-      alert("Please fill all fileds of supplier before adding ");
-    else alert(" supplier added successfully!!!!");
+      Alert.error("Please fill all the fields of Supplier Details!");
+    else Alert.success("Supplier added successfully!");
   }
 
   function handleAdd(event) {

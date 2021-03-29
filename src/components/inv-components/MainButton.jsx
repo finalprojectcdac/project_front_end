@@ -8,7 +8,7 @@ import {
   retailDataArray,
   totalAmount,
 } from "./InvForm";
-
+import Alert from "react-s-alert";
 
 function MainButton() {
   var count = 0;
@@ -45,13 +45,14 @@ function MainButton() {
   }
   function handleSave(event) {
     if (supplierObj.supplier_invoice_value === undefined) {
-      alert("please enter the values of Supplier Form");
+      Alert.error("Error!! Supplier Details are empty!");
       event.preventDefault();
     } else if (parseInt(totalAmount) == 0) {
-      alert("please add the items in Inv Table ");
+      Alert.error("Error!! Inventory Table is empty!");
       event.preventDefault();
-    } else if ( parseInt(totalAmount) === parseInt(supplierObj.supplier_invoice_value)) 
-    {
+    } else if (
+      parseInt(totalAmount) === parseInt(supplierObj.supplier_invoice_value)
+    ) {
       matchQuantityandValue();
       //inser retail price data
       const x = user.insertInventoryData(inventoryDetails);
@@ -60,12 +61,11 @@ function MainButton() {
       console.log(x);
       console.log(y);
       console.log(z);
-     
-    } else
-     {
-       alert("Please match the values of INV N SUP form")
-        event.preventDefault();
-      }
+      Alert.success("Success!! Details saved successfully!");
+    } else {
+      Alert.error("Error!! Invoice value and Total do not match!");
+      event.preventDefault();
+    }
   }
   function handleCancel() {
     console.log("cancel button clicked");

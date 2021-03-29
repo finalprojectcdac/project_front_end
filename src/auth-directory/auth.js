@@ -1,6 +1,7 @@
 class Auth {
   constructor() {
     this.authenticated = false;
+    this.admin = false;
   }
 
   login(cb) {
@@ -15,6 +16,18 @@ class Auth {
 
   isAuthenticated() {
     return this.authenticated;
+  }
+
+  setAdmin() {
+    this.admin = true;
+  }
+
+  unsetAdmin() {
+    this.admin = false;
+  }
+
+  isPrivileged() {
+    return this.admin;
   }
 }
 
