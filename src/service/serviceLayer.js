@@ -3,6 +3,7 @@ import axios from "axios";
 const USERS_REST_API_URL = "http://localhost:7777/abc";
 
 class UserService {
+  //================poc===================
   // getUsers(){
   //     return axios.get(USERS_REST_API_URL);
   // }
@@ -11,22 +12,13 @@ class UserService {
   //     return axios.put(USERS_REST_API_URL,a);
 
   // }
+  //======================REAL TIME DAT BAR======================================
   getRealTimeData() {
     return axios.get("http://localhost:7777/getRealTimeData");
   }
-  insertInventoryData(inventoryDetails) {
-    return axios.put(
-      "http://localhost:7777//saveinventorypage",
-      inventoryDetails
-    );
-  }
-  insertSupplierDetails(supplierobj) {
-    console.log(supplierobj);
-    return axios.put(
-      "http://localhost:7777//saveSupplierRecordFromInventorypage",
-      supplierobj
-    );
-  }
+
+  //inventory page functions
+  //===================fetching functions=========================================
   getItemDetails(item_code) {
     console.log("CALLING SERVER WITH ITEMCODE :-" + item_code);
     return axios.get(
@@ -40,9 +32,35 @@ class UserService {
         supplier_name
     );
   }
+  //getitemdetails() alredy shown in billing page functions....
+  //===================Inserting  functions=======================================
+  insertInventoryData(inventoryDetails) {
+    return axios.put(
+      "http://localhost:7777//saveinventorypage",
+      inventoryDetails
+    );
+  }
+  insertSupplierDetails(supplierobj) {
+    console.log(supplierobj);
+    return axios.put(
+      "http://localhost:7777//saveSupplierRecordFromInventorypage",
+      supplierobj
+    );
+  }
+  insertListofRetailPriceData(arrayofRPD) {
+    console.log(arrayofRPD);
+    return axios.put(
+      "http://localhost:7777/addItemsToRetailPriceData",
+      arrayofRPD
+    );
+  }
+  //================================================================================
+  //===================Billing page functions=====================================
+  //===================fetching functions=========================================
   getSaleInvoiceNo() {
     return axios.get("http://localhost:7777/getSalesInvoicenumber");
   }
+
   getItemDetailsForSale(item_code) {
     return axios.get(
       "http://localhost:7777/getitemdetailsforsale?item_code=" + item_code
@@ -54,34 +72,32 @@ class UserService {
         mobile_no
     );
   }
-  updateItemQuantity(arrayOfQuantityUpdate) {
-    return axios.put(
-      "http://localhost:7777/updateitemquantity",
-      arrayOfQuantityUpdate
-    );
+  getArrayOfBillingObject() {
+    return axios.get("http://localhost:7777/getArrayOfBillingObject");
   }
+  //===================Inserting functions functions===============================
   insertListOfItems(arrayOfItemSaleObjects) {
     return axios.put(
       "http://localhost:7777/ListItemsinserttoItemSale",
       arrayOfItemSaleObjects
     );
   }
+
   insertInvoice(invoice) {
     return axios.put(
       "http://localhost:7777/insertInvoicefromInvoices",
       invoice
     );
   }
-  getArrayOfBillingObject() {
-    return axios.get("http://localhost:7777/getArrayOfBillingObject");
-  }
-  insertListofRetailPriceData(arrayofRPD) {
-    console.log(arrayofRPD);
+  updateItemQuantity(arrayOfQuantityUpdate) {
     return axios.put(
-      "http://localhost:7777/addItemsToRetailPriceData",
-      arrayofRPD
+      "http://localhost:7777/updateitemquantity",
+      arrayOfQuantityUpdate
     );
   }
+  //================================================================================
+
+  //======================monitoring functions=======================================
   updateInventoryAndSellingPriceData(details) {
     console.log(details);
     return axios.put(
@@ -110,12 +126,16 @@ class UserService {
     );
   }
 
+  registerEmployee(empDetails) {
+    return axios.put("http://localhost:7777/registerEmployee", empDetails);
+  }
+
   getEmployeeDetails(empId) {
     return axios.get("http://localhost:7777/getEmployeeDetails?empId=" + empId);
   }
 
-  setEmployeeDetails(empDetails) {
-    return axios.put("http://localhost:7777/setEmployeeDetails", empDetails);
+  updateEmployeeDetails(empDetails) {
+    return axios.put("http://localhost:7777/updateEmployeeDetails", empDetails);
   }
 
   getListOfEmployees() {
@@ -128,5 +148,7 @@ class UserService {
     );
   }
 }
+
+  //==================================user function===================================
 
 export default new UserService();

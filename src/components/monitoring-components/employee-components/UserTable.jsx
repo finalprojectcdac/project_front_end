@@ -10,11 +10,9 @@ function UserTable(props) {
       <tr key={index}>
         <th scope="row">{tableRows.empId}</th>
         <td>
-          {tableRows.fName} {tableRows.lName}
+          {tableRows.name}
         </td>
-        <td>{tableRows.dob}</td>
-        <td>{tableRows.dateOfJoining}</td>
-        <td>{tableRows.state}</td>
+        <td>{tableRows.email}</td>
         <td>{tableRows.privilege}</td>
       </tr>
     );
@@ -48,9 +46,7 @@ function UserTable(props) {
             <tr>
               <th className="sticky-heading">Employee ID</th>
               <th className="sticky-heading">Employee Name</th>
-              <th className="sticky-heading">Date of Birth</th>
-              <th className="sticky-heading">Date of Joining</th>
-              <th className="sticky-heading">State</th>
+              <th className="sticky-heading">Email ID</th>
               <th className="sticky-heading">Privilege</th>
             </tr>
           </thead>

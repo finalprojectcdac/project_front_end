@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from "../../service/serviceLayer";
 import { supplierObj } from "./SupplierForm";
+import Alert from "react-s-alert";
 
 const inventoryDetails = [];
 const prvQuantityDetails = [];
@@ -10,7 +11,6 @@ let sumOfQuantity = 0;
 let totalAmount = 0;
 //to temporary store the item quantity of fecthed item in store
 function InvForm(props) {
-
   const [quantitydetails, setquantity] = useState({
     item_code: "",
     quantity: "",
@@ -18,9 +18,9 @@ function InvForm(props) {
 
   const [fieldDisabled, setFieldDisabled] = useState(true);
 
-  const [reatailPriceDetails,setRetailPriceDetails]=useState({
+  const [reatailPriceDetails, setRetailPriceDetails] = useState({
     item_code: "",
-    selling_price:0,
+    selling_price: 0,
   });
 
   const [details, setDetails] = useState({
@@ -59,7 +59,7 @@ function InvForm(props) {
           stock_entry_date:
             new Date().getFullYear().toString() +
             "-" +
-            (new Date().getMonth()+1).toString() +
+            (new Date().getMonth() + 1).toString() +
             "-" +
             new Date().getDate().toString(),
           supplier_invoice_no: supplierObj.supplier_invoice_number,
@@ -71,10 +71,11 @@ function InvForm(props) {
   //arranged by sagar
   function handleAlert(isAllNotFilled) {
     if (details.supplier_invoice_no === undefined) {
-      alert("Please fill all the Values of supplier form");
+      Alert.error("Please fill all the fields of Inventory Form!");
     } else if (isAllNotFilled) {
-      alert("Please fill all the Values of inventory form");
+      Alert.error("Please fill all the fields of Inventory Form!");
     } else {
+      Alert.success("Item added to the table!");
       setFieldDisabled(false);
       props.onAdd(details);
     }
@@ -103,13 +104,11 @@ function InvForm(props) {
     console.log(prvQuantityDetails);
     console.log(" Array of retail data is :-");
     console.log(retailDataArray);
-
-
   }
 
   function handleBlur(event) {
     const item_code = event.target.value;
-   
+
     if (item_code !== 0) {
       console.log("handle blur called with:-" + item_code);
       user.getItemDetails(item_code).then((resp) => {
@@ -134,9 +133,8 @@ function InvForm(props) {
           });
           setRetailPriceDetails({
             item_code: item_code,
-            selling_price:1,//in place of it will better if call the value from the database and assing it.
-          }
-          );
+            selling_price: 1, //in place of it will better if call the value from the database and assing it.
+          });
           setDetails({
             item_code: item_code,
             brand: brand,
@@ -164,10 +162,8 @@ function InvForm(props) {
           });
           setRetailPriceDetails({
             item_code: item_code,
-            selling_price:-1,
-          }
-          );
-          
+            selling_price: -1,
+          });
         }
 
         console.log("our item obj is:-");
@@ -179,8 +175,8 @@ function InvForm(props) {
     if (quantitydetails.quantity !== "")
       prvQuantityDetails.push(quantitydetails);
   }
-  function steRetailPrice(){
-    if(reatailPriceDetails.item_code!=="");
+  function steRetailPrice() {
+    if (reatailPriceDetails.item_code !== "");
     retailDataArray.push(reatailPriceDetails);
   }
   function handleAdd(event) {
@@ -354,13 +350,13 @@ function InvForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-         <button
+        <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
-        </button> 
+        </button>
         <button class="btn btn-success btn-inv" type="submit">
           UPDATE
         </button>
@@ -373,4 +369,10 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export { inventoryDetails, retailDataArray, sumOfQuantity, prvQuantityDetails, totalAmount };
+export {
+  inventoryDetails,
+  retailDataArray,
+  sumOfQuantity,
+  prvQuantityDetails,
+  totalAmount,
+};
