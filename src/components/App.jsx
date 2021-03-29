@@ -22,7 +22,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />
-        <ProtectedRoute exact path="/inventory" component={InventoryPage} />
+        <Route exact path="/inventory" component={InventoryPage} />
         <ProtectedRoute exact path="/billing" component={BillingPage} />
         <ProtectedRoute exact path="/monitoring" component={MonitoringPage} />
         <ProtectedRoute

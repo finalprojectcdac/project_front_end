@@ -177,5 +177,182 @@
     }
   }
   
+/* footer styles starts here */
+  
+.footer-container {
+    background-color: #242424;
+    padding: 2rem 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-subscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  
+    /* margin-bottom: 24px;
+    padding: 24px; */
+    color: #fff;
+  }
+  
+  .footer-subscription > p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+  
+  .footer-subscription-heading {
+    margin-bottom: 24px;
+    font-size: 24px;
+  }
+
+  /* Social Icons */
+  .social-icon-link {
+    color: #fff;
+    font-size: 24px;
+  }
+  
+  .social-media {
+    max-width: 1000px;
+    width: 100%;
+  }
+  
+  .social-media-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+  }
+  
+  .social-logo {
+    color: #fff;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .website-rights {
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+
+/* home page body styles starts here */
+
+  .hero-container {
+    background-color: #38a586;
+    background-image: linear-gradient(315deg, #3ab894 30%, #29afa8 74%);
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1000px #38a586(0 0 0 0.2);
+  }
+  
+  .hero-container > h1 {
+    color: #fff;
+    font-size: 70px;
+    margin-top: -60px;
+  }
+  
+  .hero-container > p {
+    margin-top: 8px;
+    color: #fff;
+    font-size: 32px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  
+  .hero-btns {
+    margin-top: 32px;
+  }
+  
+  .hero-btns .btn {
+    margin: 6px;
+  }
+  
+  .fas fa-user-circle {
+    margin-left: 4px;
+  }
+  
+  .hero-container > p {
+    font-size: 30px;
+  }
+  
+  .btn-mobile {
+    /* display:block; */
+    text-decoration: none;
+  }
+  
+  /* .btn{
+      width:100%; 
+  } */
+  
+/* nav bar button styles */
+  :root{
+    --primary: #fff;
+}
+
+.btn{
+    padding:8px 20px;
+    border-radius: 2px;
+    outline: none;
+    border:none;
+    cursor:pointer;
+}
+
+.btn--primary{
+    background-color: var(--primary);
+    color:#242424;
+    border:1px solid var(--primary);
+}
+
+.btn--outline{
+    background-color: transparent;
+    color:#fff;
+    padding:8px 20px;
+    border:1px solid var(--primary);
+    transition:all 0.3s ease-out;
+}
+
+.btn--medium{
+    padding:8px 20px;
+    font-size: 20px;
+}
+
+.btn--large{
+    padding:12px 26px;
+    font-size: 20px;
+}
+
+.btn--medium:hover, .btn--large:hover{
+    background:#fff;
+    color:#242424;
+    transition:all 0.3s ease-out;
+    
+
+}
+
+
 
  
