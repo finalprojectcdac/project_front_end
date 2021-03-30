@@ -11,8 +11,7 @@ html {
 }
 body {
   background: #eee;
-  padding: 0 16px;
-}
+  padding: 0 16px; }
 
 header {
   background-color: #2a9d8f;
@@ -443,3 +442,7 @@ li a:hover {
 .options button {
   margin: 30px;
 }
+ .sample{
+  background-color :#55efc4;
+  background-image :linear-gradient(315deg, #55efc4 0%, #000000 74%);
+ }
