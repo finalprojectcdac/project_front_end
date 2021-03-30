@@ -11,7 +11,6 @@ import "../styles.css";
 import LoginPage from "../pages/LoginPage";
 import InventoryPage from "../pages/InventoryPage";
 import BillingPage from "../pages/BillingPage";
-import LogoutPage from "../pages/LogoutPage";
 import MonitoringPage from "../pages/MonitoringPage";
 import ProtectedRoute from "../auth-directory/ProtectedRoute";
 import HomePage from "../pages/HomePage";
@@ -23,7 +22,6 @@ import RegisterPage from "../pages/RegisterPage";
 import Invoice from "./billing-components/Invoice";
 
 function App() {
-
   return (
     <div>
       <Router>
@@ -61,7 +59,7 @@ function App() {
             component={MonitoringPage}
           />
           <ProtectedRoute exact path="/invoice" component={Invoice} />
-          <Route exact path="/logout" component={LogoutPage} />
+          <ProtectedRoute exact path="/logout" component={HomePage} />
           <ProtectedRoute exact path="/test" component={TestForm} />
           <Route exact path="/404" component={PageNotFound} />
           <Redirect to="/404" />

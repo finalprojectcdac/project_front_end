@@ -1,12 +1,14 @@
 import React from "react";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
+import Header from "../components/general-components/Header";
+import Footer from "../components/general-components/Footer";
 import Login from "../components/login-components/Login";
 
 function LoginPage() {
   return (
     <div>
-      <HorizontalNavbar />
+      <Header />
       <Login />
+      <Footer />
     </div>
   );
 }

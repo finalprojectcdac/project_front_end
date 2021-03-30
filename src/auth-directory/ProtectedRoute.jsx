@@ -15,13 +15,13 @@ function ProtectedRoute({ component: Component, path: path, ...rest }) {
             if (isAuthenticated) {
               return <Component />;
             } else {
-              return <Redirect to="/login" />;
+              return <Redirect to="/" />;
             }
           }}
         />
       );
     } else if (!isAuthenticated) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/" />;
     } else {
       Alert.error(
         "You do not have administrator rights. Please login as administrator!"
@@ -36,7 +36,7 @@ function ProtectedRoute({ component: Component, path: path, ...rest }) {
           if (isAuthenticated) {
             return <Component />;
           } else {
-            return <Redirect to="/login" />;
+            return <Redirect to="/" />;
           }
         }}
       />

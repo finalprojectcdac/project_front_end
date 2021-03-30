@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import RtdBar from "../components/monitoring-components/RtdBar";
 import SearchReportForm from "../components/monitoring-components/SearchReportForm";
@@ -10,6 +9,8 @@ import UserTable from "../components/monitoring-components/employee-components/U
 import SetEmployeeForm from "../components/monitoring-components/employee-components/SetEmployeeForm";
 import Options from "../components/monitoring-components/Options";
 import { Switch, Route } from "react-router-dom";
+import Footer from "../components/general-components/Footer";
+import Header from "../components/general-components/Header";
 
 function MonitoringPage() {
   useEffect(getRealTimeData, []);
@@ -72,7 +73,7 @@ function MonitoringPage() {
 
   return (
     <div>
-      <HorizontalNavbar />
+      <Header />
       <VerticalNavbar />
       <RtdBar
         todaysSale={rtd.todaysSale}
@@ -99,6 +100,7 @@ function MonitoringPage() {
           <SetEmployeeForm />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }

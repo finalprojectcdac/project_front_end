@@ -19,7 +19,7 @@ function RtdBar(props) {
   setInterval(updateRtdBar, 1000);
 
   return (
-    <div className="row rtdBar" style={{ marginLeft: "-2%" }}>
+    <div className="row rtdBar" style={{ marginLeft: "-3%", marginRight:"0%" }}>
       <div class="col-sm">
         <div class="card crd">
           <div class="card-body ">

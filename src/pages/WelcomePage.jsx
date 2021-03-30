@@ -1,10 +1,14 @@
 import React from "react";
-import Welcome from "../components/login-components/Welcome";
+import Header from "../components/general-components/Header";
+import VerticalNavbar from "../components/general-components/VerticalNavbar";
+import Footer from "../components/general-components/Footer";
 
 function WelcomePage() {
   return (
     <div>
-      <Welcome />
+      <Header />
+      <VerticalNavbar />
+      <Footer />
     </div>
   );
 }

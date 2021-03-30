@@ -1,10 +1,10 @@
 import React from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
 import { useHistory } from "react-router-dom";
 import auth from "../../auth-directory/auth";
-import UserProfile from "./UserProfile";
+import UserProfile from "../general-components/UserProfile";
+import Alert from "react-s-alert";
 
-function HorizontalNavbar(props) {
+function Header() {
   let history = useHistory();
   const isAuthenticated = localStorage.getItem("isAuthenticated");
   function handleLogout() {
@@ -13,28 +13,35 @@ function HorizontalNavbar(props) {
     auth.logout(() => {
       history.push("/logout");
     });
+    Alert.success("Successfully logged out!");
   }
-
   return (
-    <header>
-      <p style={{ fontFamily: "Merriweather", fontSize: "21px" }}>
-        INVENTORY & BILLING MANAGEMENT SYSTEM
-      </p>
+    <div>
+      <nav className="navbar">
+        <div className="navbar-logo">
+          IBS <i className="fab fa-typo3"></i>
+        </div>
+      </nav>
       <span
-        style={{ position: "absolute", top: "0px", left: "1030px" }}
+        style={{
+          position: "absolute",
+          top: "0px",
+          left: "1030px",
+          color: "white",
+        }}
         hidden={!isAuthenticated}
       >
         <UserProfile />
       </span>
       <button
-        className="btn btn-danger"
+        className="btn btn-danger logout-button"
         onClick={handleLogout}
         hidden={!isAuthenticated}
       >
         Logout
       </button>
-    </header>
+    </div>
   );
 }
 
-export default HorizontalNavbar;
+export default Header;

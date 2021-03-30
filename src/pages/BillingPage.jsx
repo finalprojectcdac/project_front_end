@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import BillForm from "../components/billing-components/BillForm";
 import BillTable from "../components/billing-components/BillTable";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import CustomerForm from "../components/billing-components/CustomerForm";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import user from "../service/serviceLayer";
 import TotalTable from "../components/billing-components/TotalTable";
 import RtdBar from "../components/billing-components/RtdBar";
 import MainButton from "../components/billing-components/MainButton";
-import Invoice from "../components/billing-components/Invoice";
+import Footer from "../components/general-components/Footer";
+import Header from "../components/general-components/Header";
 
 function BillingPage() {
   const [tableRows, setTableRows] = useState([]);
@@ -68,7 +68,7 @@ function BillingPage() {
 
   return (
     <div>
-      <HorizontalNavbar userName="User" />
+      <Header />
       <VerticalNavbar />
       <RtdBar quantityAndPrice={quantityAndPrice} />
       <BillForm
@@ -82,6 +82,7 @@ function BillingPage() {
       <BillTable tableRows={tableRows} />
       <TotalTable />
       <MainButton />
+      <Footer />
     </div>
   );
 }
