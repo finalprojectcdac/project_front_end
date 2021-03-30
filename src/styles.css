@@ -5,41 +5,44 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* position: relative; */
+  /* added by maahi */
+  /* font-family: "PT Sans", sans-serif; */
 }
 html {
   font-family: "Montserrat", sans-serif;
 }
 body {
   background: #eee;
-  padding: 0 16px;
+  position: relative;
+  min-height: 100vh;
 }
 
-header {
+/* header {
   background-color: #2a9d8f;
-  margin: auto -16px;
   padding: 16px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
+} */
 
-header button {
+.logout-button {
   margin-right: 10px;
   position: absolute;
   right: 20px;
   top: 16px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   background: linear-gradient(145deg, #c6303e, #eb394a);
-  box-shadow: 5px 5px 5px #8d222c, -5px -5px 5px #2a9d8f;
+  /* box-shadow: 5px 5px 5px #8d222c, -5px -5px 5px #eb394a; */
 }
 
-header p {
+/* header p {
   color: #fff;
   font-family: "Arial";
   position: relative;
   top: 8px;
   font-weight: 700;
-}
+} */
 
-footer {
+/* footer {
   position: absolute;
   text-align: center;
   bottom: 0;
@@ -49,7 +52,7 @@ footer {
 
 footer p {
   color: #ccc;
-}
+} */
 ul {
   list-style-type: none;
   margin: 0;
@@ -92,8 +95,8 @@ li a:hover {
 .supplier-form {
   position: absolute;
   top: 230px;
-  left: 16%;
   padding: 20px 20px;
+  margin: auto 200px;
   height: 55%;
   width: 83%;
   font-weight: 700;
@@ -250,7 +253,7 @@ li a:hover {
   position: absolute;
   display: block;
   height: 340px;
-  left: 16%;
+  margin: auto 200px;
   overflow-y: scroll;
   top: 760px;
   width: 83%;
@@ -291,7 +294,7 @@ li a:hover {
   position: absolute;
   display: block;
   height: 320px;
-  left: 16%;
+  margin: 0px 200px;
   overflow-y: scroll;
   top: 450px;
   width: 83%;
@@ -306,7 +309,7 @@ li a:hover {
   position: absolute;
   height: 421px;
   width: 83%;
-  left: 16%;
+  margin: 0px 200px;
   top: 300px;
 }
 
@@ -362,7 +365,7 @@ li a:hover {
   top: 745px;
   padding: 20px 20px;
   margin: auto 200px;
-  height: 48%;
+  height: 310px;
   width: 83%;
   font-weight: 700;
 }
@@ -405,7 +408,7 @@ li a:hover {
   position: absolute;
   height: 421px;
   width: 83%;
-  left: 16%;
+  margin: 0px 200px;
   top: 300px;
 }
 
@@ -434,12 +437,157 @@ li a:hover {
 
 .options {
   position: absolute;
-  margin: 200px;
-  top: 0px;
+  margin: 0px 200px;
+  top: 200px;
   width: 83%;
   text-align: center;
 }
 
 .options button {
   margin: 30px;
+}
+
+/* Homepage styling. All the styles to be added above this line. */
+
+.navbar {
+  background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  font-size: 1.2rem;
+  top: 0;
+  left: 0%;
+}
+
+.navbar-logo {
+  position: absolute;
+  color: #fff;
+  justify-self: start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  left: 100px;
+}
+
+/* footer styles starts here */
+
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #242424;
+  padding: 10px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+/* Social Icons */
+.social-icon-link {
+  color: #fff;
+  font-size: 24px;
+}
+
+.social-media-wrap {
+  position: absolute;
+  top: -25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 240px;
+}
+
+.social-logo {
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.website-rights {
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+/* home page body styles starts here */
+
+.hero-container {
+  background-color: #38a586;
+  background-image: linear-gradient(315deg, #3ab894 30%, #29afa8 74%);
+  height: 577px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 0 1000px #38a586(0 0 0 0.2);
+}
+
+.hero-container > h1 {
+  color: #fff;
+  font-size: 70px;
+  margin-top: -60px;
+}
+
+.hero-container > p {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 32px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.hero-btns .btn {
+  margin: 6px;
+}
+
+/* nav bar button styles */
+:root {
+  --primary: #fff;
+}
+
+.btn--primary {
+  background-color: var(--primary);
+  color: #242424;
+  border: 1px solid var(--primary);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.btn--large {
+  padding: 12px 26px;
+  font-size: 20px;
+}
+
+.btn--medium:hover,
+.btn--large:hover {
+  background: #fff;
+  color: #242424;
+  transition: all 0.3s ease-out;
 }

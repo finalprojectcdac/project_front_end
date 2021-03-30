@@ -98,6 +98,7 @@ function SetEmployeeForm() {
         email: "",
         privilege: "",
       });
+      window.location.reload();
     } else {
       console.log("Empty Object");
     }
