@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "../components/general-components/Header";
+import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import Footer from "../components/general-components/Footer";
-import Login from "../components/login-components/Login";
 
-function LoginPage() {
+function WelcomePage() {
   return (
     <div>
       <Header />
-      <Login />
+      <VerticalNavbar />
       <Footer />
     </div>
   );
 }
 
-export default LoginPage;
+export default WelcomePage;

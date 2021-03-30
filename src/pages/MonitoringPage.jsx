@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import RtdBar from "../components/monitoring-components/RtdBar";
 import SearchReportForm from "../components/monitoring-components/SearchReportForm";
@@ -9,15 +8,12 @@ import UpdateForm from "../components/monitoring-components/UpdateForm";
 import UserTable from "../components/monitoring-components/employee-components/UserTable";
 import SetEmployeeForm from "../components/monitoring-components/employee-components/SetEmployeeForm";
 import Options from "../components/monitoring-components/Options";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Footer from "../components/general-components/Footer";
+import Header from "../components/general-components/Header";
 
 function MonitoringPage() {
   useEffect(getRealTimeData, []);
-  useEffect(getArrayOfBillingObject, []);
   useEffect(getArrayOfEmpObject, []);
 
   const [rtd, setRtd] = useState({
@@ -27,10 +23,14 @@ function MonitoringPage() {
 
   const [arrayOfBillingObject, setArrayOfBillingObject] = useState([]);
   const [arrayOfEmpObject, setArrayOfEmpObject] = useState([]);
+  useEffect(() => {
+    getArrayOfBillingObject();
+  }, []);
 
   function getArrayOfBillingObject() {
     user.getArrayOfBillingObject().then((resp) => {
       if (resp.data.status === 1) {
+        console.log(resp.data.status);
         setArrayOfBillingObject(resp.data.billingObjList);
       }
     });
@@ -73,7 +73,7 @@ function MonitoringPage() {
 
   return (
     <div>
-      <HorizontalNavbar />
+      <Header />
       <VerticalNavbar />
       <RtdBar
         todaysSale={rtd.todaysSale}
@@ -100,6 +100,7 @@ function MonitoringPage() {
           <SetEmployeeForm />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }
