@@ -14,7 +14,7 @@ class UserService {
   // }
   //======================REAL TIME DAT BAR======================================
   getRealTimeData() {
-    return axios.get("/getRealTimeData");
+    return axios.get("https://ibs-dev-app.herokuapp.com/getRealTimeData");
   }
 
   //inventory page functions
@@ -22,13 +22,13 @@ class UserService {
   getItemDetails(item_code) {
     console.log("CALLING SERVER WITH ITEMCODE :-" + item_code);
     return axios.get(
-      "/getitemdetailsfrominventorytable/?item_code=" +
+      "https://ibs-dev-app.herokuapp.com/getitemdetailsfrominventorytable/?item_code=" +
         item_code
     );
   }
   getSupplierDetails(supplier_name) {
     return axios.get(
-      "/getsupplierdetailsfromSupplierRecord?supplier_name=" +
+      "https://ibs-dev-app.herokuapp.com/getsupplierdetailsfromSupplierRecord?supplier_name=" +
         supplier_name
     );
   }
@@ -36,21 +36,21 @@ class UserService {
   //===================Inserting  functions=======================================
   insertInventoryData(inventoryDetails) {
     return axios.put(
-      "/saveinventorypage",
+      "https://ibs-dev-app.herokuapp.com/saveinventorypage",
       inventoryDetails
     );
   }
   insertSupplierDetails(supplierobj) {
     console.log(supplierobj);
     return axios.put(
-      "/saveSupplierRecordFromInventorypage",
+      "https://ibs-dev-app.herokuapp.com/saveSupplierRecordFromInventorypage",
       supplierobj
     );
   }
   insertListofRetailPriceData(arrayofRPD) {
     console.log(arrayofRPD);
     return axios.put(
-      "/addItemsToRetailPriceData",
+      "https://ibs-dev-app.herokuapp.com/addItemsToRetailPriceData",
       arrayofRPD
     );
   }
@@ -58,40 +58,40 @@ class UserService {
   //===================Billing page functions=====================================
   //===================fetching functions=========================================
   getSaleInvoiceNo() {
-    return axios.get("/getSalesInvoicenumber");
+    return axios.get("https://ibs-dev-app.herokuapp.com/getSalesInvoicenumber");
   }
 
   getItemDetailsForSale(item_code) {
     return axios.get(
-      "/getitemdetailsforsale?item_code=" + item_code
+      "https://ibs-dev-app.herokuapp.com/getitemdetailsforsale?item_code=" + item_code
     );
   }
   getCustomerDetails(mobile_no) {
     return axios.get(
-      "/getCustomerdetailsfromInvoices?mobile_no=" +
+      "https://ibs-dev-app.herokuapp.com/getCustomerdetailsfromInvoices?mobile_no=" +
         mobile_no
     );
   }
   getArrayOfBillingObject() {
-    return axios.get("/getArrayOfBillingObject");
+    return axios.get("https://ibs-dev-app.herokuapp.com/getArrayOfBillingObject");
   }
   //===================Inserting functions functions===============================
   insertListOfItems(arrayOfItemSaleObjects) {
     return axios.put(
-      "/ListItemsinserttoItemSale",
+      "https://ibs-dev-app.herokuapp.com/ListItemsinserttoItemSale",
       arrayOfItemSaleObjects
     );
   }
 
   insertInvoice(invoice) {
     return axios.put(
-      "/insertInvoicefromInvoices",
+      "https://ibs-dev-app.herokuapp.com/insertInvoicefromInvoices",
       invoice
     );
   }
   updateItemQuantity(arrayOfQuantityUpdate) {
     return axios.put(
-      "/updateitemquantity",
+      "https://ibs-dev-app.herokuapp.com/updateitemquantity",
       arrayOfQuantityUpdate
     );
   }
@@ -101,7 +101,7 @@ class UserService {
   updateInventoryAndSellingPriceData(details) {
     console.log(details);
     return axios.put(
-      "/updateInventoryAndSellingPrice",
+      "https://ibs-dev-app.herokuapp.com/updateInventoryAndSellingPrice",
       details
     );
   }
@@ -109,7 +109,7 @@ class UserService {
     console.log(startDate);
     console.log(endDate);
     return axios.get(
-      "/getPurchaseReport?startDate=" +
+      "https://ibs-dev-app.herokuapp.com/getPurchaseReport?startDate=" +
         startDate +
         "&endDate=" +
         endDate
@@ -119,7 +119,7 @@ class UserService {
     console.log(startDate);
     console.log(endDate);
     return axios.get(
-      "/getSalesReport?startDate=" +
+      "https://ibs-dev-app.herokuapp.com/getSalesReport?startDate=" +
         startDate +
         "&endDate=" +
         endDate
@@ -127,24 +127,24 @@ class UserService {
   }
 
   registerEmployee(empDetails) {
-    return axios.put("/registerEmployee", empDetails);
+    return axios.put("https://ibs-dev-app.herokuapp.com/registerEmployee", empDetails);
   }
 
   getEmployeeDetails(empId) {
-    return axios.get("/getEmployeeDetails?empId=" + empId);
+    return axios.get("https://ibs-dev-app.herokuapp.com/getEmployeeDetails?empId=" + empId);
   }
 
   updateEmployeeDetails(empDetails) {
-    return axios.put("/updateEmployeeDetails", empDetails);
+    return axios.put("https://ibs-dev-app.herokuapp.com/updateEmployeeDetails", empDetails);
   }
 
   getListOfEmployees() {
-    return axios.get("/getListOfEmployees");
+    return axios.get("https://ibs-dev-app.herokuapp.com/getListOfEmployees");
   }
 
   login(empId, password) {
     return axios.get(
-      "/login?empId=" + empId + "&password=" + password
+      "https://ibs-dev-app.herokuapp.com/login?empId=" + empId + "&password=" + password
     );
   }
 }
