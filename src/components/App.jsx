@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,7 +11,6 @@ import "../styles.css";
 import LoginPage from "../pages/LoginPage";
 import InventoryPage from "../pages/InventoryPage";
 import BillingPage from "../pages/BillingPage";
-import LogoutPage from "../pages/LogoutPage";
 import MonitoringPage from "../pages/MonitoringPage";
 import ProtectedRoute from "../auth-directory/ProtectedRoute";
 import HomePage from "../pages/HomePage";
@@ -20,6 +19,7 @@ import Alert from "react-s-alert";
 import "react-s-alert/dist/s-alert-default.css";
 import "react-s-alert/dist/s-alert-css-effects/slide.css";
 import RegisterPage from "../pages/RegisterPage";
+import Invoice from "./billing-components/Invoice";
 
 function App() {
   return (
@@ -33,12 +33,33 @@ function App() {
           <ProtectedRoute exact path="/inventory" component={InventoryPage} />
           <ProtectedRoute exact path="/billing" component={BillingPage} />
           <ProtectedRoute exact path="/monitoring" component={MonitoringPage} />
-          <ProtectedRoute exact path="/monitoring/checkinventory" component={MonitoringPage} />
-          <ProtectedRoute exact path="/monitoring/updateinventory" component={MonitoringPage} />
-          <ProtectedRoute exact path="/monitoring/generatereport" component={MonitoringPage} />
-          <ProtectedRoute exact path="/monitoring/checkemployees" component={MonitoringPage} />
-          <ProtectedRoute exact path="/monitoring/manageemployees" component={MonitoringPage} />
-          <Route exact path="/logout" component={LogoutPage} />
+          <ProtectedRoute
+            exact
+            path="/monitoring/checkinventory"
+            component={MonitoringPage}
+          />
+          <ProtectedRoute
+            exact
+            path="/monitoring/updateinventory"
+            component={MonitoringPage}
+          />
+          <ProtectedRoute
+            exact
+            path="/monitoring/generatereport"
+            component={MonitoringPage}
+          />
+          <ProtectedRoute
+            exact
+            path="/monitoring/checkemployees"
+            component={MonitoringPage}
+          />
+          <ProtectedRoute
+            exact
+            path="/monitoring/manageemployees"
+            component={MonitoringPage}
+          />
+          <ProtectedRoute exact path="/invoice" component={Invoice} />
+          <ProtectedRoute exact path="/logout" component={HomePage} />
           <ProtectedRoute exact path="/test" component={TestForm} />
           <Route exact path="/404" component={PageNotFound} />
           <Redirect to="/404" />

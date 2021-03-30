@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
 import VerticalNavbar from "../components/general-components/VerticalNavbar";
 import RtdBar from "../components/inv-components/RtdBar";
 import SupplierForm from "../components/inv-components/SupplierForm";
@@ -8,6 +7,8 @@ import InvForm from "../components/inv-components/InvForm";
 import MainButton from "../components/inv-components/MainButton";
 import InvTable from "../components/inv-components/InvTable";
 import TotalTable from "../components/inv-components/TotalTable";
+import Footer from "../components/general-components/Footer";
+import Header from "../components/general-components/Header";
 function InventoryPage() {
   const [tableRows, setTableRows] = useState([]);
 
@@ -43,7 +44,7 @@ function InventoryPage() {
 
   return (
     <div>
-      <HorizontalNavbar userName="User" />
+      <Header />
       <VerticalNavbar />
       <RtdBar
         totalNoOfItems={rtd.totalNoOfItems}
@@ -54,6 +55,7 @@ function InventoryPage() {
       <InvTable tableRows={tableRows} />
       <TotalTable />
       <MainButton />
+      <Footer />
     </div>
   );
 }

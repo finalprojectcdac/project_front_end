@@ -1,5 +1,4 @@
 import React from "react";
-import * as ReactBootStrap from "react-bootstrap";
 import { sumOfQuantity, totalAmount } from "./BillForm";
 
 function TotalTable() {
@@ -14,7 +13,7 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Quantity: {sumOfQuantity} nos.
+            Total Quantity: {localStorage.getItem("sumOfQuantity")} nos.
           </span>
         </h4>
       </div>
@@ -27,23 +26,11 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Amout: ₹ {totalAmount.toFixed(2)}
+            Total Amout: ₹ {localStorage.getItem("totalAmount")}
           </span>
         </h4>
       </div>
     </div>
-    //     <div className="total-table" style={{top:"1090px"}}>
-    //         <ReactBootStrap.Table striped bordered className="table-sm">
-    //             <thead className="thead-dark">
-    //                 <tr>
-    //                     <th style={{width:"730px"}}>GRAND TOTAL</th>
-    //                     <th style={{width:"112px"}}>{sumOfQuantity}</th>
-    //                     <th style={{width:"122px"}}></th>
-    //                     <th>{totalAmount}</th>
-    //                 </tr>
-    //             </thead>
-    //         </ReactBootStrap.Table>
-    //   </div>
   );
 }
 

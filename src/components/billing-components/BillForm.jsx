@@ -203,6 +203,8 @@ function BillForm(props) {
         ); //adds the total value and shows it below the table
         break;
       }
+      localStorage.setItem("sumOfQuantity", sumOfQuantity);
+      localStorage.setItem("totalAmount", totalAmount);
       Alert.success("Item added to the table!")
     } else if (details.quantity === "" || details.quantity === 0) {
       Alert.error("Please enter the quantity!");
