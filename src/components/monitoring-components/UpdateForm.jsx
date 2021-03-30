@@ -129,6 +129,7 @@ function UpdateForm() {
         unit_price: "",
         selling_price: "",
       });
+      window.location.reload();
     } else {
       Alert.error("Fields are empty!");
     }

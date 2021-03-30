@@ -1,51 +1,42 @@
 import React from "react";
-import { Route, Redirect, useHistory } from "react-router-dom";
-import auth from "../auth-directory/auth";
+import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
 import Alert from "react-s-alert";
 
 function ProtectedRoute({ component: Component, path: path, ...rest }) {
   const history = useHistory();
+  const isPrivileged = localStorage.getItem("isAdmin");
+  const isAuthenticated = localStorage.getItem("isAuthenticated");
   if (path === "/monitoring") {
-    if (auth.isPrivileged()) {
+    if (isPrivileged) {
       return (
         <Route
           {...rest}
           render={() => {
-            if (auth.isAuthenticated()) {
+            if (isAuthenticated) {
               return <Component />;
             } else {
-              return <Redirect to="/login" />;
+              return <Redirect to="/" />;
             }
           }}
         />
       );
+    } else if (!isAuthenticated) {
+      return <Redirect to="/" />;
     } else {
       Alert.error(
         "You do not have administrator rights. Please login as administrator!"
       );
-      return <Redirect to={history.goBack(-1)} />;
-      // if (path === "/inventory") {
-      //   Alert.error(
-      //     "You do not have administrator rights. Please login as administrator!"
-      //   );
-      //   return <Redirect to="/inventory" />;
-      // } else if (path === "/billing") {
-      //   Alert.error(
-      //     "You do not have administrator rights. Please login as administrator!"
-      //   );
-      //   return <Redirect to="/billing" />;
-      // }
+      return <Redirect to={history.goBack()} />;
     }
   } else {
     return (
       <Route
         {...rest}
         render={() => {
-          if (auth.isAuthenticated()) {
-            console.log("hello");
+          if (isAuthenticated) {
             return <Component />;
           } else {
-            return <Redirect to="/login" />;
+            return <Redirect to="/" />;
           }
         }}
       />

@@ -1,12 +1,14 @@
 import React from "react";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
+import Header from "../components/general-components/Header";
 import Register from "../components/login-components/Register";
+import Footer from "../components/general-components/Footer";
 
 function RegisterPage() {
   return (
     <div>
-      <HorizontalNavbar />
+      <Header />
       <Register />
+      <Footer />
     </div>
   );
 }

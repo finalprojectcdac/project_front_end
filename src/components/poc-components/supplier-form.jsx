@@ -1,6 +1,7 @@
 import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 function supplier_from(){
 
   return (<div className="supplier-form crd">
