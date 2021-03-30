@@ -6,7 +6,7 @@ import Alert from "react-s-alert";
 function Register() {
   const [empDetails, setEmpDetails] = useState({
     empId: "",
-    name:"",
+    name: "",
     email: "",
     password: "",
     privilege: "",
@@ -25,29 +25,45 @@ function Register() {
   }
 
   function handleRegister() {
+    let isAlreadyRegistered = false;
     if (
       empDetails.name !== "" &&
       empDetails.email !== "" &&
       empDetails.password !== "" &&
       confirmPassword !== ""
     ) {
-      if (confirmPassword === empDetails.password) {
-        user.registerEmployee(empDetails).then((resp) => {
-          const { status, reason } = resp.data;
-          console.log(status);
-          console.log(reason);
-        });
-        setEmpDetails({
-          empId: "",
-          name:"",
-          email: "",
-          password: "",
-          privilege: "",
-        });
-        setConfirmPassword("");
-      } else {
-        Alert.error("Passwords don't match!");
-      }
+      user.getListOfEmployees().then((resp) => {
+        for (let i = 0; i < resp.data.empList.length; i++) {
+          if (resp.data.empList[i].email === empDetails.email) {
+            isAlreadyRegistered = true;
+            break;
+          }
+        }
+        console.log(isAlreadyRegistered);
+
+        if (isAlreadyRegistered) {
+          Alert.error("This email ID is already in use!");
+        } else {
+          console.log(isAlreadyRegistered);
+          if (confirmPassword === empDetails.password) {
+            user.registerEmployee(empDetails).then((resp) => {
+              const { status, reason } = resp.data;
+              console.log(status);
+              console.log(reason);
+            });
+            setEmpDetails({
+              empId: "",
+              name: "",
+              email: "",
+              password: "",
+              privilege: "",
+            });
+            setConfirmPassword("");
+          } else {
+            Alert.error("Passwords don't match!");
+          }
+        }
+      });
     } else {
       Alert.error("All fields are required!");
     }

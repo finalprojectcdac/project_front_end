@@ -8,6 +8,7 @@ import user from "../service/serviceLayer";
 import TotalTable from "../components/billing-components/TotalTable";
 import RtdBar from "../components/billing-components/RtdBar";
 import MainButton from "../components/billing-components/MainButton";
+import Invoice from "../components/billing-components/Invoice";
 
 function BillingPage() {
   const [tableRows, setTableRows] = useState([]);
@@ -26,10 +27,17 @@ function BillingPage() {
       user.getItemDetailsForSale(item_code).then((resp) => {
         const status = resp.data.status;
         if (status === 1) {
-          setQuantityAndPrice({
-            availableQuantity: resp.data.bo.quantity + " nos.",
-            itemPrice: "₹ " + resp.data.bo.selling_price,
-          });
+          if (resp.data.bo.selling_price !== -1) {
+            setQuantityAndPrice({
+              availableQuantity: resp.data.bo.quantity + " nos.",
+              itemPrice: "₹ " + resp.data.bo.selling_price,
+            });
+          } else {
+            setQuantityAndPrice({
+              availableQuantity: resp.data.bo.quantity + " nos.",
+              itemPrice: "-",
+            });
+          }
         } else {
           setQuantityAndPrice({
             availableQuantity: resp.data.bo.quantity + " nos.",

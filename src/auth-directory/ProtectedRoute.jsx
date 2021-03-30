@@ -20,7 +20,7 @@ function ProtectedRoute({ component: Component, path: path, ...rest }) {
           }}
         />
       );
-    }else if(!isAuthenticated) {
+    } else if (!isAuthenticated) {
       return <Redirect to="/login" />;
     } else {
       Alert.error(

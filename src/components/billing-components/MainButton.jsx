@@ -8,6 +8,7 @@ import {
 } from "./BillForm";
 import { invoice } from "./CustomerForm";
 import Alert from "react-s-alert";
+import { useHistory } from "react-router-dom";
 
 function checkAll() {
   console.log("invoices details:");
@@ -17,6 +18,7 @@ function checkAll() {
   console.log(totalAmount <= invoice.invoice_value);
 }
 function MainButton() {
+  const history = useHistory();
   function handleSave(event) {
     if (invoice.mobile_no != "" && invoice.customer_name != "") {
       if (totalAmount == 0) {
@@ -36,6 +38,7 @@ function MainButton() {
         Alert.success(
           "Bill no. " + invoice.invoice_no + " generated successfully!"
         );
+        history.push("/invoice");
       }
       //event.preventDefault();
       else {

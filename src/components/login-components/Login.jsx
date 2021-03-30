@@ -3,8 +3,9 @@ import auth from "../../auth-directory/auth";
 import { Link, useHistory } from "react-router-dom";
 import user from "../../service/serviceLayer";
 import Alert from "react-s-alert";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-function Login() {
+function Login(props) {
   let history = useHistory();
   const [loginDetails, setLoginDetails] = useState({
     username: "",
@@ -24,21 +25,23 @@ function Login() {
         const status = resp.data.status;
         console.log(status);
         if (status === 1) {
-          const { privilege } = resp.data.employee;
+          const { name, privilege } = resp.data.employee;
           if (privilege === "ADMIN") {
+            auth.setUser(name);
             auth.setAdmin();
             const a = auth.isPrivileged();
             console.log(a);
             auth.login(() => {
               history.push("/welcome");
             });
-            Alert.success("Logged in successfully!!");
+            Alert.success("Successfully logged in!");
           } else if (privilege === "LIMITED USER") {
+            auth.setUser(name);
             auth.unsetAdmin();
-            console.log("hello");
             auth.login(() => {
               history.push("/welcome");
             });
+            Alert.success("Successfully logged in!");
           } else {
             Alert.error("Not approved for login yet. Contact administrator!");
           }

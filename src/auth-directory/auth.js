@@ -2,6 +2,7 @@ class Auth {
   constructor() {
     this.authenticated = false;
     this.admin = false;
+    this.user = "";
   }
 
   login(cb) {
@@ -32,6 +33,16 @@ class Auth {
 
   isPrivileged() {
     return this.admin;
+  }
+
+  setUser(username) {
+    this.user = username;
+    localStorage.setItem("user", username);
+  }
+
+  unsetUser() {
+    this.user = "";
+    localStorage.removeItem("user");
   }
 }
 

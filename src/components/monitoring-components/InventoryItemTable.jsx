@@ -8,7 +8,7 @@ function InventoryItemTable(props) {
   const renderTableColoumn = (tableRows, index) => {
     function checkPrice(selling_price) {
       if (selling_price >= 0) {
-        return selling_price;
+        return <span>₹ {selling_price}</span>;
       } else {
         return "NOT SET";
       }
@@ -22,7 +22,7 @@ function InventoryItemTable(props) {
         <td>{tableRows.quantity}</td>
         <td>{tableRows.unit_measurement}</td>
         <td>₹ {tableRows.unit_price}</td>
-        <td>₹ {checkPrice(tableRows.selling_price)}</td>
+        <td>{checkPrice(tableRows.selling_price)}</td>
       </tr>
     );
   };

@@ -9,15 +9,10 @@ import UpdateForm from "../components/monitoring-components/UpdateForm";
 import UserTable from "../components/monitoring-components/employee-components/UserTable";
 import SetEmployeeForm from "../components/monitoring-components/employee-components/SetEmployeeForm";
 import Options from "../components/monitoring-components/Options";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 function MonitoringPage() {
   useEffect(getRealTimeData, []);
-  useEffect(getArrayOfBillingObject, []);
   useEffect(getArrayOfEmpObject, []);
 
   const [rtd, setRtd] = useState({
@@ -27,10 +22,14 @@ function MonitoringPage() {
 
   const [arrayOfBillingObject, setArrayOfBillingObject] = useState([]);
   const [arrayOfEmpObject, setArrayOfEmpObject] = useState([]);
+  useEffect(() => {
+    getArrayOfBillingObject();
+  }, []);
 
   function getArrayOfBillingObject() {
     user.getArrayOfBillingObject().then((resp) => {
       if (resp.data.status === 1) {
+        console.log(resp.data.status);
         setArrayOfBillingObject(resp.data.billingObjList);
       }
     });

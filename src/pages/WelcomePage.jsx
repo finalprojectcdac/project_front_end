@@ -1,10 +1,12 @@
-import React from 'react';
-import Welcome from '../components/login-components/Welcome';
+import React from "react";
+import Welcome from "../components/login-components/Welcome";
 
 function WelcomePage() {
-    return <div>
-        <Welcome />
+  return (
+    <div>
+      <Welcome />
     </div>
+  );
 }
 
 export default WelcomePage;
