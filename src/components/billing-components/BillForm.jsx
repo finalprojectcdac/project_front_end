@@ -319,4 +319,8 @@ export {
   arrayOfQuantityUpdate,
   sumOfQuantity,
   totalAmount,
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 89eb719aeb854266e488b8e559f3f4bc170e1e73
 };
