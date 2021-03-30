@@ -89,13 +89,7 @@ function SupplierForm() {
 
   function handleRemove() {
     setFieldDisabled(false);
-    setDetails({
-      supplier_name: "",
-      supplier_code: "",
-      supplier_invoice_number: "",
-      supplier_invoice_value: "",
-      purchase_date: "",
-    });
+    
   }
 
   function handleBlur(event) {

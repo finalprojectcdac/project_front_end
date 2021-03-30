@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import user from "../../service/serviceLayer";
 import { totalAmount } from "./BillForm";
 import { Link } from "react-router-dom";
+import Alert from "react-s-alert";
 
 let invoice = {
   invoice_no: "",
@@ -94,6 +95,7 @@ function CustomerForm(props) {
       email_id: customerDetails.email_id,
       billing_date: customerDetails.billing_date,
     };
+    Alert.success("₹"+customerDetails.invoice_value + " from "+ customerDetails.customer_name+" received")
   }
 
   //check function for debuging purpose
