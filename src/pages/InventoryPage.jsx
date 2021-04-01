@@ -9,8 +9,13 @@ import InvTable from "../components/inv-components/InvTable";
 import TotalTable from "../components/inv-components/TotalTable";
 import Footer from "../components/general-components/Footer";
 import Header from "../components/general-components/Header";
+
 function InventoryPage() {
   const [tableRows, setTableRows] = useState([]);
+  const [totalQuantityAndAmount, setTotalQuantityAndAmount] = useState({
+    totalQuantity: 0,
+    totalAmount: 0,
+  });
 
   const [rtd, setRtd] = useState({
     totalNoOfItems: "",
@@ -22,23 +27,48 @@ function InventoryPage() {
   function getRealTimeData() {
     user.getRealTimeData().then((resp) => {
       const { totalNoOfItems, totalItemValue } = resp.data.rtd;
-      if(totalNoOfItems === 0) {
+      if (totalNoOfItems === 0) {
         setRtd({
           totalNoOfItems: "-",
-          totalItemValue: "-"
-        })
-      } else{
-      setRtd({
-        totalNoOfItems: totalNoOfItems + " ITEM(S)",
-        totalItemValue: "₹ " + totalItemValue,
-      });
-    }
+          totalItemValue: "-",
+        });
+      } else {
+        setRtd({
+          totalNoOfItems: totalNoOfItems + " ITEM(S)",
+          totalItemValue: "₹ " + totalItemValue,
+        });
+      }
     });
   }
 
   function addRow(details) {
     setTableRows((prevRows) => {
       return [...prevRows, details];
+    });
+    setTotalQuantityAndAmount((prevValues) => {
+      return {
+        totalAmount:
+          parseFloat(prevValues.totalAmount) + parseFloat(details.total_value),
+        totalQuantity:
+          parseInt(prevValues.totalQuantity) + parseInt(details.quantity),
+      };
+    });
+  }
+
+  function deleteRow(id) {
+    setTableRows((prevRows) => {
+      return prevRows.filter((tableRows, index) => {
+        return index !== id;
+      });
+    });
+    setTotalQuantityAndAmount((prevValues) => {
+      return {
+        totalAmount:
+          parseFloat(prevValues.totalAmount) -
+          parseFloat(tableRows[id].total_value),
+        totalQuantity:
+          parseInt(prevValues.totalQuantity) - parseInt(tableRows[id].quantity),
+      };
     });
   }
 
@@ -52,9 +82,12 @@ function InventoryPage() {
       />
       <SupplierForm />
       <InvForm onAdd={addRow} />
-      <InvTable tableRows={tableRows} />
-      <TotalTable />
-      <MainButton />
+      <InvTable tableRows={tableRows} onDelete={deleteRow} />
+      <TotalTable
+        sumOfQuantity={totalQuantityAndAmount.totalQuantity}
+        totalAmount={totalQuantityAndAmount.totalAmount}
+      />
+      <MainButton totalAmount={totalQuantityAndAmount.totalAmount} />
       <Footer />
     </div>
   );

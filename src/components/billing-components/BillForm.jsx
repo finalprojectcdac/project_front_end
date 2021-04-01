@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import user from "../../service/serviceLayer";
 import Alert from "react-s-alert";
 
-let sumOfQuantity = 0;
-let totalAmount = 0;
 const itemsSoldList = [];
 let arrayOfItemSaleObjects = [];
 let arrayOfQuantityUpdate = [];
 
 function BillForm(props) {
-  const [details, setDetails] = useState({//conatins billing obj
+  const [details, setDetails] = useState({
+    //conatins billing obj
     invoice_no: props.billNo,
     item_code: "",
     brand: "",
@@ -19,7 +18,8 @@ function BillForm(props) {
     selling_price: "",
   });
 
-  const [updateObject, setUpdateObject] = useState({//contains item code and quantity
+  const [updateObject, setUpdateObject] = useState({
+    //contains item code and quantity
     item_code: "",
     quantity: "",
   });
@@ -27,20 +27,19 @@ function BillForm(props) {
   const [isFound, setIsFound] = useState(true); //to enable and disable the quantity field
   const [disableAddButton, setDisableAddButton] = useState(true);
 
-  function checkAllObj() {
-    console.log("checking of variable will be done here");
-    console.log("item sold list:-");
-    console.log(itemsSoldList);
-    console.log("Array of ItemSale Object:");
-    console.log(arrayOfItemSaleObjects);
-    console.log("Array of Quantity Object:");
-    console.log(arrayOfQuantityUpdate);
-    console.log("Details Object:");
-    console.log(details);
-    console.log("updateQuantity Object:");
-    console.log(updateObject);
-    
-  }
+  // function checkAllObj() {
+  //   console.log("checking of variable will be done here");
+  //   console.log("item sold list:-");
+  //   console.log(itemsSoldList);
+  //   console.log("Array of ItemSale Object:");
+  //   console.log(arrayOfItemSaleObjects);
+  //   console.log("Array of Quantity Object:");
+  //   console.log(arrayOfQuantityUpdate);
+  //   console.log("Details Object:");
+  //   console.log(details);
+  //   console.log("updateQuantity Object:");
+  //   console.log(updateObject);
+  // }
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -112,11 +111,9 @@ function BillForm(props) {
             if (itemsSoldList[i].item_code === details.item_code) {
               setUpdateObject({
                 item_code: item_code,
-                quantity: quantity-itemsSoldList[i].quantity
-              });         
+                quantity: quantity - itemsSoldList[i].quantity,
+              });
             }
-
-    
           }
         }
       } else if (status === 2) {
@@ -154,16 +151,13 @@ function BillForm(props) {
     if (item_code !== "") {
       console.log("blur called with item_code: " + item_code);
       getItemDetailsForSale(item_code);
-      props.getQuantityAndPrice(item_code);//setting up the Quantity and Price card.
-
-
-
+      props.getQuantityAndPrice(item_code); //setting up the Quantity and Price card.
     }
   }
   //check function for debuging purpose
-  
+
   function handleAdd(event) {
-    if (updateObject.quantity >= details.quantity && details.quantity > 0) {
+    if (details.quantity <= updateObject.quantity && details.quantity > 0) {
       arrayOfQuantityUpdate.push({
         item_code: details.item_code,
         quantity: updateObject.quantity - details.quantity,
@@ -196,17 +190,17 @@ function BillForm(props) {
         selling_price: "",
       }); //to make the fields of billForm empty
 
-      for (let i = itemsSoldList.length - 1; i < itemsSoldList.length; i++) {
-        sumOfQuantity += parseInt(itemsSoldList[i].quantity); //adds the total quantity and shows it below the table
-        totalAmount += parseFloat(
-          itemsSoldList[i].quantity * itemsSoldList[i].selling_price
-        ); //adds the total value and shows it below the table
-        break;
-      }
-      localStorage.setItem("sumOfQuantity", sumOfQuantity);
-      localStorage.setItem("totalAmount", totalAmount);
-      Alert.success("Item added to the table!")
-    } else if (details.quantity === "" || details.quantity === 0) {
+      // for (let i = itemsSoldList.length - 1; i < itemsSoldList.length; i++) {
+      //   sumOfQuantity += parseInt(itemsSoldList[i].quantity); //adds the total quantity and shows it below the table
+      //   totalAmount += parseFloat(
+      //     itemsSoldList[i].quantity * itemsSoldList[i].selling_price
+      //   ); //adds the total value and shows it below the table
+      //   break;
+      // }
+      // localStorage.setItem("sumOfQuantity", sumOfQuantity);
+      // localStorage.setItem("totalAmount", totalAmount);
+      Alert.success("Item added to the table!");
+    } else if (details.quantity === 0 || details.quantity === "") {
       Alert.error("Please enter the quantity!");
     } else {
       Alert.error("Entered quantity exceeds the quantity available in store!");
@@ -239,7 +233,7 @@ function BillForm(props) {
               id="bill_no"
               placeholder="Bill No."
               name="bill_no"
-             // onChange={handleChange}
+              // onChange={handleChange}
               value={props.billNo}
               disabled
             />
@@ -287,7 +281,7 @@ function BillForm(props) {
           </div>
         </div>
       </form>
-      <div style={{ paddingLeft: "840px", paddingBottom: "20px" }}>
+      <div style={{ paddingLeft: "890px", paddingBottom: "20px" }}>
         <button
           class="btn btn-success btn-inv"
           type="submit"
@@ -297,27 +291,20 @@ function BillForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        <button
+        {/* <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
-        </button> 
-        <button class="btn btn-inv btn-danger" type="submit">
+        </button>  */}
+        {/* <button class="btn btn-inv btn-danger" type="submit">
           REMOVE
-        </button>
+        </button> */}
       </div>
     </div>
   );
 }
 
 export default BillForm;
-export {
-  arrayOfItemSaleObjects,
-  itemsSoldList,
-  arrayOfQuantityUpdate,
-  sumOfQuantity,
-  totalAmount,
-  
-};
+export { arrayOfItemSaleObjects, itemsSoldList, arrayOfQuantityUpdate };

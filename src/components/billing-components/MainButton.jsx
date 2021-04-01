@@ -1,33 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from "../../service/serviceLayer";
 import {
   arrayOfItemSaleObjects,
   arrayOfQuantityUpdate,
-  totalAmount,
 } from "./BillForm";
 import { invoice } from "./CustomerForm";
 import Alert from "react-s-alert";
-import { useHistory } from "react-router-dom";
 
-function checkAll() {
-  console.log("invoices details:");
-  console.log(invoice.mobile_no != "");
-  console.log("Total Amount:");
-  console.log(totalAmount);
-  console.log(totalAmount <= invoice.invoice_value);
-}
-function MainButton() {
-  const history = useHistory();
+// function checkAll() {
+//   console.log("invoices details:");
+//   console.log(invoice.mobile_no !== "");
+//   console.log("Total Amount:");
+//   // console.log(props.totalAmount);
+//   // console.log(props.totalAmount <= invoice.invoice_value);
+// }
+function MainButton(props) {
   function handleSave(event) {
-    if (invoice.mobile_no != "" && invoice.customer_name != "") {
-      if (totalAmount == 0) {
+    if (invoice.mobile_no !== "" && invoice.customer_name !== "") {
+      if (props.totalAmount === 0) {
         Alert.error("Error! No items in the table!");
         event.preventDefault();
-      } else if (invoice.invoice_value == 0) {
+      } else if (invoice.invoice_value === 0) {
         Alert.error("Please enter the amount received from the customer!");
         event.preventDefault();
-      } else if (totalAmount <= invoice.invoice_value) {
+      } else if (props.totalAmount <= invoice.invoice_value) {
         //console.log(arrayOfQuantityUpdate);
         const x = user.insertListOfItems(arrayOfItemSaleObjects);
         const y = user.insertInvoice(invoice);
@@ -38,7 +35,8 @@ function MainButton() {
         Alert.success(
           "Bill no. " + invoice.invoice_no + " generated successfully!"
         );
-        history.push("/invoice");
+        event.preventDefault();
+        // history.push("/invoice");
       }
       //event.preventDefault();
       else {

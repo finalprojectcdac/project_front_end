@@ -6,16 +6,15 @@ import {
   inventoryDetails,
   prvQuantityDetails,
   retailDataArray,
-  totalAmount,
 } from "./InvForm";
 import Alert from "react-s-alert";
 
-function MainButton() {
+function MainButton(props) {
   var count = 0;
   function matchQuantityandValue() {
     for (var i = 0; i < inventoryDetails.length; i++) {
       for (var j = 0; j < prvQuantityDetails.length; j++) {
-        if (inventoryDetails[i].item_code == prvQuantityDetails[j].item_code) {
+        if (inventoryDetails[i].item_code === prvQuantityDetails[j].item_code) {
           inventoryDetails[i].quantity =
             parseInt(inventoryDetails[i].quantity) +
             parseInt(prvQuantityDetails[j].quantity);
@@ -41,17 +40,17 @@ function MainButton() {
     console.log("////////////");
     console.log(supplierObj.supplier_invoice_value);
     console.log(parseInt(supplierObj.supplier_invoice_value));
-    console.log(parseInt(totalAmount));
+    console.log(parseFloat(props.totalAmount));
   }
   function handleSave(event) {
     if (supplierObj.supplier_invoice_value === undefined) {
       Alert.error("Error!! Supplier Details are empty!");
       event.preventDefault();
-    } else if (parseInt(totalAmount) == 0) {
+    } else if (parseFloat(props.totalAmount) === 0) {
       Alert.error("Error!! Inventory Table is empty!");
       event.preventDefault();
     } else if (
-      parseInt(totalAmount) === parseInt(supplierObj.supplier_invoice_value)
+      parseFloat(props.totalAmount) === parseFloat(supplierObj.supplier_invoice_value)
     ) {
       matchQuantityandValue();
       //inser retail price data

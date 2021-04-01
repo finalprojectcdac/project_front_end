@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import auth from "../../auth-directory/auth";
 import UserProfile from "../general-components/UserProfile";
 import Alert from "react-s-alert";
@@ -19,9 +19,15 @@ function Header() {
     <div>
       <nav className="navbar">
         <div className="navbar-logo">
-          IBS <i className="fab fa-typo3"></i>
+          <Link
+            to="/welcome"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            IBS <i className="fab fa-typo3"></i>
+          </Link>
         </div>
       </nav>
+
       <span
         style={{
           position: "absolute",

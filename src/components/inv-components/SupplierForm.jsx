@@ -18,7 +18,7 @@ function SupplierForm() {
 
   function handleChange(event) {
     const { name, value } = event.target;
-    if (name === "supplier_name" && value == "") {
+    if (name === "supplier_name" && value === "") {
       setDetails({
         supplier_name: "",
         supplier_code: "",
