@@ -7,6 +7,7 @@ import {
 } from "./BillForm";
 import { invoice } from "./CustomerForm";
 import Alert from "react-s-alert";
+import {useHistory} from "react-router-dom";
 
 // function checkAll() {
 //   console.log("invoices details:");
@@ -16,6 +17,7 @@ import Alert from "react-s-alert";
 //   // console.log(props.totalAmount <= invoice.invoice_value);
 // }
 function MainButton(props) {
+  const history = useHistory();
   function handleSave(event) {
     if (invoice.mobile_no !== "" && invoice.customer_name !== "") {
       if (props.totalAmount === 0) {
@@ -35,10 +37,10 @@ function MainButton(props) {
         Alert.success(
           "Bill no. " + invoice.invoice_no + " generated successfully!"
         );
+        history.push("/invoice");
         event.preventDefault();
-        // history.push("/invoice");
       }
-      //event.preventDefault();
+      // event.preventDefault();
       else {
         Alert.error("Amount received is less than the total bill value!");
         event.preventDefault();

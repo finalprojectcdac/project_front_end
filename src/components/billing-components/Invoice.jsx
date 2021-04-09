@@ -103,7 +103,7 @@ function Invoice() {
           </div>
         </div>
       </div>
-      <div style={{ position: "relative", left: "350px" }}>
+      <div style={{ position: "absolute", left: "435px" }}>
         <button
           style={{ width: "150px", margin: "40px" }}
           className="btn btn-success btn-inv"
@@ -116,19 +116,16 @@ function Invoice() {
           Print Bill
         </button>
         <button
-          style={{ width: "150px", margin: "40px" }}
+          style={{ width: "150px", left: "-20px" }}
           className="btn btn-success btn-inv"
           onClick={() => {
             localStorage.removeItem("totalAmount");
             localStorage.removeItem("sumOfQuantity");
+            window.location.replace("/billing");
+            window.history.pushState("");
           }}
         >
-          <Link
-            to="/billing"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            New Bill
-          </Link>
+          New Bill
         </button>
       </div>
     </div>

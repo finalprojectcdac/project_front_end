@@ -11,7 +11,7 @@ function BillTable(props) {
         <th scope="row">{index + 1}</th>
         <td>{tableRows.item_name}</td>
         <td>
-          <button className="btn btn-sm btn-danger" style={{position:"relative", left:"-20px"}}>
+          {/* <button className="btn btn-sm btn-danger" style={{position:"relative", left:"-20px"}}>
             <p
               style={{
                 fontSize: "27px",
@@ -22,9 +22,9 @@ function BillTable(props) {
             >
               -
             </p>
-          </button>
+          </button> */}
           {tableRows.quantity}
-          <button className="btn btn-sm btn-success" style={{position:"relative", left:"20px"}}>
+          {/* <button className="btn btn-sm btn-success" style={{position:"relative", left:"20px"}}>
             <p
               style={{
                 fontSize: "27px",
@@ -35,7 +35,7 @@ function BillTable(props) {
             >
               +
             </p>
-          </button>
+          </button> */}
         </td>
         <td>{tableRows.selling_price}</td>
         <td>{(tableRows.quantity * tableRows.selling_price).toFixed(2)}</td>
