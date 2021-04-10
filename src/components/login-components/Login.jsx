@@ -3,7 +3,6 @@ import auth from "../../auth-directory/auth";
 import { Link, useHistory } from "react-router-dom";
 import user from "../../service/serviceLayer";
 import Alert from "react-s-alert";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 function Login(props) {
   let history = useHistory();

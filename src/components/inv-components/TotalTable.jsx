@@ -1,8 +1,6 @@
 import React from "react";
-import * as ReactBootStrap from "react-bootstrap";
-import { sumOfQuantity, totalAmount } from "./InvForm";
 
-function TotalTable() {
+function TotalTable(props) {
   return (
     <div>
       <div
@@ -14,7 +12,7 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Quantity: {sumOfQuantity} nos.
+            Total Quantity: {props.sumOfQuantity} nos.
           </span>
         </h4>
       </div>
@@ -27,7 +25,7 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Amout: ₹ {totalAmount.toFixed(2)}
+            Total Amout: ₹ {props.totalAmount}
           </span>
         </h4>
       </div>

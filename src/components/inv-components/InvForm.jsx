@@ -7,8 +7,6 @@ import Alert from "react-s-alert";
 const inventoryDetails = [];
 const prvQuantityDetails = [];
 const retailDataArray = [];
-let sumOfQuantity = 0;
-let totalAmount = 0;
 //to temporary store the item quantity of fecthed item in store
 function InvForm(props) {
   const [quantitydetails, setquantity] = useState({
@@ -206,18 +204,24 @@ function InvForm(props) {
         item_code: "",
         quantity: "",
       });
-      for (
-        let i = inventoryDetails.length - 1;
-        i < inventoryDetails.length;
-        i++
-      ) {
-        sumOfQuantity += parseInt(inventoryDetails[i].quantity);
-        totalAmount += parseFloat(inventoryDetails[i].total_value);
-        break;
-      }
     }
 
     event.preventDefault();
+  }
+
+  function clearForm() {
+    setDetails({
+      item_code: "",
+      brand: "",
+      item_name: "",
+      unit_measurement: "",
+      stock_entry_date: "",
+      item_category: "",
+      supplier_invoice_no: "",
+      unit_price: "",
+      total_value: "",
+      quantity: "",
+    });
   }
 
   return (
@@ -341,7 +345,7 @@ function InvForm(props) {
           </div>
         </div>
       </form>
-      <div style={{ paddingLeft: "680px", paddingBottom: "20px" }}>
+      <div style={{ paddingLeft: "780px", paddingBottom: "20px" }}>
         <button
           class="btn btn-success btn-inv"
           type="submit"
@@ -350,18 +354,19 @@ function InvForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-        <button
+        {/* <button
           class="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
-        </button>
-        <button class="btn btn-success btn-inv" type="submit">
-          UPDATE
-        </button>
-        <button class="btn btn-inv btn-danger" type="submit">
-          REMOVE
+        </button> */}
+        <button
+          class="btn btn-inv btn-success"
+          type="submit"
+          onClick={clearForm}
+        >
+          CLEAR
         </button>
       </div>
     </div>
@@ -369,10 +374,4 @@ function InvForm(props) {
 }
 
 export default InvForm;
-export {
-  inventoryDetails,
-  retailDataArray,
-  sumOfQuantity,
-  prvQuantityDetails,
-  totalAmount,
-};
+export { inventoryDetails, retailDataArray, prvQuantityDetails };

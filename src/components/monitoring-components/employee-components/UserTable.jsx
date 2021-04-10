@@ -23,7 +23,7 @@ function UserTable(props) {
       <span>
         <p
           className="text-color"
-          style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
+          style={{ textAlign: "center", paddingTop: "10px" }}
         >
           Employee Data
         </p>
