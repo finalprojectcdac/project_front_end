@@ -331,7 +331,7 @@ li a:hover {
   top: 300px;
   padding: 20px 20px;
   margin: auto 200px;
-  height: 530px;
+  height: 545px;
   width: 83%;
   font-weight: 700;
   border-radius: 25px !important;
@@ -340,7 +340,7 @@ li a:hover {
 }
 
 .search-report-open button {
-  bottom: 394px;
+  bottom: 409px;
 }
 
 .search-report-close {
