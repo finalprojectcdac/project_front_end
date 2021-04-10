@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect, useHistory, useLocation } from "react-router-dom";
+import { Route, Redirect, useHistory } from "react-router-dom";
 import Alert from "react-s-alert";
 
 function ProtectedRoute({ component: Component, path: path, ...rest }) {
@@ -11,9 +11,9 @@ function ProtectedRoute({ component: Component, path: path, ...rest }) {
       return (
         <Route
           {...rest}
-          render={() => {
+          render={(props) => {
             if (isAuthenticated) {
-              return <Component />;
+              return <Component {...props} />;
             } else {
               return <Redirect to="/" />;
             }

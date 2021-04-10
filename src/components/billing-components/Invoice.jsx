@@ -1,11 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { itemsSoldList, totalAmount } from "./BillForm";
+import { itemsSoldList } from "./BillForm";
 import { invoice } from "./CustomerForm";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Invoice() {
-  const history = useHistory();
   const tableRows = itemsSoldList;
   console.log(tableRows);
   const renderTableColoumn = (tableRows, index) => {
@@ -27,7 +26,10 @@ function Invoice() {
             <div class="card-body p-0">
               <div class="row p-5">
                 <div class="col-md-6">
-                  <img src="http://via.placeholder.com/400x90?text=logo" />
+                  <img
+                    src="http://via.placeholder.com/400x90?text=logo"
+                    alt=""
+                  />
                 </div>
 
                 <div class="col-md-6 text-right">
@@ -92,14 +94,16 @@ function Invoice() {
               <div class="d-flex flex-row-reverse bg-dark text-white p-4">
                 <div class="py-3 px-5 text-right">
                   <div class="mb-2">Grand Total</div>
-                  <div class="h2 font-weight-light">₹ {totalAmount}</div>
+                  <div class="h2 font-weight-light">
+                    ₹ {localStorage.getItem("totalAmount")}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div style={{ position: "relative", left: "350px" }}>
+      <div style={{ position: "absolute", left: "435px" }}>
         <button
           style={{ width: "150px", margin: "40px" }}
           className="btn btn-success btn-inv"
@@ -112,19 +116,16 @@ function Invoice() {
           Print Bill
         </button>
         <button
-          style={{ width: "150px", margin: "40px" }}
+          style={{ width: "150px", left: "-20px" }}
           className="btn btn-success btn-inv"
           onClick={() => {
             localStorage.removeItem("totalAmount");
             localStorage.removeItem("sumOfQuantity");
+            window.location.replace("/billing");
+            window.history.pushState("");
           }}
         >
-          <Link
-            to="/billing"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            New Bill
-          </Link>
+          New Bill
         </button>
       </div>
     </div>

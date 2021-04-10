@@ -1,7 +1,6 @@
 import React from "react";
-import { sumOfQuantity, totalAmount } from "./BillForm";
 
-function TotalTable() {
+function TotalTable(props) {
   return (
     <div>
       <div
@@ -13,7 +12,8 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Quantity: {localStorage.getItem("sumOfQuantity")} nos.
+            {/* Total Quantity: {localStorage.getItem("sumOfQuantity")} nos. */}
+            Total Quantity: {props.sumOfQuantity} nos.
           </span>
         </h4>
       </div>
@@ -26,7 +26,9 @@ function TotalTable() {
           style={{ paddingTop: "12px" }}
         >
           <span style={{ width: "50px", paddingLeft: "25px" }}>
-            Total Amout: ₹ {localStorage.getItem("totalAmount")}
+            {/* Total Amout: ₹ {localStorage.getItem("totalAmount")} */}
+            Total Amout: ₹ {props.totalAmount}
+            {localStorage.setItem("totalAmount", props.totalAmount)}
           </span>
         </h4>
       </div>

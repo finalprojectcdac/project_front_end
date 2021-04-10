@@ -14,6 +14,16 @@ function InvTable(props) {
         <td>{tableRows.quantity}</td>
         <td>{tableRows.unit_price}</td>
         <td>{(tableRows.quantity * tableRows.unit_price).toFixed(2)}</td>
+        <td>
+          <button
+            className="btn btn-sm btn-danger"
+            onClick={() => {
+              props.onDelete(index);
+            }}
+          >
+            DELETE
+          </button>
+        </td>
       </tr>
     );
   };
@@ -31,11 +41,10 @@ function InvTable(props) {
             <th className="sticky-heading">Quantity</th>
             <th className="sticky-heading">Unit Price</th>
             <th className="sticky-heading">Total Value</th>
+            <th className="sticky-heading">Action</th>
           </tr>
         </thead>
-        <tbody>
-          {tableRows.map(renderTableColoumn)}
-        </tbody>
+        <tbody>{tableRows.map(renderTableColoumn)}</tbody>
       </ReactBootStrap.Table>
     </div>
   );

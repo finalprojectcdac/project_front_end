@@ -12,6 +12,10 @@ import Header from "../components/general-components/Header";
 
 function BillingPage() {
   const [tableRows, setTableRows] = useState([]);
+  const [totalQuantityAndAmount, setTotalQuantityAndAmount] = useState({
+    totalQuantity: 0,
+    totalAmount: 0,
+  });
 
   const [billNo, setBillNo] = useState("");
 
@@ -64,6 +68,36 @@ function BillingPage() {
     setTableRows((prevRows) => {
       return [...prevRows, details];
     }); //Check here, how to update quantity of an item in real time
+    setQuantityAndPrice({
+      availableQuantity: "-",
+      itemPrice: "-",
+    });
+    setTotalQuantityAndAmount((prevValues) => {
+      return {
+        totalAmount:
+          parseFloat(prevValues.totalAmount) +
+          parseFloat(details.quantity * details.selling_price),
+        totalQuantity:
+          parseInt(prevValues.totalQuantity) + parseInt(details.quantity),
+      };
+    });
+  }
+
+  function deleteRow(id) {
+    setTableRows((prevRows) => {
+      return prevRows.filter((tableRows, index) => {
+        return index !== id;
+      });
+    });
+    setTotalQuantityAndAmount((prevValues) => {
+      return {
+        totalAmount:
+          parseFloat(prevValues.totalAmount) -
+          parseFloat(tableRows[id].quantity * tableRows[id].selling_price),
+        totalQuantity:
+          parseInt(prevValues.totalQuantity) - parseInt(tableRows[id].quantity),
+      };
+    });
   }
 
   return (
@@ -79,9 +113,12 @@ function BillingPage() {
         }}
       />
       <CustomerForm billNo={billNo} />
-      <BillTable tableRows={tableRows} />
-      <TotalTable />
-      <MainButton />
+      <BillTable tableRows={tableRows} onDelete={deleteRow} />
+      <TotalTable
+        sumOfQuantity={totalQuantityAndAmount.totalQuantity}
+        totalAmount={totalQuantityAndAmount.totalAmount}
+      />
+      <MainButton totalAmount={totalQuantityAndAmount.totalAmount} />
       <Footer />
     </div>
   );
