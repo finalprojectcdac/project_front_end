@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
+  Redirect, useHistory
 } from "react-router-dom";
 import PageNotFound from "../pages/404Page";
 import TestForm from "./poc-components/TestForm";
@@ -21,7 +21,18 @@ import "react-s-alert/dist/s-alert-css-effects/slide.css";
 import RegisterPage from "../pages/RegisterPage";
 import Invoice from "./billing-components/Invoice";
 
+
 function App() {
+const history1= useHistory(); 
+
+  // if (window.performance) {
+  //   if (performance.navigation.type == 1) {
+  //     return <Redirect to={history1.goBack()} />;
+  //   } else {
+  //     alert("This page is not reloaded");
+  //   }
+  // }
+
   return (
     <div>
       <Router>
@@ -62,6 +73,7 @@ function App() {
           <ProtectedRoute exact path="/logout" component={HomePage} />
           <ProtectedRoute exact path="/test" component={TestForm} />
           <Route exact path="/404" component={PageNotFound} />
+          <Route exact path="/error" component={PageNotFound} />
           <Redirect to="/404" />
         </Switch>
       </Router>
