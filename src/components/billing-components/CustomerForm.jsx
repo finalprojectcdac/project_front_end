@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
+import Alert from "react-s-alert";
 
 let invoice = {
   invoice_no: "",
@@ -18,6 +19,8 @@ function CustomerForm(props) {
     invoice_value: "",
     billing_date: "",
   });
+
+  const [disableAdd, setDisableAdd] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -84,14 +87,35 @@ function CustomerForm(props) {
   }
 
   function handleAdd() {
-    invoice = {
-      invoice_no: props.billNo,
-      mobile_no: customerDetails.mobile_no,
-      customer_name: customerDetails.customer_name,
-      invoice_value: customerDetails.invoice_value,
-      email_id: customerDetails.email_id,
-      billing_date: customerDetails.billing_date,
-    };
+    console.log(props.totalAmount);
+    console.log(customerDetails.invoice_value);
+    if (props.totalAmount !== 0) {
+      if (
+        customerDetails.mobile_no === "" &&
+        customerDetails.customer_name === ""
+      ) {
+        Alert.error("Please enter the mobile no. & name of the customer!");
+      } else if (customerDetails.invoice_value === "") {
+        Alert.error("Please enter the amount received from the customer!");
+      } else if (
+        parseFloat(customerDetails.invoice_value) !== props.totalAmount
+      ) {
+        Alert.error("Amount received does not match the total bill value!");
+      } else {
+        Alert.success("Details recorded successfully!");
+        invoice = {
+          invoice_no: props.billNo,
+          mobile_no: customerDetails.mobile_no,
+          customer_name: customerDetails.customer_name,
+          invoice_value: customerDetails.invoice_value,
+          email_id: customerDetails.email_id,
+          billing_date: customerDetails.billing_date,
+        };
+        setDisableAdd(true);
+      }
+    } else {
+      Alert.error("Error! No items in the table!");
+    }
   }
 
   //check function for debuging purpose
@@ -132,6 +156,7 @@ function CustomerForm(props) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={customerDetails.mobile_no}
+              disabled={disableAdd}
             />
           </div>
           <div class="form-group col-md-3">
@@ -144,6 +169,7 @@ function CustomerForm(props) {
               name="customer_name"
               onChange={handleChange}
               value={customerDetails.customer_name}
+              disabled={disableAdd}
             />
           </div>
           <div className="form-group col-md-3">
@@ -156,6 +182,7 @@ function CustomerForm(props) {
               name="email_id"
               onChange={handleChange}
               value={customerDetails.email_id}
+              disabled={disableAdd}
             />
           </div>
 
@@ -169,6 +196,7 @@ function CustomerForm(props) {
               name="invoice_value"
               onChange={handleChange}
               value={customerDetails.invoice_value}
+              disabled={disableAdd}
             />
           </div>
         </div>
@@ -178,9 +206,15 @@ function CustomerForm(props) {
           class="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
+          disabled={disableAdd}
         >
           ADD
         </button>
+        <button
+          className="btn btn-success btn-inv"
+          onClick = {() => {
+            setDisableAdd(false);
+          }}>EDIT</button>
         {/* button created for testing */}
         {/* <button
         class="btn btn-success btn-inv"

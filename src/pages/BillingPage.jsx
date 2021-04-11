@@ -112,7 +112,10 @@ function BillingPage() {
           getQuantityAndPrice(item_code);
         }}
       />
-      <CustomerForm billNo={billNo} />
+      <CustomerForm
+        billNo={billNo}
+        totalAmount={totalQuantityAndAmount.totalAmount}
+      />
       <BillTable tableRows={tableRows} onDelete={deleteRow} />
       <TotalTable
         sumOfQuantity={totalQuantityAndAmount.totalQuantity}

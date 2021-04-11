@@ -14,7 +14,7 @@ function InvForm(props) {
     quantity: "",
   });
 
-  const [fieldDisabled, setFieldDisabled] = useState(true);
+  // const [fieldDisabled, setFieldDisabled] = useState(true);
 
   const [reatailPriceDetails, setRetailPriceDetails] = useState({
     item_code: "",
@@ -74,7 +74,7 @@ function InvForm(props) {
       Alert.error("Please fill all the fields of Inventory Form!");
     } else {
       Alert.success("Item added to the table!");
-      setFieldDisabled(false);
+      // setFieldDisabled(false);
       props.onAdd(details);
     }
   }
@@ -120,8 +120,6 @@ function InvForm(props) {
             item_category,
             unit_price,
             quantity,
-            supplier_invoice_no,
-            stock_entry_date,
           } = resp.data.content;
           // console.log(resp.data.content.item_name);
 
@@ -228,7 +226,7 @@ function InvForm(props) {
     <div className="inv-form crd">
       <p
         className="text-color"
-        style={{ textAlign: "center", paddingTop: "0px", paddingTop: "10px" }}
+        style={{ textAlign: "center", paddingTop: "10px" }}
       >
         Inventory Entry
       </p>
@@ -238,10 +236,10 @@ function InvForm(props) {
           style={{ width: "200%", paddingLeft: "30px" }}
         >
           <div className="form-group col-md-3">
-            <label for="item_code">Item Code</label>
+            <label htmlFor="item_code">Item Code</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="item_code"
               placeholder="Item Code"
               name="item_code"
@@ -250,11 +248,11 @@ function InvForm(props) {
               value={details.item_code}
             />
           </div>
-          <div class="form-group col-md-3">
-            <label for="brand">Brand</label>
+          <div className="form-group col-md-3">
+            <label htmlFor="brand">Brand</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="brand"
               placeholder="Brand"
               name="brand"
@@ -263,10 +261,10 @@ function InvForm(props) {
             />
           </div>
           <div className="form-group col-md-3">
-            <label for="item_name">Item Name</label>
+            <label htmlFor="item_name">Item Name</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="item_name"
               placeholder="Item Name"
               name="item_name"
@@ -275,10 +273,10 @@ function InvForm(props) {
             />
           </div>
           <div className="form-group col-md-3">
-            <label for="item_category">Item Category</label>
+            <label htmlFor="item_category">Item Category</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="item_category"
               placeholder="Item Category"
               name="item_category"
@@ -291,11 +289,11 @@ function InvForm(props) {
           className="form-row"
           style={{ width: "200%", paddingLeft: "30px" }}
         >
-          <div class="form-group col-md-3">
-            <label for="uom">Unit of measurement</label>
+          <div className="form-group col-md-3">
+            <label htmlFor="uom">Unit of measurement</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="uom"
               placeholder="Unit of measurement"
               name="unit_measurement"
@@ -304,10 +302,10 @@ function InvForm(props) {
             />
           </div>
           <div className="form-group col-md-3">
-            <label for="quantity">Quantity</label>
+            <label htmlFor="quantity">Quantity</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="quantity"
               placeholder="Quantity"
               name="quantity"
@@ -316,11 +314,11 @@ function InvForm(props) {
               value={details.quantity}
             />
           </div>
-          <div class="form-group col-md-3">
-            <label for="unit_prce">Unit Price</label>
+          <div className="form-group col-md-3">
+            <label htmlFor="unit_prce">Unit Price</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="unit_prce"
               placeholder="Unit Price"
               name="unit_price"
@@ -328,11 +326,11 @@ function InvForm(props) {
               value={details.unit_price}
             />
           </div>
-          <div class="form-group col-md-3">
-            <label for="total_value">Total Value</label>
+          <div className="form-group col-md-3">
+            <label htmlFor="total_value">Total Value</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="total_value"
               placeholder="Total Value"
               name="total_value"
@@ -347,7 +345,7 @@ function InvForm(props) {
       </form>
       <div style={{ paddingLeft: "780px", paddingBottom: "20px" }}>
         <button
-          class="btn btn-success btn-inv"
+          className="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
         >
@@ -355,14 +353,14 @@ function InvForm(props) {
         </button>
         {/* button created for testing */}
         {/* <button
-          class="btn btn-success btn-inv"
+          className="btn btn-success btn-inv"
           type="submit"
           onClick={checkAllObj}
         >
           check
         </button> */}
         <button
-          class="btn btn-inv btn-success"
+          className="btn btn-inv btn-success"
           type="submit"
           onClick={clearForm}
         >

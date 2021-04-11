@@ -28,7 +28,7 @@ function Login(props) {
           if (privilege === "ADMIN") {
             auth.setUser(name);
             auth.setAdmin();
-            const a = auth.isPrivileged();
+            auth.isPrivileged();
             // console.log(a);
             auth.login(() => {
               history.push("/welcome");

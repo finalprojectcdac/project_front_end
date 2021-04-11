@@ -20,61 +20,61 @@ function RtdBar(props) {
 
   return (
     <div className="row rtdBar" style={{ marginLeft: "-3%", marginRight:"0%" }}>
-      <div class="col-sm">
-        <div class="card crd">
-          <div class="card-body ">
+      <div className="col-sm">
+        <div className="card crd">
+          <div className="card-body ">
             <h5
-              class="card-title text-center text-color fw-bold"
+              className="card-title text-center text-color fw-bold"
               style={{ padding: "0px" }}
             >
               NUMBER OF ITEMS
             </h5>
-            <h4 class="card-text text-center" style={{ padding: "0px" }}>
+            <h4 className="card-text text-center" style={{ padding: "0px" }}>
               {totalNoOfItems}
             </h4>
           </div>
         </div>
       </div>
-      <div class="col-sm ">
-        <div class="card crd">
-          <div class="card-body ">
+      <div className="col-sm ">
+        <div className="card crd">
+          <div className="card-body ">
             <h5
-              class="card-title text-center text-color text-bold"
+              className="card-title text-center text-color text-bold"
               style={{ padding: "0px" }}
             >
               VALUE OF ITEMS
             </h5>
-            <h4 class="card-text text-center" style={{ padding: "0px" }}>
+            <h4 className="card-text text-center" style={{ padding: "0px" }}>
               {totalItemValue}
             </h4>
           </div>
         </div>
       </div>
-      <div class="col-sm">
-        <div class="card crd">
-          <div class="card-body">
+      <div className="col-sm">
+        <div className="card crd">
+          <div className="card-body">
             <h5
-              class="card-title text-center text-color fw-bold"
+              className="card-title text-center text-color fw-bold"
               style={{ padding: "0px" }}
             >
               DATE
             </h5>
-            <h4 class="card-text text-center" style={{ padding: "0px" }}>
+            <h4 className="card-text text-center" style={{ padding: "0px" }}>
               {date}
             </h4>
           </div>
         </div>
       </div>
-      <div class="col-sm">
-        <div class="card crd">
-          <div class="card-body">
+      <div className="col-sm">
+        <div className="card crd">
+          <div className="card-body">
             <h5
-              class="card-title text-center text-color fw-bold"
+              className="card-title text-center text-color fw-bold"
               style={{ padding: "0px" }}
             >
               TIME
             </h5>
-            <h4 class="card-text text-center" style={{ padding: "0px" }}>
+            <h4 className="card-text text-center" style={{ padding: "0px" }}>
               {time}
             </h4>
           </div>

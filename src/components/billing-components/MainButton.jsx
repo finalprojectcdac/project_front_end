@@ -26,23 +26,18 @@ function MainButton(props) {
       } else if (invoice.invoice_value === 0) {
         Alert.error("Please enter the amount received from the customer!");
         event.preventDefault();
-      } else if (props.totalAmount <= invoice.invoice_value) {
-        //console.log(arrayOfQuantityUpdate);
-        const x = user.insertListOfItems(arrayOfItemSaleObjects);
-        const y = user.insertInvoice(invoice);
-        const z = user.updateItemQuantity(arrayOfQuantityUpdate);
-        // console.log(x);
-        // console.log(y);
-        // console.log(z);
+      } else if (props.totalAmount === invoice.invoice_value) {
+        user.insertListOfItems(arrayOfItemSaleObjects);
+        user.insertInvoice(invoice);
+        user.updateItemQuantity(arrayOfQuantityUpdate);
         Alert.success(
           "Bill no. " + invoice.invoice_no + " generated successfully!"
         );
         history.push("/invoice");
         event.preventDefault();
       }
-      // event.preventDefault();
       else {
-        Alert.error("Amount received is less than the total bill value!");
+        Alert.error("Amount received does not match the total bill value!");
         event.preventDefault();
       }
     } else {

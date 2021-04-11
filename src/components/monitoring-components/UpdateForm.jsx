@@ -14,7 +14,6 @@ function UpdateForm() {
     unit_price: "",
     selling_price: "",
   });
-  const [hideUpdateForm, setHideUpdateForm] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -114,11 +113,7 @@ function UpdateForm() {
 
   function handleUpdate() {
     if (itemDetails.item_code !== "") {
-      user.updateInventoryAndSellingPriceData(itemDetails).then((resp) => {
-        const { status, reason } = resp.data;
-        // console.log(status);
-        // console.log(reason);
-      });
+      user.updateInventoryAndSellingPriceData(itemDetails);
       setItemDetails({
         item_code: "",
         brand: "",

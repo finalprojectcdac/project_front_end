@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { itemsSoldList } from "./BillForm";
 import { invoice } from "./CustomerForm";
-import { Link } from "react-router-dom";
 
 function Invoice() {
   const tableRows = itemsSoldList;

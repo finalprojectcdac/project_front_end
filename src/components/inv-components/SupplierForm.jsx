@@ -42,13 +42,13 @@ function SupplierForm() {
     }
   }
 
-  const {
-    supplier_code,
-    supplier_name,
-    supplier_invoice_number,
-    supplier_invoice_value,
-    purchase_date,
-  } = supplierObj;
+  // const {
+  //   supplier_code,
+  //   supplier_name,
+  //   supplier_invoice_number,
+  //   supplier_invoice_value,
+  //   purchase_date,
+  // } = supplierObj;
 
   //this returns true if any field is empty
   function checkObjectisFilled(obj) {
@@ -107,8 +107,6 @@ function SupplierForm() {
       const {
         supplier_name,
         supplier_code,
-        supplier_invoice_number,
-        supplier_invoice_value,
       } = resp.data.contentsupplier;
       // console.log(resp.data);
       const status = resp.data.status;
@@ -143,10 +141,10 @@ function SupplierForm() {
           style={{ width: "200%", paddingLeft: "30px" }}
         >
           <div className="form-group col-md-3">
-            <label for="supplier_name">Supplier Name</label>
+            <label htmlFor="supplier_name">Supplier Name</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="supplier_name"
               placeholder="Supplier Name"
               name="supplier_name"
@@ -156,11 +154,11 @@ function SupplierForm() {
               disabled={fieldDisabled}
             />
           </div>
-          <div class="form-group col-md-3">
-            <label for="supplier_code">Supplier Code</label>
+          <div className="form-group col-md-3">
+            <label htmlFor="supplier_code">Supplier Code</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="supplier_code"
               placeholder="Supplier Code"
               name="supplier_code"
@@ -170,10 +168,10 @@ function SupplierForm() {
             />
           </div>
           <div className="form-group col-md-3">
-            <label for="invoice_number">Invoice Number</label>
+            <label htmlFor="invoice_number">Invoice Number</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="invoice_number"
               placeholder="Invoice Number"
               name="supplier_invoice_number"
@@ -183,15 +181,15 @@ function SupplierForm() {
             />
           </div>
           <div className="form-group col-md-3">
-            <label for="invoice_value">Invoice Value</label>
+            <label htmlFor="invoice_value">Invoice Value</label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="invoice_value"
               placeholder="Invoice Value"
               name="supplier_invoice_value"
               onChange={handleChange}
-              onblur={setInvoicevalue}
+              onBlur={setInvoicevalue}
               value={details.supplier_invoice_value}
               disabled={fieldDisabled}
             />
@@ -200,7 +198,7 @@ function SupplierForm() {
       </form>
       <div style={{ paddingLeft: "800px", paddingBottom: "20px" }}>
         <button
-          class="btn btn-success btn-inv"
+          className="btn btn-success btn-inv"
           type="submit"
           onClick={handleAdd}
           disabled={fieldDisabled}
@@ -208,7 +206,7 @@ function SupplierForm() {
           ADD
         </button>
         <button
-          class="btn btn-success btn-inv"
+          className="btn btn-success btn-inv"
           type="submit"
           onClick={handleRemove}
           style={{ marginLeft: "10px" }}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import user from "../../service/serviceLayer";
 import { supplierObj } from "./SupplierForm";
@@ -10,7 +10,7 @@ import {
 import Alert from "react-s-alert";
 
 function MainButton(props) {
-  var count = 0;
+  // var count = 0;
   function matchQuantityandValue() {
     for (var i = 0; i < inventoryDetails.length; i++) {
       for (var j = 0; j < prvQuantityDetails.length; j++) {
@@ -21,7 +21,7 @@ function MainButton(props) {
           inventoryDetails[i].total_value =
             parseInt(inventoryDetails[i].quantity) *
             parseInt(inventoryDetails[i].unit_price);
-          count++;
+          // count++;
         }
       }
     }
@@ -54,9 +54,9 @@ function MainButton(props) {
     ) {
       matchQuantityandValue();
       //inser retail price data
-      const x = user.insertInventoryData(inventoryDetails);
-      const y = user.insertSupplierDetails(supplierObj);
-      const z = user.insertListofRetailPriceData(retailDataArray);
+      user.insertInventoryData(inventoryDetails);
+      user.insertSupplierDetails(supplierObj);
+      user.insertListofRetailPriceData(retailDataArray);
       // console.log(x);
       // console.log(y);
       // console.log(z);
@@ -74,14 +74,14 @@ function MainButton(props) {
     <div className="main-buttons">
       <form>
         <button
-          class="btn btn-success btn-inv"
+          className="btn btn-success btn-inv"
           type="submit"
           onClick={handleCancel}
         >
           CANCEL
         </button>
         <button
-          class="btn btn-success btn-inv"
+          className="btn btn-success btn-inv"
           type="submit"
           onClick={handleSave}
         >
@@ -90,7 +90,7 @@ function MainButton(props) {
       </form>
 
       {/* <button
-        class="btn btn-success btn-inv"
+        className="btn btn-success btn-inv"
         type="submit"
         onClick={checkAllObj}
       >

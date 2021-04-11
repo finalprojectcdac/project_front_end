@@ -48,8 +48,7 @@ function Register() {
           if (confirmPassword === empDetails.password) {
             user.registerEmployee(empDetails).then((resp) => {
               const { status, reason } = resp.data;
-              // console.log(status);
-              Alert.success(reason);
+              if (status === 1) Alert.success(reason);
             });
             setEmpDetails({
               empId: "",

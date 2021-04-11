@@ -86,11 +86,7 @@ function SetEmployeeForm() {
 
   function handleUpdate() {
     if (empDetails.empId !== "") {
-      user.updateEmployeeDetails(empDetails).then((resp) => {
-        const { status, reason } = resp.data;
-        // console.log(status);
-        // console.log(reason);
-      });
+      user.updateEmployeeDetails(empDetails);
       setEmpDetails({
         empId: "",
         name: "",
