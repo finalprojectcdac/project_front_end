@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const USERS_REST_API_URL = "http://localhost:7777/abc";
+const USERS_REST_API_URL = "http://localhost:7777";
 
 class UserService {
   //================poc===================
@@ -14,21 +14,21 @@ class UserService {
   // }
   //======================REAL TIME DAT BAR======================================
   getRealTimeData() {
-    return axios.get("http://localhost:7777/getRealTimeData");
+    return axios.get(USERS_REST_API_URL + "/getRealTimeData");
   }
 
   //inventory page functions
   //===================fetching functions=========================================
   getItemDetails(item_code) {
-    console.log("CALLING SERVER WITH ITEMCODE :-" + item_code);
+    // console.log("CALLING SERVER WITH ITEMCODE :-" + item_code);
     return axios.get(
-      "http://localhost:7777//getitemdetailsfrominventorytable/?item_code=" +
+      USERS_REST_API_URL + "/getitemdetailsfrominventorytable/?item_code=" +
         item_code
     );
   }
   getSupplierDetails(supplier_name) {
     return axios.get(
-      "http://localhost:7777/getsupplierdetailsfromSupplierRecord?supplier_name=" +
+      USERS_REST_API_URL + "/getsupplierdetailsfromSupplierRecord?supplier_name=" +
         supplier_name
     );
   }
@@ -36,21 +36,21 @@ class UserService {
   //===================Inserting  functions=======================================
   insertInventoryData(inventoryDetails) {
     return axios.put(
-      "http://localhost:7777//saveinventorypage",
+      USERS_REST_API_URL + "/saveinventorypage",
       inventoryDetails
     );
   }
   insertSupplierDetails(supplierobj) {
-    console.log(supplierobj);
+    // console.log(supplierobj);
     return axios.put(
-      "http://localhost:7777//saveSupplierRecordFromInventorypage",
+      USERS_REST_API_URL + "/saveSupplierRecordFromInventorypage",
       supplierobj
     );
   }
   insertListofRetailPriceData(arrayofRPD) {
-    console.log(arrayofRPD);
+    // console.log(arrayofRPD);
     return axios.put(
-      "http://localhost:7777/addItemsToRetailPriceData",
+      USERS_REST_API_URL + "/addItemsToRetailPriceData",
       arrayofRPD
     );
   }
@@ -58,40 +58,40 @@ class UserService {
   //===================Billing page functions=====================================
   //===================fetching functions=========================================
   getSaleInvoiceNo() {
-    return axios.get("http://localhost:7777/getSalesInvoicenumber");
+    return axios.get(USERS_REST_API_URL + "/getSalesInvoicenumber");
   }
 
   getItemDetailsForSale(item_code) {
     return axios.get(
-      "http://localhost:7777/getitemdetailsforsale?item_code=" + item_code
+      USERS_REST_API_URL + "/getitemdetailsforsale?item_code=" + item_code
     );
   }
   getCustomerDetails(mobile_no) {
     return axios.get(
-      "http://localhost:7777/getCustomerdetailsfromInvoices?mobile_no=" +
+      USERS_REST_API_URL + "/getCustomerdetailsfromInvoices?mobile_no=" +
         mobile_no
     );
   }
   getArrayOfBillingObject() {
-    return axios.get("http://localhost:7777/getArrayOfBillingObject");
+    return axios.get(USERS_REST_API_URL + "/getArrayOfBillingObject");
   }
   //===================Inserting functions functions===============================
   insertListOfItems(arrayOfItemSaleObjects) {
     return axios.put(
-      "http://localhost:7777/ListItemsinserttoItemSale",
+      USERS_REST_API_URL + "/ListItemsinserttoItemSale",
       arrayOfItemSaleObjects
     );
   }
 
   insertInvoice(invoice) {
     return axios.put(
-      "http://localhost:7777/insertInvoicefromInvoices",
+      USERS_REST_API_URL + "/insertInvoicefromInvoices",
       invoice
     );
   }
   updateItemQuantity(arrayOfQuantityUpdate) {
     return axios.put(
-      "http://localhost:7777/updateitemquantity",
+      USERS_REST_API_URL + "/updateitemquantity",
       arrayOfQuantityUpdate
     );
   }
@@ -99,27 +99,27 @@ class UserService {
 
   //======================monitoring functions=======================================
   updateInventoryAndSellingPriceData(details) {
-    console.log(details);
+    // console.log(details);
     return axios.put(
-      "http://localhost:7777/updateInventoryAndSellingPrice",
+      USERS_REST_API_URL + "/updateInventoryAndSellingPrice",
       details
     );
   }
   getPruchaseReport(startDate, endDate) {
-    console.log(startDate);
-    console.log(endDate);
+    // console.log(startDate);
+    // console.log(endDate);
     return axios.get(
-      "http://localhost:7777/getPurchaseReport?startDate=" +
+      USERS_REST_API_URL + "/getPurchaseReport?startDate=" +
         startDate +
         "&endDate=" +
         endDate
     );
   }
   getSalesReport(startDate, endDate) {
-    console.log(startDate);
-    console.log(endDate);
+    // console.log(startDate);
+    // console.log(endDate);
     return axios.get(
-      "http://localhost:7777/getSalesReport?startDate=" +
+      USERS_REST_API_URL + "/getSalesReport?startDate=" +
         startDate +
         "&endDate=" +
         endDate
@@ -127,24 +127,24 @@ class UserService {
   }
 
   registerEmployee(empDetails) {
-    return axios.put("http://localhost:7777/registerEmployee", empDetails);
+    return axios.put(USERS_REST_API_URL + "/registerEmployee", empDetails);
   }
 
   getEmployeeDetails(empId) {
-    return axios.get("http://localhost:7777/getEmployeeDetails?empId=" + empId);
+    return axios.get(USERS_REST_API_URL + "/getEmployeeDetails?empId=" + empId);
   }
 
   updateEmployeeDetails(empDetails) {
-    return axios.put("http://localhost:7777/updateEmployeeDetails", empDetails);
+    return axios.put(USERS_REST_API_URL + "/updateEmployeeDetails", empDetails);
   }
 
   getListOfEmployees() {
-    return axios.get("http://localhost:7777/getListOfEmployees");
+    return axios.get(USERS_REST_API_URL + "/getListOfEmployees");
   }
 
   login(empId, password) {
     return axios.get(
-      "http://localhost:7777/login?empId=" + empId + "&password=" + password
+      USERS_REST_API_URL + "/login?empId=" + empId + "&password=" + password
     );
   }
 }

@@ -78,7 +78,7 @@ function BillForm(props) {
           selling_price,
         } = resp.data.bo; //billing object data to
         if (selling_price === -1) {
-          console.log("Selling Price not set");
+          //console.log("Selling Price not set");
           Alert.error("Entered item is not for sale. Contact manager!");
           setIsFound(false);
           setDisableAddButton(true);
@@ -149,7 +149,7 @@ function BillForm(props) {
   function handleBlur(event) {
     const item_code = event.target.value;
     if (item_code !== "") {
-      console.log("blur called with item_code: " + item_code);
+      //console.log("blur called with item_code: " + item_code);
       getItemDetailsForSale(item_code);
       props.getQuantityAndPrice(item_code); //setting up the Quantity and Price card.
     }
@@ -176,7 +176,7 @@ function BillForm(props) {
         };
       });
 
-      console.log(arrayOfItemSaleObjects);
+      //console.log(arrayOfItemSaleObjects);
 
       props.onAdd(details); //this will add details in the table below
 

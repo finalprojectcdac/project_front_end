@@ -42,10 +42,10 @@ function SetEmployeeForm() {
     const empId = event.target.value;
 
     if (empId !== "") {
-      console.log("handle blur called with: " + empId);
+      // console.log("handle blur called with: " + empId);
       user.getEmployeeDetails(empId).then((resp) => {
         const status = resp.data.status;
-        console.log(status);
+        // console.log(status);
         if (status === 1) {
           const {
             empId,
@@ -88,8 +88,8 @@ function SetEmployeeForm() {
     if (empDetails.empId !== "") {
       user.updateEmployeeDetails(empDetails).then((resp) => {
         const { status, reason } = resp.data;
-        console.log(status);
-        console.log(reason);
+        // console.log(status);
+        // console.log(reason);
       });
       setEmpDetails({
         empId: "",
@@ -100,7 +100,7 @@ function SetEmployeeForm() {
       });
       window.location.reload();
     } else {
-      console.log("Empty Object");
+      // console.log("Empty Object");
     }
   }
 

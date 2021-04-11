@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Invoice() {
   const tableRows = itemsSoldList;
-  console.log(tableRows);
+  //console.log(tableRows);
   const renderTableColoumn = (tableRows, index) => {
     return (
       <tr key={index}>

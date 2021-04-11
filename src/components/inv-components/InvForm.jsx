@@ -89,26 +89,26 @@ function InvForm(props) {
   }
 
   //checking object and  array conatin
-  function checkAllObj() {
-    console.log("Inv-form recived obj from supplier-form");
-    console.log({ supplierObj });
-    console.log("inventory array of obj:-");
-    console.log(inventoryDetails);
-    console.log("our details array :-");
-    console.log(details);
-    console.log(" quantity in store is :-");
-    console.log(quantitydetails);
-    console.log(" Array of item quantity in store is :-");
-    console.log(prvQuantityDetails);
-    console.log(" Array of retail data is :-");
-    console.log(retailDataArray);
-  }
+  // function checkAllObj() {
+  //   console.log("Inv-form recived obj from supplier-form");
+  //   console.log({ supplierObj });
+  //   console.log("inventory array of obj:-");
+  //   console.log(inventoryDetails);
+  //   console.log("our details array :-");
+  //   console.log(details);
+  //   console.log(" quantity in store is :-");
+  //   console.log(quantitydetails);
+  //   console.log(" Array of item quantity in store is :-");
+  //   console.log(prvQuantityDetails);
+  //   console.log(" Array of retail data is :-");
+  //   console.log(retailDataArray);
+  // }
 
   function handleBlur(event) {
     const item_code = event.target.value;
 
     if (item_code !== 0) {
-      console.log("handle blur called with:-" + item_code);
+      // console.log("handle blur called with:-" + item_code);
       user.getItemDetails(item_code).then((resp) => {
         const status = resp.data.status;
         if (status === 1) {
@@ -123,7 +123,7 @@ function InvForm(props) {
             supplier_invoice_no,
             stock_entry_date,
           } = resp.data.content;
-          console.log(resp.data.content.item_name);
+          // console.log(resp.data.content.item_name);
 
           setquantity({
             item_code: item_code,
@@ -164,8 +164,8 @@ function InvForm(props) {
           });
         }
 
-        console.log("our item obj is:-");
-        console.log(details);
+        // console.log("our item obj is:-");
+        // console.log(details);
       });
     }
   }
@@ -183,8 +183,8 @@ function InvForm(props) {
     details.supplier_invoice_no = supplierObj.supplier_invoice_number;
     //details.quantity=details.quantity+itemQuant;
     const isAnyEmpty = checkObjectisFilled(details);
-    console.log(details);
-    console.log("some filed of inventory is empty :-" + isAnyEmpty);
+    // console.log(details);
+    // console.log("some filed of inventory is empty :-" + isAnyEmpty);
     handleAlert(isAnyEmpty);
     if (!isAnyEmpty) {
       inventoryDetails.push(details);

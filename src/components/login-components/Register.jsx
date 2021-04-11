@@ -39,16 +39,16 @@ function Register() {
             break;
           }
         }
-        console.log(isAlreadyRegistered);
+        // console.log(isAlreadyRegistered);
 
         if (isAlreadyRegistered) {
           Alert.error("This email ID is already in use!");
         } else {
-          console.log(isAlreadyRegistered);
+          // console.log(isAlreadyRegistered);
           if (confirmPassword === empDetails.password) {
             user.registerEmployee(empDetails).then((resp) => {
               const { status, reason } = resp.data;
-              console.log(status);
+              // console.log(status);
               Alert.success(reason);
             });
             setEmpDetails({

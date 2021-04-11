@@ -68,12 +68,12 @@ function SupplierForm() {
 
   function handleAdd(event) {
     const isAnyEmpty = checkObjectisFilled(details);
-    console.log("some filed of supplier is empty :-" + isAnyEmpty);
+    // console.log("some filed of supplier is empty :-" + isAnyEmpty);
     handleAlert(isAnyEmpty);
     if (!isAnyEmpty) {
       supplierObj = details;
-      console.log("pushing details into supplier obj");
-      console.log(supplierObj);
+      // console.log("pushing details into supplier obj");
+      // console.log(supplierObj);
       setDetails({
         supplier_name: details.supplier_name,
         supplier_code: details.supplier_code,
@@ -100,9 +100,9 @@ function SupplierForm() {
 
   function handleBlur(event) {
     const supplier_name = details.supplier_name;
-    console.log(
-      "get supplier function called with argument as:-" + supplier_name
-    );
+    // console.log(
+    //   "get supplier function called with argument as:-" + supplier_name
+    // );
     user.getSupplierDetails(supplier_name).then((resp) => {
       const {
         supplier_name,
@@ -110,7 +110,7 @@ function SupplierForm() {
         supplier_invoice_number,
         supplier_invoice_value,
       } = resp.data.contentsupplier;
-      console.log(resp.data);
+      // console.log(resp.data);
       const status = resp.data.status;
       if (status === 1) {
         setDetails({
@@ -120,7 +120,9 @@ function SupplierForm() {
           supplier_invoice_value: "",
           purchase_date: "",
         });
-      } else console.log("no supplier with such name in DB");
+      } else {
+        // console.log("no supplier with such name in DB");
+      }
     });
     event.preventDefault();
   }

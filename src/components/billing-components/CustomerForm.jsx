@@ -48,7 +48,7 @@ function CustomerForm(props) {
   function getCustomerDetails(mobile_no) {
     user.getCustomerDetails(mobile_no).then((resp) => {
       const status = resp.data.status;
-      console.log(status);
+      //console.log(status);
       if (status !== 0) {
         const { mobile_no, customer_name, email_id } = resp.data.contentinvoice;
         setCustomerDetails({
@@ -78,7 +78,7 @@ function CustomerForm(props) {
   function handleBlur(event) {
     const mobile_no = event.target.value;
     if (mobile_no !== 0) {
-      console.log("blur called with mobile no: " + mobile_no);
+      //console.log("blur called with mobile no: " + mobile_no);
       getCustomerDetails(mobile_no);
     }
   }

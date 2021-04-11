@@ -31,9 +31,9 @@ function MainButton(props) {
         const x = user.insertListOfItems(arrayOfItemSaleObjects);
         const y = user.insertInvoice(invoice);
         const z = user.updateItemQuantity(arrayOfQuantityUpdate);
-        console.log(x);
-        console.log(y);
-        console.log(z);
+        // console.log(x);
+        // console.log(y);
+        // console.log(z);
         Alert.success(
           "Bill no. " + invoice.invoice_no + " generated successfully!"
         );

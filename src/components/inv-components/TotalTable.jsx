@@ -30,18 +30,6 @@ function TotalTable(props) {
         </h4>
       </div>
     </div>
-    //     <div className="total-table" style={{top:"1090px"}}>
-    //         <ReactBootStrap.Table striped bordered className="table-sm">
-    //             <thead className="thead-dark">
-    //                 <tr>
-    //                     <th style={{width:"730px"}}>GRAND TOTAL</th>
-    //                     <th style={{width:"112px"}}>{sumOfQuantity}</th>
-    //                     <th style={{width:"122px"}}></th>
-    //                     <th>{totalAmount}</th>
-    //                 </tr>
-    //             </thead>
-    //         </ReactBootStrap.Table>
-    //   </div>
   );
 }
 

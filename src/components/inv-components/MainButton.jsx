@@ -27,21 +27,21 @@ function MainButton(props) {
     }
   }
   //checking object and  array conatin
-  function checkAllObj() {
-    matchQuantityandValue();
-    console.log("Inventory array of obj:-");
-    console.log(inventoryDetails);
-    console.log(" Array item quantity in store is :-");
-    console.log(prvQuantityDetails);
-    console.log(" Total Item matched");
-    console.log(count);
-    console.log("Retail price list");
-    console.log(retailDataArray);
-    console.log("////////////");
-    console.log(supplierObj.supplier_invoice_value);
-    console.log(parseInt(supplierObj.supplier_invoice_value));
-    console.log(parseFloat(props.totalAmount));
-  }
+  // function checkAllObj() {
+  //   matchQuantityandValue();
+  //   console.log("Inventory array of obj:-");
+  //   console.log(inventoryDetails);
+  //   console.log(" Array item quantity in store is :-");
+  //   console.log(prvQuantityDetails);
+  //   console.log(" Total Item matched");
+  //   console.log(count);
+  //   console.log("Retail price list");
+  //   console.log(retailDataArray);
+  //   console.log("////////////");
+  //   console.log(supplierObj.supplier_invoice_value);
+  //   console.log(parseInt(supplierObj.supplier_invoice_value));
+  //   console.log(parseFloat(props.totalAmount));
+  // }
   function handleSave(event) {
     if (supplierObj.supplier_invoice_value === undefined) {
       Alert.error("Error!! Supplier Details are empty!");
@@ -57,9 +57,9 @@ function MainButton(props) {
       const x = user.insertInventoryData(inventoryDetails);
       const y = user.insertSupplierDetails(supplierObj);
       const z = user.insertListofRetailPriceData(retailDataArray);
-      console.log(x);
-      console.log(y);
-      console.log(z);
+      // console.log(x);
+      // console.log(y);
+      // console.log(z);
       Alert.success("Success!! Details saved successfully!");
     } else {
       Alert.error("Error!! Invoice value and Total do not match!");
@@ -67,7 +67,7 @@ function MainButton(props) {
     }
   }
   function handleCancel() {
-    console.log("cancel button clicked");
+    // console.log("cancel button clicked");
   }
 
   return (

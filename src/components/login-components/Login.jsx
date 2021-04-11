@@ -22,14 +22,14 @@ function Login(props) {
     if (loginDetails.username !== "" && loginDetails.password !== "") {
       user.login(loginDetails.username, loginDetails.password).then((resp) => {
         const status = resp.data.status;
-        console.log(status);
+        // console.log(status);
         if (status === 1) {
           const { name, privilege } = resp.data.employee;
           if (privilege === "ADMIN") {
             auth.setUser(name);
             auth.setAdmin();
             const a = auth.isPrivileged();
-            console.log(a);
+            // console.log(a);
             auth.login(() => {
               history.push("/welcome");
             });

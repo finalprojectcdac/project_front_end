@@ -80,7 +80,7 @@ function SearchReportForm(props) {
         if (status === 1) {
           setReportOpen("search-report-open");
           setSalesReport(resp.data.invoiceList);
-          console.log(salesReport);
+          // console.log(salesReport);
           setHideSalesTable(false);
         } else {
           setReportOpen("search-report-close");

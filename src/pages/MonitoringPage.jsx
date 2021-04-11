@@ -30,7 +30,7 @@ function MonitoringPage() {
   function getArrayOfBillingObject() {
     user.getArrayOfBillingObject().then((resp) => {
       if (resp.data.status === 1) {
-        console.log(resp.data.status);
+        // console.log(resp.data.status);
         setArrayOfBillingObject(resp.data.billingObjList);
       }
     });

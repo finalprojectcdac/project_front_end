@@ -53,7 +53,7 @@ function UpdateForm() {
     const item_code = event.target.value;
 
     if (item_code !== "") {
-      console.log("handle blur called with:-" + item_code);
+      // console.log("handle blur called with:-" + item_code);
       user.getItemDetails(item_code).then((resp1) => {
         user.getItemDetailsForSale(item_code).then((resp2) => {
           const status1 = resp1.data.status;
@@ -68,10 +68,10 @@ function UpdateForm() {
             unit_price,
           } = resp1.data.content;
           const { selling_price } = resp2.data.bo;
-          console.log(item_name);
-          console.log(selling_price);
-          console.log(status1);
-          console.log(status2);
+          // console.log(item_name);
+          // console.log(selling_price);
+          // console.log(status1);
+          // console.log(status2);
           if (status1 === 1 && status2 === 1 && selling_price >= 0) {
             setItemDetails({
               item_code: item_code,
@@ -116,8 +116,8 @@ function UpdateForm() {
     if (itemDetails.item_code !== "") {
       user.updateInventoryAndSellingPriceData(itemDetails).then((resp) => {
         const { status, reason } = resp.data;
-        console.log(status);
-        console.log(reason);
+        // console.log(status);
+        // console.log(reason);
       });
       setItemDetails({
         item_code: "",
