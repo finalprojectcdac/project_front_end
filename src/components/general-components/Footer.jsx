@@ -10,17 +10,20 @@ function Footer() {
         </div>
         <small class="website-rights">IBS © 2021</small>
         <div class="social-icons">
+        {/* <div class="footer-logo social-logo"> */}
+        <small class="website-rights">Developer</small>
+        {/* </div> */}
           <div class="social-icon-link ">
-            <i class="fab fa-facebook-f" />
+          <a href="https://www.google.com" style={{textDecoration:"none",color:"inherit"}}><i class="fab fa-linkedin"></i></a> 
           </div>
           <div class="social-icon-link ">
-            <i class="fab fa-instagram" />
+            <i class="fab fa-linkedin" />
           </div>
           <div class="social-icon-link ">
-            <i class="fab fa-youtube" />
+            <i class="fab fa-linkedin" />
           </div>
           <div class="social-icon-link ">
-            <i class="fab fa-twitter" />
+            <i class="fab fa-linkedin" />
           </div>
           <div class="social-icon-link ">
             <i class="fab fa-linkedin" />
