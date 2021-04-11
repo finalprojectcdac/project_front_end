@@ -1,23 +1,14 @@
 import React from "react";
-import HorizontalNavbar from "../components/general-components/HorizontalNavbar";
+import Footer from "../components/general-components/Footer";
+import Header from "../components/general-components/Header";
+import Body from "../components/homepage-components/Body";
 
 function HomePage() {
   return (
-    <div className="sample">
-        
-        
-
-        <button>xyz</button>
-        <div >
-        <h1 className="h1">Inventory</h1>
-      </div>
-      <div className="buttons">
-        <button>LOGIN</button>
-        <button>REGISTER</button>
-      </div>
-
-      {/* login
-      register */}
+    <div>
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 }

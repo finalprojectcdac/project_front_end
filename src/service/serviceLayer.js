@@ -126,12 +126,16 @@ class UserService {
     );
   }
 
+  registerEmployee(empDetails) {
+    return axios.put("http://localhost:7777/registerEmployee", empDetails);
+  }
+
   getEmployeeDetails(empId) {
     return axios.get("http://localhost:7777/getEmployeeDetails?empId=" + empId);
   }
 
-  setEmployeeDetails(empDetails) {
-    return axios.put("http://localhost:7777/setEmployeeDetails", empDetails);
+  updateEmployeeDetails(empDetails) {
+    return axios.put("http://localhost:7777/updateEmployeeDetails", empDetails);
   }
 
   getListOfEmployees() {

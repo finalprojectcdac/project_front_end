@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import auth from "../../auth-directory/auth";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import user from "../../service/serviceLayer";
+import Alert from "react-s-alert";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-function Login() {
+function Login(props) {
   let history = useHistory();
   const [loginDetails, setLoginDetails] = useState({
     username: "",
@@ -23,17 +25,34 @@ function Login() {
         const status = resp.data.status;
         console.log(status);
         if (status === 1) {
-          auth.login(() => {
-            history.push("/inventory");
-          });
+          const { name, privilege } = resp.data.employee;
+          if (privilege === "ADMIN") {
+            auth.setUser(name);
+            auth.setAdmin();
+            const a = auth.isPrivileged();
+            console.log(a);
+            auth.login(() => {
+              history.push("/welcome");
+            });
+            Alert.success("Successfully logged in!");
+          } else if (privilege === "LIMITED USER") {
+            auth.setUser(name);
+            auth.unsetAdmin();
+            auth.login(() => {
+              history.push("/welcome");
+            });
+            Alert.success("Successfully logged in!");
+          } else {
+            Alert.error("Not approved for login yet. Contact administrator!");
+          }
         } else if (status === -2) {
-          alert("User not registered");
+          Alert.error("User not registered!");
         } else {
-          alert("Incorrect password.");
+          Alert.error("Incorrect password.");
         }
       });
     } else {
-      alert("Enter credentials");
+      Alert.error("Please enter your credentials");
     }
     event.preventDefault();
   }
@@ -41,8 +60,10 @@ function Login() {
   return (
     <div className="login-page">
       <div className="form">
+        <h3 style={{ fontFamily: "merriWeather", color: "#2A9D8F" }}>Login</h3>
         <form className="login-form">
           <input
+            class="form-control"
             type="text"
             placeholder="Username"
             name="username"
@@ -50,6 +71,7 @@ function Login() {
             onChange={handleChange}
           />
           <input
+            class="form-control"
             type="password"
             placeholder="Password"
             name="password"
@@ -58,6 +80,12 @@ function Login() {
           />
         </form>
         <button onClick={handleLogin}>login</button>
+        <br></br>
+        <br></br>
+        <p>
+          Not registered yet?
+          <Link to="/register"> Click here</Link>
+        </p>
       </div>
     </div>
   );

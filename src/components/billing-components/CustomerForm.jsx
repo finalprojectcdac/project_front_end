@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import user from "../../service/serviceLayer";
-import {totalAmount} from"./BillForm";
+import { totalAmount } from "./BillForm";
+import { Link } from "react-router-dom";
 
 let invoice = {
   invoice_no: "",
@@ -11,7 +12,6 @@ let invoice = {
   billing_date: "",
 };
 
-
 function CustomerForm(props) {
   const [customerDetails, setCustomerDetails] = useState({
     mobile_no: "",
@@ -20,7 +20,7 @@ function CustomerForm(props) {
     invoice_value: "",
     billing_date: "",
   });
- 
+
   function handleChange(event) {
     const { name, value } = event.target;
     if (name === "mobile_no" && value === "") {
@@ -45,7 +45,6 @@ function CustomerForm(props) {
         };
       });
     }
-    
   }
 
   function getCustomerDetails(mobile_no) {
@@ -102,10 +101,10 @@ function CustomerForm(props) {
     console.log("checking of variable will be done here");
     console.log("Details:-");
     console.log(customerDetails);
-    console.log("amaount recived is:")
+    console.log("amaount recived is:");
     console.log(customerDetails.invoice_value);
     console.log(totalAmount);
-    console.log(totalAmount<=customerDetails.invoice_value);
+    console.log(totalAmount <= customerDetails.invoice_value);
   }
   return (
     <div className="customer-form crd">
@@ -185,7 +184,7 @@ function CustomerForm(props) {
           ADD
         </button>
         {/* button created for testing */}
-         {/* <button
+        {/* <button
         class="btn btn-success btn-inv"
         type="submit"
         onClick={checkAllObj}
