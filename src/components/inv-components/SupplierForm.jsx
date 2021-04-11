@@ -110,7 +110,7 @@ function SupplierForm() {
         supplier_invoice_number,
         supplier_invoice_value,
       } = resp.data.contentsupplier;
-      console.log("we got resp data as:-" + resp.data);
+      console.log(resp.data);
       const status = resp.data.status;
       if (status === 1) {
         setDetails({
