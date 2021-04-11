@@ -49,7 +49,7 @@ function Register() {
             user.registerEmployee(empDetails).then((resp) => {
               const { status, reason } = resp.data;
               console.log(status);
-              console.log(reason);
+              Alert.success(reason);
             });
             setEmpDetails({
               empId: "",
