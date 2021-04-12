@@ -142,9 +142,9 @@ class UserService {
     return axios.get(USERS_REST_API_URL + "/getListOfEmployees");
   }
 
-  login(empId, password) {
-    return axios.get(
-      USERS_REST_API_URL + "/login?empId=" + empId + "&password=" + password
+  login(loginDetails) {
+    return axios.put(
+      USERS_REST_API_URL + "/login", loginDetails
     );
   }
 }

@@ -7,7 +7,7 @@ import Alert from "react-s-alert";
 function Login(props) {
   let history = useHistory();
   const [loginDetails, setLoginDetails] = useState({
-    username: "",
+    empId: "",
     password: "",
   });
 
@@ -19,8 +19,8 @@ function Login(props) {
   }
 
   function handleLogin(event) {
-    if (loginDetails.username !== "" && loginDetails.password !== "") {
-      user.login(loginDetails.username, loginDetails.password).then((resp) => {
+    if (loginDetails.empId !== "" && loginDetails.password !== "") {
+      user.login(loginDetails).then((resp) => {
         const status = resp.data.status;
         // console.log(status);
         if (status === 1) {
@@ -65,8 +65,8 @@ function Login(props) {
             class="form-control"
             type="text"
             placeholder="Username"
-            name="username"
-            value={loginDetails.username}
+            name="empId"
+            value={loginDetails.empId}
             onChange={handleChange}
           />
           <input
